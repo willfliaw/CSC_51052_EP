@@ -1,14 +1,14 @@
-% -----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
 % margins.tex
 %
 % This file sets the vertical and horizontal margins for the document.
 % It adjusts the header, top/bottom margins, and text width based on user-defined
 % settings for page layout.
-% -----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
 
-% ----------------------------------------------------------------------
+% ---------------------------------------------------------------------
 % Vertical Margins
-% ----------------------------------------------------------------------
+% ---------------------------------------------------------------------
 
 \ifthenelse{\boolean{usePageHeader}}{
     % If a header is present, calculate the distance between the top of the
@@ -22,23 +22,19 @@
     \setlength{\topmargin}{\topMargin - 1in - \voffset}
 
     % Set the bottom margin to ensure a 2cm distance from the bottom of the page
-    \setlength{\textheight}{%
-        \paperheight - \voffset - 1in - \topmargin - \headheight - \headsep - 2.0cm%
-    }
+    \setlength{\textheight}{\paperheight - \voffset - 1in - \topmargin - \headheight - \headsep - 2.0cm}
 }{
     % If no header is present, calculate vertical margins without the header.
     % Ensure equal margins at the top and bottom.
     \setlength{\topmargin}{\headerToText - \headheight - \headsep - \voffset - 1in}
 
     % Set the text height based on the top and bottom margins
-    \setlength{\textheight}{%
-        \paperheight - \topMargin - \footskip - \bottomMargin%
-    }
+    \setlength{\textheight}{\paperheight - \topMargin - \footskip - \bottomMargin}
 }
 
-% ----------------------------------------------------------------------
+% ---------------------------------------------------------------------
 % Horizontal Margins
-% ----------------------------------------------------------------------
+% ---------------------------------------------------------------------
 
 % Set the left margin (for odd pages in two-sided documents)
 \setlength{\oddsidemargin}{\leftMargin - \hoffset - 1in}

@@ -1,4 +1,4 @@
-% -----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
 % chapter.tex
 %
 % This file defines the chapter and section environments, including:
@@ -10,19 +10,18 @@
 %
 % Redefinitions include handling of pretextual chapters, custom TOC entries,
 % and formatting of chapter and section headers.
-% -----------------------------------------------------------------------------
-
-% Define command to allow optional starred sections
-\def\customSectionDefinition#1#2{\@ifstar{\@dblarg{#2}}{\@dblarg{#1}}}
+% ----------------------------------------------------------------------------
 
 % Redefine \chapter to include custom page style and manage pretextual chapters
 \renewcommand\chapter {
-    \if@openright\cleardoublepage\else\clearpage\fi
+    \ifthenelse{\boolean{newPageChapter}}{
+        \if@openright\cleardoublepage\else\clearpage\fi
+    }{}
     \thispagestyle{\chapterTitlePageStyle}
     \ifthenelse{\boolean{inPretext}}{
-        \ifthenelse{\boolean{afterTOC}} {
+        \ifthenelse{\boolean{afterTOC}}{
             \setboolean{inPretext}{false}
-            \BeginTextualPart
+            \beginTextualPart
         }{}
     }{}
     \global\@topnum\z@
@@ -47,7 +46,7 @@
     \endgroup
 }
 
-% Remove the next chapter or section from the Table of Contents
+% To remove the next chapter or section from the Table of Contents
 \newboolean{nextOutOfTOC}
 \setboolean{nextOutOfTOC}{false}
 
@@ -85,34 +84,31 @@
 
 % Redefine \@chapter to manage TOC entry and chapter marking
 \def\@chapter[#1]#2 {
-    \customChapterMark{#1} % This command must precede addcontentsline
-    \ifnum \c@secnumdepth >\m@ne
+    \customChapterMark{#1}
+    \ifnum \c@secnumdepth > \m@ne
         \refstepcounter{chapter}
         \typeout{\@chapapp\space\thechapter.}
-        \ifthenelse{\boolean{afterTOC}}
-        {
+        \ifthenelse{\boolean{afterTOC}}{
             \customAddContentsLine{toc}{chapter}
             {\protect\numberline{\thechapter}#1}
         }{}
     \else
-        \ifthenelse{\boolean{afterTOC}}
-        {
+        \ifthenelse{\boolean{afterTOC}}{
             \customAddContentsLine{toc}{chapter}{#1}
         }{}
     \fi
-    \if@twocolumn\@topnewpage[\@makechapterhead{#2}]
+    \if@twocolumn\@topnewpage[\@makeChapterHead{#2}]
     \else
-        \@makechapterhead{#2}\@afterheading
+        \@makeChapterHead{#2}\@afterheading
     \fi\par
 }
 
 % Redefine \@schapter to behave similarly to \@chapter
 \def\@schapter#1 {
     \if@twocolumn
-        \@topnewpage[\@makeschapterhead{#1}]
+        \@topnewpage[\@makeSChapterHead{#1}]
     \else
-        \@makeschapterhead{#1}
-        \@afterheading
+        \@makeSChapterHead{#1}\@afterheading
     \fi
     \@mkboth{#1}{#1}
     \ifthenelse{\boolean{includeInTOC}}{
@@ -126,7 +122,7 @@
 
 % Redefine \part to manage part numbering, TOC inclusion, and title formatting
 \def\@part[#1]#2{
-    \ifnum \c@secnumdepth >-2\relax
+    \ifnum \c@secnumdepth > -2\relax
         \refstepcounter{part}
         \customAddContentsLine{toc}{part}{\protect\numberline{\thepart}#1}
     \else
@@ -137,17 +133,16 @@
         \centering
         \interlinepenalty \@M
         \normalfont
-        \ifnum \c@secnumdepth >-2\relax
-            \partTitleFont\partTitleSize
-            \ifthenelse{\boolean{uppercasePartTitles}}{
-                \MakeUppercase{\partname~\thepart}
-            }
+        \ifnum \c@secnumdepth > -2\relax
+            \chapterPartTitleFont\chapterPartTitleSize
+            \ifthenelse{\boolean{uppercaseChapterPartTitles}}
+            {\MakeUppercase{\partname~\thepart}}
             {\partname~\thepart}
             \par
             \vskip 20\p@
         \fi
-        \partTitleFont\partSubtitleSize
-        \ifthenelse{\boolean{uppercasePartTitles}}
+        \chapterPartTitleFont\chapterPartTitleSize
+        \ifthenelse{\boolean{uppercaseChapterPartTitles}}
         {\MakeUppercase{#2}}
         {#2}\par
     }
@@ -157,14 +152,15 @@
 % Redefine \part* for starred parts without numbering
 \def\@spart#1{
     \customAddContentsLine{toc}{part}{#1} % Include part in TOC
-    \markboth{}{}
-    {\centering
+    \markboth{}{}{
+        \centering
         \interlinepenalty \@M
         \normalfont
-        \partTitleFont\partSubtitleSize
-        \ifthenelse{\boolean{uppercasePartTitles}}
+        \partTitleFont\chapterPartTitleSize
+        \ifthenelse{\boolean{uppercaseChapterPartTitles}}
         {\MakeUppercase{#1}}
-        {#1}\par}
+        {#1}\par
+    }
     \@endpart
 }
 
@@ -190,7 +186,7 @@
 % Starred section formatting, with optional inclusion in TOC
 \def\customStartStarSection#1#2#3#4#5{
     \@tempskipa #3\relax
-    \ifdim \@tempskipa>\z@
+    \ifdim \@tempskipa > \z@
         \begingroup #4 {
             \interlinepenalty \@M \centering
             \ifthenelse{\boolean{uppercaseSectionTitles}}
@@ -271,39 +267,37 @@
 }
 
 % Define the font for chapter titles
-\ifthenelse{\boolean{uppercasePartTitles}}
-{\newcommand{\chapterTitleFont}{\bfseries\upshape}}
-{\newcommand{\chapterTitleFont}{\bfseries\itshape}}
+\ifthenelse{\boolean{uppercaseChapterPartTitles}}
+{\newcommand{\chapterPartTitleFont}{\bfseries\upshape}}
+{\newcommand{\chapterPartTitleFont}{\bfseries\itshape}}
 
 % Font for chapter titles in TOC
-\newcommand{\TOCChapterFont}{\chapterTitleFont\upshape}
+\newcommand{\TOCChapterFont}{\chapterPartTitleFont\upshape}
 
 % Define the font for section titles
 \newcommand{\sectionTitleFont}{\bfseries}
 
 % Define sizes for chapter and part
-\newcommand{\chapterSize}{\normalsize}
-\newcommand{\uppercaseChapterSize}{\normalsize}
+\newcommand{\chapterPartTitleSize}{\normalsize}
 \newcommand{\titleSize}{\Large}
 
 % Defines how regular chapters (\chapter) are typeset
-\def\@makechapterhead#1{
+\def\@makeChapterHead#1{
     {
-            \normalfont\chapterSize\chapterTitleFont
-            \setSpacing{single} % Single line spacing for chapter titles
-            \vspace*{\spaceHeaderChapter} % Space above the chapter title
-            \noindent
-            \parbox[b]{\textwidth}{
-                \parbox[t]{4ex}{\thechapter} % Space between the chapter number and title
-                \parbox[t]{\textwidth-4ex-1ex}{
-                    \interlinepenalty\@M\raggedright
-                    \ifthenelse{\boolean{uppercasePartTitles}}
-                    {\MakeUppercase{#1}}
-                    {#1}
-                }
-                \vspace*{\spaceAfterChapter} % Space below the chapter title
-            }\\[0pt]\vspace{\offsetAfterChapter} % Offset for additional space
-        }
+        \normalfont\chapterPartTitleSize\chapterPartTitleFont
+        \vspace{\chapterTitleTopMargin}
+        \noindent
+        \parbox[b]{\textwidth}{
+            \parbox[t]{4ex}{\thechapter} % Space for the chapter number and title
+            \parbox[t]{\textwidth - 4ex - 1ex}{
+                \interlinepenalty\@M\raggedright
+                \ifthenelse{\boolean{uppercaseChapterPartTitles}}
+                {\MakeUppercase{#1}}
+                {#1}
+            }
+            \vspace*{\chapterTitleBottomMargin}
+        }\\[0pt]\vspace{\offsetAfterChapter}
+    }
 }
 
 % Flag for alternate chapter title formatting
@@ -311,12 +305,11 @@
 \otherheadfalse
 
 % Defines how starred chapters (\chapter*) are typeset
-\def\@makeschapterhead#1{
+\def\@makeSChapterHead#1{
     \ifotherhead
-        % Alternate format for starred chapter titles
         \vspace*{-1.2cm}\par {
-            \centering\normalfont\chapterSize\chapterTitleFont%
-            \ifthenelse{\boolean{uppercasePartTitles}}
+            \centering\normalfont\chapterPartTitleSize\chapterPartTitleFont
+            \ifthenelse{\boolean{uppercaseChapterPartTitles}}
             {\MakeUppercase{#1}}
             {#1}
             \par
@@ -326,8 +319,8 @@
         \otherheadfalse % Reset flag
     \else
         \vspace*{0pt}\par {
-            \centering\normalfont\chapterSize\chapterTitleFont
-            \ifthenelse{\boolean{uppercasePartTitles}}
+            \centering\normalfont\chapterPartTitleSize\chapterPartTitleFont
+            \ifthenelse{\boolean{uppercaseChapterPartTitles}}
             {\MakeUppercase{#1}}
             {#1}
             \par
@@ -339,7 +332,7 @@
 
 % Redefine \l@chapter to apply page number styles in the TOC
 \renewcommand\l@chapter[2]{
-    \ifnum \c@tocdepth >\m@ne
+    \ifnum \c@tocdepth > \m@ne
         \addpenalty{-\@highpenalty}
         \vskip 1.0em \@plus\p@
         \setlength\@tempdima{1.5em}
@@ -361,7 +354,7 @@
 }
 
 % Redefine \part to manage part numbering, TOC inclusion, and title formatting
-\renewcommand\part{
+\renewcommand\part {
     \if@openright\cleardoublepage\else\clearpage\fi
     \thispagestyle{\chapterTitlePageStyle}
     \if@twocolumn\onecolumn\@tempswatrue\else\@tempswafalse\fi
@@ -370,7 +363,7 @@
 
 % Redefine \l@part to apply custom page number styles in the TOC
 \renewcommand\l@part[2]{
-    \ifnum \c@tocdepth  > -2 \relax
+    \ifnum \c@tocdepth  > -2\relax
         \addpenalty{-\@highpenalty}
         \addvspace{2.25em \@plus\p@}
         \begingroup
@@ -390,7 +383,7 @@
 }
 
 % Redefine \section to apply custom styles and TOC inclusion
-\renewcommand\section{
+\renewcommand\section {
     \customStartSection{section}{1}{\z@}
     {-3.5ex \@plus -1ex \@minus -.2ex}
     {2.3ex \@plus.2ex}
@@ -398,7 +391,7 @@
 }
 
 % Redefine \subsection with custom styles
-\renewcommand\subsection{
+\renewcommand\subsection {
     \customStartSection{subsection}{2}{\z@}
     {-3.25ex \@plus -1ex \@minus -.2ex}
     {1.5ex \@plus .2ex}
@@ -406,7 +399,7 @@
 }
 
 % Redefine \subsubsection with custom styles
-\renewcommand\subsubsection{
+\renewcommand\subsubsection {
     \customStartSection{subsubsection}{3}{\z@}
     {-3.25ex \@plus -1ex \@minus -.2ex}
     {1.5ex \@plus .2ex}
@@ -414,7 +407,7 @@
 }
 
 % Redefine \paragraph with custom styles
-\renewcommand\paragraph{
+\renewcommand\paragraph {
     \customStartSection{paragraph}{4}{\z@}
     {3.25ex \@plus1ex \@minus.2ex}
     {-1em}
@@ -422,7 +415,7 @@
 }
 
 % Redefine \subparagraph with custom styles
-\renewcommand\subparagraph{
+\renewcommand\subparagraph {
     \customStartSection{subparagraph}{5}{\parindent}
     {3.25ex \@plus1ex \@minus .2ex}
     {-1em}
