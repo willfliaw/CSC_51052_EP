@@ -7,7 +7,9 @@ let originalWorld = null;
 let athletesByCountry = {};
 
 function enrichWorldWithContinents(world, isoData) {
-  const isoToContinent = {};
+  const isoToContinent = {
+    SDS: "Africa",
+  };
   isoData.forEach((row) => {
     isoToContinent[row["alpha-3"]] = row["region"];
   });
