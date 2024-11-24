@@ -1,146 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Visualization Overview</title>
+        <style>
+            #wrap {
+                width: 100%;
+                height: 100%;
+                padding: 0;
 
-<head>
-    <meta charset="utf-8">
-    <title>Visualization Overview</title>
-    <style>
-        #wrap {
-       
-        width: 100%;
-        height: 100%;
-        padding: 0;
-       
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-      }
-      #scaled-frame {
-        width: 1000px;
-        height: 2000px;
-        border: 0px;
-      }
-      #scaled-frame {
-        zoom: 0.75;
-        -moz-transform: scale(0.30);
-        -moz-transform-origin: 0 0;
-        -o-transform: scale(0.30);
-        -o-transform-origin: 0 0;
-        -webkit-transform: scale(0.30);
-        -webkit-transform-origin: 0 0;
-      }
-      @media screen and (-webkit-min-device-pixel-ratio:0) {
-        #scaled-frame {
-          zoom: 1;
-        }
-      }
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+            }
+            #scaled-frame {
+                width: 1000px;
+                height: 2000px;
+                border: 0px;
+            }
+            #scaled-frame {
+                zoom: 0.75;
+                -moz-transform: scale(0.3);
+                -moz-transform-origin: 0 0;
+                -o-transform: scale(0.3);
+                -o-transform-origin: 0 0;
+                -webkit-transform: scale(0.3);
+                -webkit-transform-origin: 0 0;
+            }
+            @media screen and (-webkit-min-device-pixel-ratio: 0) {
+                #scaled-frame {
+                    zoom: 1;
+                }
+            }
 
-        body {
-            font-family: Arial, sans-serif;
-        }
+            body {
+                font-family: Arial, sans-serif;
+            }
 
-        h1 {
-            text-align: center;
-        }
+            h1 {
+                text-align: center;
+            }
 
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 20px;
-            margin: 20px;
-        }
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                gap: 20px;
+                margin: 20px;
+            }
 
-        .thumbnail {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
+            .thumbnail {
+                position: relative;
+                width: 300px;
+                height: 300px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                overflow: hidden;
+                cursor: pointer;
+                transition: transform 0.3s;
+            }
 
-        .thumbnail:hover {
-            transform: scale(1.05);
-        }
+            .thumbnail:hover {
+                transform: scale(1.05);
+            }
 
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+            .thumbnail img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
 
-        .thumbnail .description {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            padding: 10px;
-            box-sizing: border-box;
-            font-size: 14px;
-            display: none;
-            text-align: center;
-            z-index: 1;
-        }
+            .thumbnail .description {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                color: #fff;
+                padding: 10px;
+                box-sizing: border-box;
+                font-size: 14px;
+                display: none;
+                text-align: center;
+                z-index: 1;
+            }
 
-        .thumbnail:hover .description {
-            display: block;
-        }
-    </style>
-</head>
+            .thumbnail:hover .description {
+                display: block;
+            }
+        </style>
+    </head>
 
-<body>
-    <h1>Olympics Dataset Visualisation</h1>
-    <div class="container">
-        <div class="thumbnail" onclick="window.location.href='ChordDiagram.html'">
-            <div id="wrap">
-                <iframe id="scaled-frame" src="ChordDiagram.html"></iframe>
-              </div>
-           
-            <div class="description">This plot is a directed chord diagram that visualizes the migration flows of athletes between their birth countries and the countries they represented in the Olympics. </div>
+    <body>
+        <h1>Olympics Dataset Visualisation</h1>
+        <div class="container">
+            <div
+                class="thumbnail"
+                onclick="window.location.href='ChordDiagram.html'"
+            >
+                <div id="wrap">
+                    <iframe id="scaled-frame" src="ChordDiagram.html"></iframe>
+                </div>
+
+                <div class="description">
+                    This plot is a directed chord diagram that visualizes the
+                    migration flows of athletes between their birth countries
+                    and the countries they represented in the Olympics.
+                </div>
+            </div>
+
+            <div
+                class="thumbnail"
+                onclick="window.location.href='ex07_full.html'"
+            >
+                <div id="wrap">
+                    <iframe id="scaled-frame" src="ex07_full.html"></iframe>
+                </div>
+                <div class="description">Description of Plot 2</div>
+            </div>
+
+            <div
+                class="thumbnail"
+                onclick="window.location.href='ex07_full.html'"
+            >
+                <div id="wrap">
+                    <iframe id="scaled-frame" src="ex07_full.html"></iframe>
+                </div>
+                <div class="description">Description of Plot 3</div>
+            </div>
+
+            <div
+                class="thumbnail"
+                onclick="window.location.href='ex07_full.html'"
+            >
+                <div id="wrap">
+                    <iframe id="scaled-frame" src="ex07_full.html"></iframe>
+                </div>
+                <div class="description">Description of Plot 4</div>
+            </div>
+
+            <div
+                class="thumbnail"
+                onclick="window.location.href='ex07_full.html'"
+            >
+                <div id="wrap">
+                    <iframe id="scaled-frame" src="ex07_full.html"></iframe>
+                </div>
+                <div class="description">Description of Plot 5</div>
+            </div>
+
+            <div
+                class="thumbnail"
+                onclick="window.location.href='ex07_full.html'"
+            >
+                <div id="wrap">
+                    <iframe id="scaled-frame" src="ex07_full.html"></iframe>
+                </div>
+                <div class="description">Description of Plot 6</div>
+            </div>
         </div>
-
-        <div class="thumbnail" onclick="window.location.href='ex07_full.html'">
-            <div id="wrap">
-                <iframe id="scaled-frame" src="ex07_full.html"></iframe>
-              </div>
-            <div class="description">Description of Plot 2</div>
-        </div>
-
-         <div class="thumbnail" onclick="window.location.href='ex07_full.html'">
-            <div id="wrap">
-                <iframe id="scaled-frame" src="ex07_full.html"></iframe>
-              </div>
-            <div class="description">Description of Plot 3</div>
-        </div>
-
-        <div class="thumbnail" onclick="window.location.href='ex07_full.html'">
-            <div id="wrap">
-                <iframe id="scaled-frame" src="ex07_full.html"></iframe>
-              </div>
-            <div class="description">Description of Plot 4</div>
-        </div>
-
-         <div class="thumbnail" onclick="window.location.href='ex07_full.html'">
-            <div id="wrap">
-                <iframe id="scaled-frame" src="ex07_full.html"></iframe>
-              </div>
-            <div class="description">Description of Plot 5</div>
-        </div>
-
-         <div class="thumbnail" onclick="window.location.href='ex07_full.html'">
-            <div id="wrap">
-                <iframe id="scaled-frame" src="ex07_full.html"></iframe>
-              </div>
-            <div class="description">Description of Plot 6</div>
-        </div>
-        
-        
-    </div>
-</body>
-
+    </body>
 </html>

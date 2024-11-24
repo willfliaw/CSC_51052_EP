@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Olympic Athletes Chloropleth</title>
-    <script type="text/javascript" src="js/d3.v7.min.js"></script>
-    <script type="text/javascript" src="js/cloropleth.js"></script>
-    <style type="text/css">
-      .tooltip {
-        position: absolute;
-        text-align: center;
-        padding: 5px;
-        font-size: 12px;
-        background: white;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        pointer-events: none;
-      }
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Olympic Athletes Chloropleth</title>
+        <script type="text/javascript" src="js/d3.v7.min.js"></script>
+        <script type="text/javascript" src="js/cloropleth.js"></script>
+        <style type="text/css">
+            .tooltip {
+                position: absolute;
+                text-align: center;
+                padding: 5px;
+                font-size: 12px;
+                background: white;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                pointer-events: none;
+            }
 
-      svg {
-        display: block;
-        margin: auto;
-      }
-    </style>
-  </head>
+            svg {
+                display: block;
+                margin: auto;
+            }
+        </style>
+    </head>
 
-  <body onload="createViz()">
-    <h1 style="text-align: center">
-      Olympic Athletes by Country of First Participation
-    </h1>
-    <div style="text-align: center; margin-bottom: 10px">
-      <label for="continentSelect">Filter by Continent: </label>
-      <select id="continentSelect" onchange="updateMap()">
-        <option value="All">All Continents</option>
-        <option value="Africa">Africa</option>
-        <option value="Americas">Americas</option>
-        <option value="Asia">Asia</option>
-        <option value="Europe">Europe</option>
-        <option value="Oceania">Oceania</option>
-      </select>
-    </div>
-    <div id="mapContainer"></div>
-    <div class="tooltip" id="tooltip" style="opacity: 0"></div>
-  </body>
+    <body onload="createViz()">
+        <h1 style="text-align: center">
+            Olympic Athletes by Country of First Participation
+        </h1>
+        <div style="text-align: center; margin-bottom: 10px">
+            <label for="continentSelect">Filter by Continent: </label>
+            <select id="continentSelect" onchange="updateMap()">
+                <option value="All">All Continents</option>
+                <option value="Africa">Africa</option>
+                <option value="Americas">Americas</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+                <option value="Oceania">Oceania</option>
+            </select>
+        </div>
+        <div id="mapContainer"></div>
+        <div class="tooltip" id="tooltip" style="opacity: 0"></div>
+    </body>
 </html>
