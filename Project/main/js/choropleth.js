@@ -119,7 +119,7 @@ function updateMap() {
         const count = ctx.countryData[d.id]?.count || 0;
         ctx.tooltip.transition().duration(200).style("opacity", 0.9);
         ctx.tooltip
-            .html(`<strong>${ctx.countryData[d.id]?.full_name}</strong><br>Athletes: ${count}`)
+            .html(`<strong>${ctx.countryData[d.id]?.full_name || d.properties.name}</strong><br>Athletes: ${count}`)
             .style("left", `${event.pageX + 10}px`)
             .style("top", `${event.pageY - 28}px`);
     };
