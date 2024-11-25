@@ -36,7 +36,10 @@
         </h1>
         <div style="text-align: center; margin-bottom: 10px">
             <label for="continentSelect">Filter by Continent: </label>
-            <select id="continentSelect" onchange="updateMap()">
+            <select
+                id="continentSelect"
+                onchange="if(!ctx.isChoropleth){toggleView()}; updateMap()"
+            >
                 <option value="All">All Continents</option>
                 <option value="Africa">Africa</option>
                 <option value="Americas">Americas</option>
@@ -46,9 +49,10 @@
             </select>
         </div>
         <div style="text-align: center; margin-bottom: 10px">
-            <button id="toggleView" onclick="toggleView()">Switch to Bubble Map</button>
+            <button id="toggleView" onclick="toggleView()">
+                Switch to Bubble Map
+            </button>
         </div>
         <div id="mapContainer"></div>
-        <div class="tooltip" id="tooltip" style="opacity: 0"></div>
     </body>
 </html>
