@@ -1,61 +1,86 @@
 const ctx = {
-    MAP_W: 960,
-    MAP_H: 550,
     isChoropleth: true,
+    tooltip: null,
+    originalGeoData: null,
+    countryData: null,
+    colorScale: null,
+    sizeScale: null,
+    animationDuration: 500,
 };
 
-function drawLegend(svgEl, maxCount) {
-    const legendWidth = 300;
-    const legendHeight = 20;
-    const legendMargin = { top: -50, right: 10, bottom: 30, left: 10 };
+const CONFIG = {
+    mapWidth: 960,
+    mapHeight: 550,
+    legend: {
+        width: 300,
+        height: 20,
+        margin: { top: -50, right: 10, bottom: 30, left: 10 },
+    },
+    tooltipStyle: {
+        position: "absolute",
+        padding: "8px",
+        background: "rgba(0, 0, 0, 0.8)",
+        color: "white",
+        borderRadius: "4px",
+        pointerEvents: "none",
+        opacity: 0,
+    },
+};
 
-    const legendSvg = svgEl
+function showTooltip(content, x, y) {
+    ctx.tooltip.transition().duration(200).style("opacity", 0.9);
+    ctx.tooltip
+        .html(content)
+        .style("left", `${x + 10}px`)
+        .style("top", `${y - 28}px`);
+}
+
+function hideTooltip() {
+    ctx.tooltip
+        .transition()
+        .duration(ctx.animationDuration)
+        .style("opacity", 0);
+}
+
+function drawLegend(svgEl, colorScale, maxCount) {
+    const { width, height, margin } = CONFIG.legend;
+
+    const legendGroup = svgEl
         .append("g")
         .attr("id", "legend")
-        .attr("class", "legend")
         .attr(
             "transform",
-            `translate(${ctx.MAP_W / 2 - legendWidth / 2}, ${
-                ctx.MAP_H + legendMargin.top
+            `translate(${CONFIG.mapWidth / 2 - width / 2}, ${
+                CONFIG.mapHeight + margin.top
             })`
         );
 
-    const gradient = legendSvg
+    const gradient = legendGroup
         .append("defs")
         .append("linearGradient")
         .attr("id", "legend-gradient")
         .attr("x1", "0%")
-        .attr("y1", "0%")
-        .attr("x2", "100%")
-        .attr("y2", "0%");
+        .attr("x2", "100%");
 
-    gradient
-        .selectAll("stop")
-        .data(
-            ctx.colorScale.ticks(10).map((t, i, arr) => ({
-                offset: `${(i / (arr.length - 1)) * 100}%`,
-                color: ctx.colorScale(t),
-            }))
-        )
-        .enter()
-        .append("stop")
-        .attr("offset", (d) => d.offset)
-        .attr("stop-color", (d) => d.color);
+    colorScale.ticks(10).forEach((t, i, arr) => {
+        gradient
+            .append("stop")
+            .attr("offset", `${(i / (arr.length - 1)) * 100}%`)
+            .attr("stop-color", colorScale(t));
+    });
 
-    legendSvg
+    legendGroup
         .append("rect")
-        .attr("x", 0)
-        .attr("y", 0)
-        .attr("width", legendWidth)
-        .attr("height", legendHeight)
+        .attr("width", width)
+        .attr("height", height)
         .style("fill", "url(#legend-gradient)")
-        .attr("stroke", "#000")
-        .attr("stroke-width", 0.5);
+        .style("stroke", "#000")
+        .style("stroke-width", 0.5);
 
     const legendScale = d3
         .scaleLinear()
         .domain([0, maxCount])
-        .range([0, legendWidth]);
+        .range([0, width]);
 
     const axisBottom = d3
         .axisBottom(legendScale)
@@ -63,66 +88,31 @@ function drawLegend(svgEl, maxCount) {
         .tickSize(6)
         .tickFormat(d3.format(".0f"));
 
-    legendSvg
+    legendGroup
         .append("g")
-        .attr("transform", `translate(0, ${legendHeight})`)
+        .attr("transform", `translate(0, ${height})`)
         .call(axisBottom)
         .select(".domain")
         .remove();
 
-    legendSvg
+    legendGroup
         .append("text")
-        .attr("x", -55)
-        .attr("y", legendHeight / 1.5)
+        .attr("x", -50)
+        .attr("y", height / 1.5)
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
         .text("Number of Athletes");
 }
 
-function handleMouseOut() {
-    ctx.tooltip.transition().duration(500).style("opacity", 0);
+function createProjection(geoData) {
+    return d3
+        .geoNaturalEarth1()
+        .fitSize([CONFIG.mapWidth, CONFIG.mapHeight - 60], geoData);
 }
 
-function updateMap() {
-    const svgEl = d3.select("svg");
-    const selectedContinent = document.getElementById("continentSelect").value;
-
-    let filteredGeoData = ctx.originalGeoData;
-    if (selectedContinent !== "All") {
-        filteredGeoData = {
-            ...ctx.originalGeoData,
-            features: ctx.originalGeoData.features.filter(
-                (d) => d.properties.continent === selectedContinent
-            ),
-        };
-    }
-
-    const projection = d3
-        .geoNaturalEarth1()
-        .fitSize([ctx.MAP_W, ctx.MAP_H - 60], filteredGeoData);
-
+function drawMap(svgEl, filteredGeoData) {
+    const projection = createProjection(filteredGeoData);
     const geoPath = d3.geoPath().projection(projection);
-
-    ctx.tooltip = d3
-        .select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("position", "absolute")
-        .style("padding", "8px")
-        .style("background", "rgba(0, 0, 0, 0.8)")
-        .style("color", "white")
-        .style("border-radius", "4px")
-        .style("pointer-events", "none")
-        .style("opacity", 0);
-
-    const handleMouseOverMap = (event, d) => {
-        const count = ctx.countryData[d.id]?.count || 0;
-        ctx.tooltip.transition().duration(200).style("opacity", 0.9);
-        ctx.tooltip
-            .html(`<strong>${ctx.countryData[d.id]?.full_name || d.properties.name}</strong><br>Athletes: ${count}`)
-            .style("left", `${event.pageX + 10}px`)
-            .style("top", `${event.pageY - 28}px`);
-    };
 
     svgEl.select("#map").remove();
 
@@ -136,14 +126,69 @@ function updateMap() {
         .attr("d", geoPath)
         .attr("fill", ctx.colorScale(0))
         .attr("stroke", "#000")
-        .on("mouseover", handleMouseOverMap)
-        .on("mouseout", handleMouseOut);
+        .on("mouseover", (event, d) => {
+            const count = ctx.countryData[d.id]?.count || 0;
+            showTooltip(
+                `<strong>${
+                    ctx.countryData[d.id]?.full_name || d.properties.name
+                }</strong><br>Athletes: ${count}`,
+                event.pageX,
+                event.pageY
+            );
+        })
+        .on("mouseout", hideTooltip);
 
     if (ctx.isChoropleth) {
         drawChoropleth(svgEl);
     } else {
         drawBubbleMap(svgEl, projection, filteredGeoData);
     }
+}
+
+async function updateMap() {
+    const svgEl = d3.select("svg");
+    const selectedContinent = document.getElementById("continentSelect").value;
+
+    let filteredGeoData = ctx.originalGeoData;
+    if (selectedContinent !== "All") {
+        filteredGeoData = {
+            ...ctx.originalGeoData,
+            features: ctx.originalGeoData.features.filter(
+                (d) => d.properties.continent === selectedContinent
+            ),
+        };
+    }
+
+    const circles = svgEl.selectAll("circle");
+    const path = svgEl.selectAll("path");
+    const needsPathTransition = !path.empty() && !ctx.isChoropleth;
+
+    if (!circles.empty()) {
+        await circles
+            .transition()
+            .duration(ctx.animationDuration)
+            .attr("r", ctx.sizeScale(0))
+            .end();
+
+        svgEl.select("#bubbles").remove();
+    } else if (needsPathTransition) {
+        svgEl
+            .select("#legend")
+            .transition()
+            .duration(ctx.animationDuration)
+            .style("opacity", 0)
+            .end();
+    }
+
+    if (!path.empty() && !ctx.isChoropleth) {
+        await path
+            .transition()
+            .duration(ctx.animationDuration)
+            .attr("fill", ctx.colorScale(0))
+            .end();
+    }
+
+    drawMap(svgEl, filteredGeoData);
 }
 
 function toggleView() {
@@ -155,101 +200,72 @@ function toggleView() {
 }
 
 function drawBubbleMap(svgEl, projection, filteredGeoData) {
-    const handleMouseOverBubble = (event, d) => {
-        ctx.tooltip.transition().duration(200).style("opacity", 0.9);
-        ctx.tooltip
-            .html(`<strong>${d.full_name}</strong><br>Athletes: ${d.count}`)
-            .style("left", `${event.pageX + 10}px`)
-            .style("top", `${event.pageY - 28}px`);
-    };
-
-    const filteredCountryData = Object.fromEntries(
-        Object.entries(ctx.countryData).filter(([key, value]) =>
-            filteredGeoData.features.some((feature) => feature.id === key)
-        )
+    const featureIds = new Set(
+        filteredGeoData.features.map((feature) => feature.id)
     );
+
+    const filteredCountryData = Object.entries(ctx.countryData)
+        .filter(([key]) => featureIds.has(key))
+        .map(([, value]) => value);
 
     const bubbles = svgEl
         .append("g")
         .attr("id", "bubbles")
         .selectAll("circle")
-        .data(Object.values(filteredCountryData), (d) => d.country_code);
+        .data(filteredCountryData, (d) => d.country_code);
 
     bubbles
         .enter()
         .append("circle")
-        .on("mouseover", handleMouseOverBubble)
-        .on("mouseout", handleMouseOut)
-        .attr("id", (d) => `bubble_${d.country_code}`)
-        .attr("class", "bubble")
         .attr("cx", (d) => projection([d.lon, d.lat])[0])
         .attr("cy", (d) => projection([d.lon, d.lat])[1])
-        .attr("fill", "steelblue")
         .attr("r", 0)
+        .attr("class", "bubble")
+        .attr("fill", "steelblue")
+        .on("mouseover", (event, d) => {
+            showTooltip(
+                `<strong>${d.full_name}</strong><br>Athletes: ${d.count}`,
+                event.pageX,
+                event.pageY
+            );
+        })
+        .on("mouseout", hideTooltip)
+        .merge(bubbles)
         .transition()
         .delay((_, i) => i * 50)
-        .duration(1000)
+        .duration(1.5 * ctx.animationDuration)
         .ease(d3.easeElasticOut)
         .attr("r", (d) => ctx.sizeScale(d.count));
 
-    svgEl.select("#legend").transition().duration(500).style("opacity", 0);
-    svgEl
-        .selectAll("path")
-        .transition()
-        .duration(500)
-        .attr("fill", ctx.colorScale(0));
+    bubbles.exit().remove();
 }
 
 function drawChoropleth(svgEl) {
-    const drawMap = () => {
-        svgEl
-            .selectAll("path")
-            .transition()
-            .duration(500)
-            .attr("fill", (d) => {
-                const count = ctx.countryData[d.id]?.count || 0;
-                return ctx.colorScale(count);
-            });
+    svgEl
+        .selectAll("path")
+        .transition()
+        .duration(ctx.animationDuration)
+        .attr("fill", (d) => {
+            const count = ctx.countryData[d.id]?.count || 0;
+            return ctx.colorScale(count);
+        });
 
-        svgEl
-            .select("#legend")
-            .raise()
-            .transition()
-            .duration(500)
-            .style("opacity", 1);
-    };
-
-    const removeCirclesAndDrawMap = () => {
-        const circles = svgEl.selectAll("circle");
-
-        if (!circles.empty()) {
-            circles
-                .transition()
-                .duration(500)
-                .attr("r", ctx.sizeScale(0))
-                .on("end", () => {
-                    svgEl.select("#bubbles").remove();
-                    drawMap();
-                });
-        } else {
-            drawMap();
-        }
-    };
-
-    removeCirclesAndDrawMap();
+    svgEl
+        .select("#legend")
+        .raise()
+        .transition()
+        .duration(ctx.animationDuration)
+        .style("opacity", 1);
 }
 
 function enrichGeoDataWithContinents(geoData, regionData) {
-    const isoToContinent = {
-        SDS: "Africa",
-    };
-    regionData.forEach((row) => {
-        isoToContinent[row["alpha-3"]] = row["region"];
-    });
+    const isoToContinent = Object.fromEntries(
+        regionData.map((row) => [row["alpha-3"], row.region])
+    );
+    isoToContinent.SDS = "Africa";
 
     geoData.features.forEach((feature) => {
-        const countryCode = feature.id;
-        feature.properties.continent = isoToContinent[countryCode] || "Unknown";
+        feature.properties.continent = isoToContinent[feature.id] || "Unknown";
     });
 }
 
@@ -261,9 +277,7 @@ function transformData(data) {
 
         if (!countryData[countryKey]) {
             const centroid = d3.geoCentroid(
-                ctx.originalGeoData.features.find(
-                    (country) => country.id === row.country_3_letter_code
-                )
+                ctx.originalGeoData.features.find((d) => d.id === countryKey)
             );
 
             countryData[countryKey] = {
@@ -281,8 +295,8 @@ function transformData(data) {
     return countryData;
 }
 
-function loadData(svgEl) {
-    let promises = [
+async function loadData(svgEl) {
+    const [geoData, regionData, data] = await Promise.all([
         d3.json(
             "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"
         ),
@@ -290,27 +304,21 @@ function loadData(svgEl) {
             "https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/refs/heads/master/all/all.csv"
         ),
         d3.csv("data/clean/olympic_athletes.csv"),
-    ];
+    ]);
 
-    Promise.all(promises).then(([geoData, regionData, data]) => {
-        ctx.originalGeoData = geoData;
+    ctx.originalGeoData = geoData;
+    enrichGeoDataWithContinents(geoData, regionData);
+    ctx.countryData = transformData(data);
 
-        enrichGeoDataWithContinents(geoData, regionData);
+    const maxCount = d3.max(Object.values(ctx.countryData), (d) => d.count);
 
-        ctx.countryData = transformData(data);
+    ctx.colorScale = d3
+        .scaleSequential(d3.interpolateReds)
+        .domain([0, maxCount]);
+    ctx.sizeScale = d3.scaleSqrt().domain([0, maxCount]).range([0, 30]);
 
-        const maxCount = d3.max(
-            Object.values(ctx.countryData).map((item) => item.count)
-        );
-
-        ctx.colorScale = d3
-            .scaleSequential(d3.interpolateReds)
-            .domain([0, maxCount]);
-        ctx.sizeScale = d3.scaleSqrt().domain([0, maxCount]).range([0, 30]);
-
-        drawLegend(svgEl, maxCount);
-        updateMap();
-    });
+    drawLegend(svgEl, ctx.colorScale, maxCount);
+    updateMap();
 }
 
 function createViz() {
@@ -319,7 +327,11 @@ function createViz() {
     const svgEl = d3
         .select("#mapContainer")
         .append("svg")
-        .attr("width", ctx.MAP_W)
-        .attr("height", ctx.MAP_H);
+        .attr("width", CONFIG.mapWidth)
+        .attr("height", CONFIG.mapHeight);
+
+    ctx.tooltip = d3.select("body").append("div").attr("class", "tooltip");
+    ctx.tooltip.style(CONFIG.tooltipStyle);
+
     loadData(svgEl);
 }
