@@ -40,7 +40,7 @@ function generateCountryColors() {
 }
 
 function loadData() {
-    d3.csv("data/chord-diagram.csv")
+    d3.csv("data/chord_diagram.csv")
         .then(function (data) {
             ctx.refugeeTeam = "Refugee Olympic Team";
 
@@ -125,9 +125,6 @@ function loadData() {
 
             createDirectedChordDiagram(matrix, countryCounts);
         })
-        .catch(function (error) {
-            console.error(error);
-        });
 }
 
 function createDirectedChordDiagram(matrix, countryCounts) {
