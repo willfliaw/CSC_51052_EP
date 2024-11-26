@@ -11,10 +11,11 @@ const ctx = {
 const CONFIG = {
     mapWidth: 960,
     mapHeight: 550,
+    bottomMargin: 100,
     legend: {
         width: 300,
         height: 20,
-        margin: { top: -50, right: 10, bottom: 30, left: 10 },
+        bubbleSpacing: 10,
     },
     tooltipStyle: {
         position: "absolute",
@@ -42,16 +43,14 @@ function hideTooltip() {
         .style("opacity", 0);
 }
 
-function drawLegend(svgEl, colorScale, maxCount) {
-    const { width, height, margin } = CONFIG.legend;
-
+function drawLegend(svgEl, maxCount) {
     const legendGroup = svgEl
         .append("g")
         .attr("id", "legend")
         .attr(
             "transform",
-            `translate(${CONFIG.mapWidth / 2 - width / 2}, ${
-                CONFIG.mapHeight + margin.top
+            `translate(${CONFIG.mapWidth / 2 - CONFIG.legend.width / 2}, ${
+                CONFIG.mapHeight - CONFIG.bottomMargin / 2
             })`
         );
 
@@ -62,17 +61,17 @@ function drawLegend(svgEl, colorScale, maxCount) {
         .attr("x1", "0%")
         .attr("x2", "100%");
 
-    colorScale.ticks(10).forEach((t, i, arr) => {
+    ctx.colorScale.ticks(10).forEach((t, i, arr) => {
         gradient
             .append("stop")
             .attr("offset", `${(i / (arr.length - 1)) * 100}%`)
-            .attr("stop-color", colorScale(t));
+            .attr("stop-color", ctx.colorScale(t));
     });
 
     legendGroup
         .append("rect")
-        .attr("width", width)
-        .attr("height", height)
+        .attr("width", CONFIG.legend.width)
+        .attr("height", CONFIG.legend.height)
         .style("fill", "url(#legend-gradient)")
         .style("stroke", "#000")
         .style("stroke-width", 0.5);
@@ -80,7 +79,7 @@ function drawLegend(svgEl, colorScale, maxCount) {
     const legendScale = d3
         .scaleLinear()
         .domain([0, maxCount])
-        .range([0, width]);
+        .range([0, CONFIG.legend.width]);
 
     const axisBottom = d3
         .axisBottom(legendScale)
@@ -90,7 +89,7 @@ function drawLegend(svgEl, colorScale, maxCount) {
 
     legendGroup
         .append("g")
-        .attr("transform", `translate(0, ${height})`)
+        .attr("transform", `translate(0, ${CONFIG.legend.height})`)
         .call(axisBottom)
         .select(".domain")
         .remove();
@@ -98,16 +97,76 @@ function drawLegend(svgEl, colorScale, maxCount) {
     legendGroup
         .append("text")
         .attr("x", -50)
-        .attr("y", height / 1.5)
+        .attr("y", CONFIG.legend.height / 1.5)
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
         .text("Number of Athletes");
 }
 
+function roundUpToNearest1000(num) {
+    return Math.ceil(num / 1000) * 1000;
+}
+
+function drawBubbleLegend(svgEl, maxCount) {
+    const legendValues = [
+        roundUpToNearest1000(maxCount * 0.1),
+        roundUpToNearest1000(maxCount * 0.4),
+        roundUpToNearest1000(maxCount * 0.7),
+        roundUpToNearest1000(maxCount * 1.0),
+    ];
+
+    const radiusValues = legendValues.map(ctx.sizeScale);
+
+    const totalWidth =
+        radiusValues.reduce((sum, r) => sum + 2 * r, 0) +
+        CONFIG.legend.bubbleSpacing * (radiusValues.length - 1);
+
+    const legendGroup = svgEl
+        .append("g")
+        .attr("id", "bubble-legend")
+        .attr("class", "bubble-legend")
+        .attr(
+            "transform",
+            `translate(${(CONFIG.mapWidth - totalWidth) / 2}, ${
+                CONFIG.mapHeight - d3.max(radiusValues) - 30
+            })`
+        );
+
+    let cumulativeX = 0;
+    legendValues.forEach((value, index) => {
+        const radius = radiusValues[index];
+
+        legendGroup
+            .append("circle")
+            .attr("cx", cumulativeX + radius)
+            .attr("cy", 0)
+            .attr("r", radius)
+            .attr("class", "bubble")
+            .attr("fill", "steelblue")
+            .attr("fill-opacity", 0.7);
+
+        legendGroup
+            .append("text")
+            .attr("x", cumulativeX + radius)
+            .attr("y", radius + 10)
+            .attr("dy", "0.35em")
+            .text(`${value}`)
+            .style("font-size", "10px")
+            .style("fill", "black")
+            .attr("text-anchor", "middle")
+            .attr("dominant-baseline", "middle");
+
+        cumulativeX += 2 * radius + CONFIG.legend.bubbleSpacing;
+    });
+}
+
 function createProjection(geoData) {
     return d3
         .geoNaturalEarth1()
-        .fitSize([CONFIG.mapWidth, CONFIG.mapHeight - 60], geoData);
+        .fitSize(
+            [CONFIG.mapWidth, CONFIG.mapHeight - CONFIG.bottomMargin],
+            geoData
+        );
 }
 
 function drawMap(svgEl, filteredGeoData) {
@@ -159,11 +218,18 @@ async function updateMap() {
         };
     }
 
-    const circles = svgEl.selectAll("circle");
+    const circles = svgEl.selectAll("#bubbles circle");
     const path = svgEl.selectAll("path");
     const needsPathTransition = !path.empty() && !ctx.isChoropleth;
 
     if (!circles.empty()) {
+        svgEl
+            .select("#bubble-legend")
+            .transition()
+            .duration(ctx.animationDuration)
+            .style("opacity", 0)
+            .end();
+
         await circles
             .transition()
             .duration(ctx.animationDuration)
@@ -178,9 +244,16 @@ async function updateMap() {
             .duration(ctx.animationDuration)
             .style("opacity", 0)
             .end();
+    } else if (ctx.isChoropleth) {
+        await svgEl
+            .select("#bubble-legend")
+            .transition()
+            .duration(ctx.animationDuration)
+            .style("opacity", 0)
+            .end();
     }
 
-    if (!path.empty() && !ctx.isChoropleth) {
+    if (needsPathTransition) {
         await path
             .transition()
             .duration(ctx.animationDuration)
@@ -238,6 +311,13 @@ function drawBubbleMap(svgEl, projection, filteredGeoData) {
         .attr("r", (d) => ctx.sizeScale(d.count));
 
     bubbles.exit().remove();
+
+    svgEl
+        .select("#bubble-legend")
+        .raise()
+        .transition()
+        .duration(ctx.animationDuration)
+        .style("opacity", 1);
 }
 
 function drawChoropleth(svgEl) {
@@ -317,7 +397,15 @@ async function loadData(svgEl) {
         .domain([0, maxCount]);
     ctx.sizeScale = d3.scaleSqrt().domain([0, maxCount]).range([0, 30]);
 
-    drawLegend(svgEl, ctx.colorScale, maxCount);
+    drawLegend(svgEl, maxCount);
+    drawBubbleLegend(svgEl, maxCount);
+
+    if (ctx.isChoropleth) {
+        svgEl.select("#bubble-legend").style("opacity", 0);
+    } else {
+        svgEl.select("#legend").style("opacity", 0);
+    }
+
     updateMap();
 }
 
