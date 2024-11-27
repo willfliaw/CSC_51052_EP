@@ -35,17 +35,15 @@
             Olympic Athletes' Country of First Participation
         </h1>
         <div style="text-align: center; margin-bottom: 10px">
-            <label for="continentSelect">Filter by Continent: </label>
             <select
                 id="continentSelect"
-                onchange="if(!ctx.isChoropleth){toggleView()}; updateMap()"
+                onchange="populateSubRegionSelect(this.value); changeSelect()"
             >
                 <option value="All">All Continents</option>
-                <option value="Africa">Africa</option>
-                <option value="Americas">Americas</option>
-                <option value="Asia">Asia</option>
-                <option value="Europe">Europe</option>
-                <option value="Oceania">Oceania</option>
+            </select>
+
+            <select id="subRegionSelect" onchange="changeSelect()">
+                <option value="All">All Sub-regions</option>
             </select>
         </div>
         <div style="text-align: center; margin-bottom: 10px">
@@ -53,6 +51,7 @@
                 Switch to Bubble Map
             </button>
         </div>
+
         <div id="mapContainer"></div>
     </body>
 </html>

@@ -28,6 +28,21 @@ const CONFIG = {
     },
 };
 
+function toggleView() {
+    ctx.isChoropleth = !ctx.isChoropleth;
+    document.getElementById("toggleView").innerText = ctx.isChoropleth
+        ? "Switch to Bubble Map"
+        : "Switch to Choropleth";
+    updateMap();
+}
+
+function changeSelect() {
+    if (!ctx.isChoropleth) {
+        toggleView();
+    }
+    updateMap();
+}
+
 function showTooltip(content, x, y) {
     ctx.tooltip.transition().duration(200).style("opacity", 0.9);
     ctx.tooltip
@@ -207,6 +222,7 @@ function drawMap(svgEl, filteredGeoData) {
 async function updateMap() {
     const svgEl = d3.select("svg");
     const selectedContinent = document.getElementById("continentSelect").value;
+    const selectedSubRegion = document.getElementById("subRegionSelect").value;
 
     let filteredGeoData = ctx.originalGeoData;
     if (selectedContinent !== "All") {
@@ -214,6 +230,14 @@ async function updateMap() {
             ...ctx.originalGeoData,
             features: ctx.originalGeoData.features.filter(
                 (d) => d.properties.continent === selectedContinent
+            ),
+        };
+    }
+    if (selectedSubRegion !== "All") {
+        filteredGeoData = {
+            ...ctx.originalGeoData,
+            features: ctx.originalGeoData.features.filter(
+                (d) => d.properties.sub_region === selectedSubRegion
             ),
         };
     }
@@ -262,14 +286,6 @@ async function updateMap() {
     }
 
     drawMap(svgEl, filteredGeoData);
-}
-
-function toggleView() {
-    ctx.isChoropleth = !ctx.isChoropleth;
-    document.getElementById("toggleView").innerText = ctx.isChoropleth
-        ? "Switch to Bubble Map"
-        : "Switch to Choropleth";
-    updateMap();
 }
 
 function drawBubbleMap(svgEl, projection, filteredGeoData) {
@@ -338,14 +354,21 @@ function drawChoropleth(svgEl) {
         .style("opacity", 1);
 }
 
-function enrichGeoDataWithContinents(geoData, regionData) {
-    const isoToContinent = Object.fromEntries(
-        regionData.map((row) => [row["alpha-3"], row.region])
+function enrichGeoDataWithRegion() {
+    const isoToRegion = Object.fromEntries(
+        ctx.regionData.map((row) => [
+            row["alpha-3"],
+            [row.region, row["sub-region"]],
+        ])
     );
-    isoToContinent.SDS = "Africa";
-
-    geoData.features.forEach((feature) => {
-        feature.properties.continent = isoToContinent[feature.id] || "Unknown";
+    isoToRegion.SDS = ["Africa", "Sub-Saharan Africa"];
+    ctx.originalGeoData.features.forEach((feature) => {
+        if (feature.id in isoToRegion) {
+            feature.properties.continent =
+                isoToRegion[feature.id][0] || "Unknown";
+            feature.properties.sub_region =
+                isoToRegion[feature.id][1] || "Unknown";
+        }
     });
 }
 
@@ -375,6 +398,55 @@ function transformData(data) {
     return countryData;
 }
 
+function populateContinentSelect() {
+    const continentSelect = document.getElementById("continentSelect");
+    continentSelect.innerHTML = '<option value="All">All Continents</option>';
+
+    const continents = new Set();
+
+    ctx.regionData.forEach((country) => {
+        continents.add(country["region"]);
+    });
+
+    Array.from(continents)
+        .sort()
+        .forEach((continent) => {
+            if (continent) {
+                const option = document.createElement("option");
+                option.value = continent;
+                option.textContent = continent;
+                continentSelect.appendChild(option);
+            }
+        });
+}
+
+function populateSubRegionSelect(selectedContinent) {
+    const subRegionSelect = document.getElementById("subRegionSelect");
+    subRegionSelect.innerHTML = '<option value="All">All Sub-regions</option>';
+
+    const subRegions = new Set();
+
+    ctx.regionData.forEach((country) => {
+        if (
+            selectedContinent === "All" ||
+            country.region === selectedContinent
+        ) {
+            subRegions.add(country["sub-region"]);
+        }
+    });
+
+    Array.from(subRegions)
+        .sort()
+        .forEach((subRegion) => {
+            if (subRegion) {
+                const option = document.createElement("option");
+                option.value = subRegion;
+                option.textContent = subRegion;
+                subRegionSelect.appendChild(option);
+            }
+        });
+}
+
 async function loadData(svgEl) {
     const [geoData, regionData, data] = await Promise.all([
         d3.json(
@@ -387,8 +459,13 @@ async function loadData(svgEl) {
     ]);
 
     ctx.originalGeoData = geoData;
-    enrichGeoDataWithContinents(geoData, regionData);
+    ctx.regionData = regionData;
     ctx.countryData = transformData(data);
+
+    populateContinentSelect();
+    populateSubRegionSelect("All");
+
+    enrichGeoDataWithRegion();
 
     const maxCount = d3.max(Object.values(ctx.countryData), (d) => d.count);
 
@@ -400,11 +477,8 @@ async function loadData(svgEl) {
     drawLegend(svgEl, maxCount);
     drawBubbleLegend(svgEl, maxCount);
 
-    if (ctx.isChoropleth) {
-        svgEl.select("#bubble-legend").style("opacity", 0);
-    } else {
-        svgEl.select("#legend").style("opacity", 0);
-    }
+    svgEl.select("#bubble-legend").style("opacity", 0);
+    svgEl.select("#legend").style("opacity", 0);
 
     updateMap();
 }
