@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Olympic Athletes - Toggle Choropleth/Bubble Map</title>
+        <title>Olympic Athletes - Dynamic Choropleth Map</title>
         <script type="text/javascript" src="js/d3.v7.min.js"></script>
         <script type="text/javascript" src="js/choropleth.js"></script>
         <style type="text/css">
@@ -31,21 +31,30 @@
         </style>
     </head>
     <body onload="createViz()">
-        <h1 style="text-align: center">
-            Olympic Athletes' Country of First Participation
-        </h1>
+        <div style="text-align: center; margin-bottom: 10px">
+            <label for="dataSelect">Data: </label>
+            <select id="dataSelect" onchange="changeSelectData()">
+                <option value="athletesData">Olympic Debuts Count</option>
+                <option value="hostsData">Olympic Hosting Count</option>
+                <option value="medalsData">Olympic Medals Count</option>
+            </select>
+        </div>
+
+        <h1 id="mapTitle" style="text-align: center"></h1>
+
         <div style="text-align: center; margin-bottom: 10px">
             <select
                 id="continentSelect"
-                onchange="populateSubRegionSelect(this.value); changeSelect()"
+                onchange="populateSubRegionSelect(this.value); updateMap()"
             >
                 <option value="All">All Continents</option>
             </select>
 
-            <select id="subRegionSelect" onchange="changeSelect()">
+            <select id="subRegionSelect" onchange="updateMap()">
                 <option value="All">All Sub-regions</option>
             </select>
         </div>
+
         <div style="text-align: center; margin-bottom: 10px">
             <button id="toggleView" onclick="toggleView()">
                 Switch to Bubble Map

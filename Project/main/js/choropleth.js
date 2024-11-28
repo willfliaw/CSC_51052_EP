@@ -36,10 +36,8 @@ function toggleView() {
     updateMap();
 }
 
-function changeSelect() {
-    if (!ctx.isChoropleth) {
-        toggleView();
-    }
+function changeSelectData() {
+    loadMainData();
     updateMap();
 }
 
@@ -58,7 +56,11 @@ function hideTooltip() {
         .style("opacity", 0);
 }
 
-function drawLegend(svgEl, maxCount) {
+function drawLegend(maxCount) {
+    const svgEl = d3.select("svg");
+
+    svgEl.select("#legend").remove();
+
     const legendGroup = svgEl
         .append("g")
         .attr("id", "legend")
@@ -111,25 +113,20 @@ function drawLegend(svgEl, maxCount) {
 
     legendGroup
         .append("text")
-        .attr("x", -50)
+        .attr("x", -10)
         .attr("y", CONFIG.legend.height / 1.5)
-        .attr("text-anchor", "middle")
+        .attr("text-anchor", "end")
         .style("font-size", "12px")
-        .text("Number of Athletes");
+        .text(`Number of ${ctx.counted}`);
 }
 
-function roundUpToNearest1000(num) {
-    return Math.ceil(num / 1000) * 1000;
-}
+function drawBubbleLegend(maxCount) {
+    const svgEl = d3.select("svg");
 
-function drawBubbleLegend(svgEl, maxCount) {
-    const legendValues = [
-        roundUpToNearest1000(maxCount * 0.1),
-        roundUpToNearest1000(maxCount * 0.4),
-        roundUpToNearest1000(maxCount * 0.7),
-        roundUpToNearest1000(maxCount * 1.0),
-    ];
+    svgEl.select("#bubble-legend").remove();
 
+    const percentages = [0.1, 0.4, 0.7, 1.0];
+    const legendValues = percentages.map((p) => Math.round(maxCount * p));
     const radiusValues = legendValues.map(ctx.sizeScale);
 
     const totalWidth =
@@ -205,7 +202,7 @@ function drawMap(svgEl, filteredGeoData) {
             showTooltip(
                 `<strong>${
                     ctx.countryData[d.id]?.full_name || d.properties.name
-                }</strong><br>Athletes: ${count}`,
+                }</strong><br>${ctx.counted}: ${count}`,
                 event.pageX,
                 event.pageY
             );
@@ -313,7 +310,7 @@ function drawBubbleMap(svgEl, projection, filteredGeoData) {
         .attr("fill", "steelblue")
         .on("mouseover", (event, d) => {
             showTooltip(
-                `<strong>${d.full_name}</strong><br>Athletes: ${d.count}`,
+                `<strong>${d.full_name}</strong><br>${ctx.counted}: ${d.count}`,
                 event.pageX,
                 event.pageY
             );
@@ -372,32 +369,6 @@ function enrichGeoDataWithRegion() {
     });
 }
 
-function transformData(data) {
-    const countryData = {};
-
-    data.forEach((row) => {
-        const countryKey = row.country_3_letter_code;
-
-        if (!countryData[countryKey]) {
-            const centroid = d3.geoCentroid(
-                ctx.originalGeoData.features.find((d) => d.id === countryKey)
-            );
-
-            countryData[countryKey] = {
-                country_code: row.country_code,
-                full_name: row.first_game_country,
-                count: 0,
-                lon: centroid ? centroid[0] : null,
-                lat: centroid ? centroid[1] : null,
-            };
-        }
-
-        countryData[countryKey].count += 1;
-    });
-
-    return countryData;
-}
-
 function populateContinentSelect() {
     const continentSelect = document.getElementById("continentSelect");
     continentSelect.innerHTML = '<option value="All">All Continents</option>';
@@ -447,25 +418,65 @@ function populateSubRegionSelect(selectedContinent) {
         });
 }
 
-async function loadData(svgEl) {
-    const [geoData, regionData, data] = await Promise.all([
-        d3.json(
-            "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"
-        ),
-        d3.csv(
-            "https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/refs/heads/master/all/all.csv"
-        ),
-        d3.csv("data/clean/olympic_athletes.csv"),
-    ]);
+function transformData(data) {
+    const selectedData = document.getElementById("dataSelect").value;
+    const countryData = {};
 
-    ctx.originalGeoData = geoData;
-    ctx.regionData = regionData;
+    const geoDataMap = new Map(
+        ctx.originalGeoData.features.map((feature) => [feature.id, feature])
+    );
+
+    data.forEach((row) => {
+        const countryKey = row.country_3_letter_code;
+        if (!countryKey) return;
+
+        const geoCountry = geoDataMap.get(countryKey);
+        if (!geoCountry) {
+            console.log(`Not in map: ${row.country_3_letter_code}`);
+            return;
+        }
+
+        if (!countryData[countryKey]) {
+            const centroid = d3.geoCentroid(geoCountry);
+
+            countryData[countryKey] = {
+                country_code: row.country_code,
+                full_name: geoCountry.properties?.name || "Unknown",
+                count: 0,
+                lon: centroid?.[0] || null,
+                lat: centroid?.[1] || null,
+            };
+        }
+
+        if (
+            ["athletesData", "hostsData", "medalsData"].includes(selectedData)
+        ) {
+            countryData[countryKey].count += 1;
+        }
+    });
+
+    return countryData;
+}
+
+async function loadMainData() {
+    const selectedData = document.getElementById("dataSelect").value;
+    let data;
+    const title = document.getElementById("mapTitle");
+
+    if (selectedData === "athletesData") {
+        data = await d3.csv("data/clean/olympic_athletes.csv");
+        title.textContent = "Olympic Debuts Count";
+        ctx.counted = "Athletes";
+    } else if (selectedData === "hostsData") {
+        data = await d3.csv("data/clean/olympic_hosts.csv");
+        title.textContent = "Olympic Hosting Count";
+        ctx.counted = "Times Hosted";
+    } else if (selectedData === "medalsData") {
+        data = await d3.csv("data/clean/olympic_medals.csv");
+        title.textContent = "Olympic Medals Count";
+        ctx.counted = "Medals";
+    }
     ctx.countryData = transformData(data);
-
-    populateContinentSelect();
-    populateSubRegionSelect("All");
-
-    enrichGeoDataWithRegion();
 
     const maxCount = d3.max(Object.values(ctx.countryData), (d) => d.count);
 
@@ -474,20 +485,39 @@ async function loadData(svgEl) {
         .domain([0, maxCount]);
     ctx.sizeScale = d3.scaleSqrt().domain([0, maxCount]).range([0, 30]);
 
-    drawLegend(svgEl, maxCount);
-    drawBubbleLegend(svgEl, maxCount);
+    drawLegend(maxCount);
+    drawBubbleLegend(maxCount);
 
-    svgEl.select("#bubble-legend").style("opacity", 0);
-    svgEl.select("#legend").style("opacity", 0);
+    d3.select("#bubble-legend").style("opacity", 0);
+    d3.select("#legend").style("opacity", 0);
+}
+
+async function loadData() {
+    const [geoData, regionData] = await Promise.all([
+        d3.json(
+            "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"
+        ),
+        d3.csv(
+            "https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/refs/heads/master/all/all.csv"
+        ),
+    ]);
+
+    ctx.originalGeoData = geoData;
+    ctx.regionData = regionData;
+    await loadMainData();
+
+    populateContinentSelect();
+    populateSubRegionSelect("All");
+
+    enrichGeoDataWithRegion();
 
     updateMap();
 }
 
 function createViz() {
     console.log("Using D3 v" + d3.version);
-    document.getElementById("continentSelect").value = "All";
-    const svgEl = d3
-        .select("#mapContainer")
+    document.getElementById("dataSelect").value = "athletesData";
+    d3.select("#mapContainer")
         .append("svg")
         .attr("width", CONFIG.mapWidth)
         .attr("height", CONFIG.mapHeight);
@@ -495,5 +525,5 @@ function createViz() {
     ctx.tooltip = d3.select("body").append("div").attr("class", "tooltip");
     ctx.tooltip.style(CONFIG.tooltipStyle);
 
-    loadData(svgEl);
+    loadData();
 }
