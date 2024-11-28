@@ -160,14 +160,6 @@ function drawLegend(maxCount) {
         .call(axisBottom)
         .select(".domain")
         .remove();
-
-    legendGroup
-        .append("text")
-        .attr("x", -10)
-        .attr("y", CONFIG.legend.height / 1.5)
-        .attr("text-anchor", "end")
-        .style("font-size", "12px")
-        .text(`Number of ${ctx.counted}`);
 }
 
 function drawBubbleLegend(maxCount) {
@@ -558,7 +550,8 @@ function createViz() {
     d3.select("#mapContainer")
         .append("svg")
         .attr("width", CONFIG.mapWidth)
-        .attr("height", CONFIG.mapHeight);
+        .attr("height", CONFIG.mapHeight)
+        .attr("class", "map-border");
 
     ctx.tooltip = d3.select("body").append("div").attr("class", "tooltip");
     ctx.tooltip.style(CONFIG.tooltipStyle);
