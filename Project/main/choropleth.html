@@ -33,11 +33,14 @@
     <body onload="createViz()">
         <div style="text-align: center; margin-bottom: 10px">
             <label for="dataSelect">Data: </label>
-            <select id="dataSelect" onchange="changeSelectData()">
+            <select id="dataSelect" onchange="changeSelectedData()">
                 <option value="athletesData">Olympic Debuts Count</option>
                 <option value="hostsData">Olympic Hosting Count</option>
                 <option value="medalsData">Olympic Medals Count</option>
             </select>
+            <button id="toggleView" onclick="toggleView()">
+                🫧 Switch to Bubble Map
+            </button>
         </div>
 
         <h1 id="mapTitle" style="text-align: center"></h1>
@@ -55,12 +58,16 @@
             </select>
         </div>
 
-        <div style="text-align: center; margin-bottom: 10px">
-            <button id="toggleView" onclick="toggleView()">
-                Switch to Bubble Map
-            </button>
+        <div
+            id="seasonSelectContainer"
+            style="text-align: center; margin-bottom: 10px"
+        >
+            <select id="seasonSelect" onchange="changeSelectedSeason()">
+                <option value="All">All Seasons</option>
+                <option value="Summer">Summer</option>
+                <option value="Winter">Winter</option>
+            </select>
         </div>
-
         <div id="mapContainer"></div>
     </body>
 </html>

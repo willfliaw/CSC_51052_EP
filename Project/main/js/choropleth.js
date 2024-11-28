@@ -28,16 +28,67 @@ const CONFIG = {
     },
 };
 
-function toggleView() {
-    ctx.isChoropleth = !ctx.isChoropleth;
+async function toggleView() {
     document.getElementById("toggleView").innerText = ctx.isChoropleth
-        ? "Switch to Bubble Map"
-        : "Switch to Choropleth";
+        ? "🎨 Switch to Choropleth"
+        : "🫧 Switch to Bubble Map";
+
+    if (ctx.isChoropleth) {
+        d3.select("#legend")
+            .transition()
+            .duration(ctx.animationDuration)
+            .style("opacity", 0)
+            .end();
+
+        await d3
+            .selectAll("path")
+            .transition()
+            .duration(ctx.animationDuration)
+            .attr("fill", ctx.colorScale(0))
+            .end();
+    } else if (!ctx.isChoropleth) {
+        d3.select("#bubble-legend")
+            .transition()
+            .duration(ctx.animationDuration)
+            .style("opacity", 0)
+            .end();
+    }
+
+    ctx.isChoropleth = !ctx.isChoropleth;
+
     updateMap();
 }
 
-function changeSelectData() {
+function changeSelectedData() {
     loadMainData();
+    updateMap();
+}
+
+function changeSelectedSeason() {
+    const selectedData = d3.select("#dataSelect").node().value;
+    if (selectedData == "hostsData") {
+        const selectedSeason = d3.select("#seasonSelect").node().value;
+        if (selectedSeason === "All") {
+            Object.keys(ctx.countryData).forEach((country) => {
+                ctx.countryData[country].count =
+                    ctx.countryData[country].summer +
+                    ctx.countryData[country].winter;
+            });
+        }
+        if (selectedSeason === "Summer") {
+            Object.keys(ctx.countryData).forEach((country) => {
+                ctx.countryData[country].count =
+                    ctx.countryData[country].summer;
+            });
+        }
+        if (selectedSeason === "Winter") {
+            Object.keys(ctx.countryData).forEach((country) => {
+                ctx.countryData[country].count =
+                    ctx.countryData[country].winter;
+            });
+        }
+    }
+
     updateMap();
 }
 
@@ -57,11 +108,10 @@ function hideTooltip() {
 }
 
 function drawLegend(maxCount) {
-    const svgEl = d3.select("svg");
+    d3.select("#legend").remove();
 
-    svgEl.select("#legend").remove();
-
-    const legendGroup = svgEl
+    const legendGroup = d3
+        .select("svg")
         .append("g")
         .attr("id", "legend")
         .attr(
@@ -121,9 +171,7 @@ function drawLegend(maxCount) {
 }
 
 function drawBubbleLegend(maxCount) {
-    const svgEl = d3.select("svg");
-
-    svgEl.select("#bubble-legend").remove();
+    d3.select("#bubble-legend").remove();
 
     const percentages = [0.1, 0.4, 0.7, 1.0];
     const legendValues = percentages.map((p) => Math.round(maxCount * p));
@@ -133,7 +181,8 @@ function drawBubbleLegend(maxCount) {
         radiusValues.reduce((sum, r) => sum + 2 * r, 0) +
         CONFIG.legend.bubbleSpacing * (radiusValues.length - 1);
 
-    const legendGroup = svgEl
+    const legendGroup = d3
+        .select("svg")
         .append("g")
         .attr("id", "bubble-legend")
         .attr("class", "bubble-legend")
@@ -181,13 +230,13 @@ function createProjection(geoData) {
         );
 }
 
-function drawMap(svgEl, filteredGeoData) {
+function drawMap(filteredGeoData) {
     const projection = createProjection(filteredGeoData);
     const geoPath = d3.geoPath().projection(projection);
 
-    svgEl.select("#map").remove();
+    d3.select("#map").remove();
 
-    svgEl
+    d3.select("svg")
         .insert("g", ":first-child")
         .attr("id", "map")
         .selectAll("path")
@@ -210,14 +259,30 @@ function drawMap(svgEl, filteredGeoData) {
         .on("mouseout", hideTooltip);
 
     if (ctx.isChoropleth) {
-        drawChoropleth(svgEl);
+        drawChoropleth();
     } else {
-        drawBubbleMap(svgEl, projection, filteredGeoData);
+        drawBubbleMap(projection, filteredGeoData);
     }
 }
 
 async function updateMap() {
-    const svgEl = d3.select("svg");
+    const circles = d3.selectAll("#bubbles circle");
+    if (!circles.empty()) {
+        await circles
+            .transition()
+            .duration(ctx.animationDuration)
+            .attr("r", ctx.sizeScale(0))
+            .end();
+        d3.select("#bubbles").remove();
+    } else if (ctx.isChoropleth) {
+        await d3
+            .selectAll("path")
+            .transition()
+            .duration(ctx.animationDuration)
+            .attr("fill", ctx.colorScale(0))
+            .end();
+    }
+
     const selectedContinent = document.getElementById("continentSelect").value;
     const selectedSubRegion = document.getElementById("subRegionSelect").value;
 
@@ -239,53 +304,10 @@ async function updateMap() {
         };
     }
 
-    const circles = svgEl.selectAll("#bubbles circle");
-    const path = svgEl.selectAll("path");
-    const needsPathTransition = !path.empty() && !ctx.isChoropleth;
-
-    if (!circles.empty()) {
-        svgEl
-            .select("#bubble-legend")
-            .transition()
-            .duration(ctx.animationDuration)
-            .style("opacity", 0)
-            .end();
-
-        await circles
-            .transition()
-            .duration(ctx.animationDuration)
-            .attr("r", ctx.sizeScale(0))
-            .end();
-
-        svgEl.select("#bubbles").remove();
-    } else if (needsPathTransition) {
-        svgEl
-            .select("#legend")
-            .transition()
-            .duration(ctx.animationDuration)
-            .style("opacity", 0)
-            .end();
-    } else if (ctx.isChoropleth) {
-        await svgEl
-            .select("#bubble-legend")
-            .transition()
-            .duration(ctx.animationDuration)
-            .style("opacity", 0)
-            .end();
-    }
-
-    if (needsPathTransition) {
-        await path
-            .transition()
-            .duration(ctx.animationDuration)
-            .attr("fill", ctx.colorScale(0))
-            .end();
-    }
-
-    drawMap(svgEl, filteredGeoData);
+    drawMap(filteredGeoData);
 }
 
-function drawBubbleMap(svgEl, projection, filteredGeoData) {
+function drawBubbleMap(projection, filteredGeoData) {
     const featureIds = new Set(
         filteredGeoData.features.map((feature) => feature.id)
     );
@@ -294,7 +316,8 @@ function drawBubbleMap(svgEl, projection, filteredGeoData) {
         .filter(([key]) => featureIds.has(key))
         .map(([, value]) => value);
 
-    const bubbles = svgEl
+    const bubbles = d3
+        .select("svg")
         .append("g")
         .attr("id", "bubbles")
         .selectAll("circle")
@@ -325,17 +348,15 @@ function drawBubbleMap(svgEl, projection, filteredGeoData) {
 
     bubbles.exit().remove();
 
-    svgEl
-        .select("#bubble-legend")
+    d3.select("#bubble-legend")
         .raise()
         .transition()
         .duration(ctx.animationDuration)
         .style("opacity", 1);
 }
 
-function drawChoropleth(svgEl) {
-    svgEl
-        .selectAll("path")
+function drawChoropleth() {
+    d3.selectAll("path")
         .transition()
         .duration(ctx.animationDuration)
         .attr("fill", (d) => {
@@ -343,8 +364,7 @@ function drawChoropleth(svgEl) {
             return ctx.colorScale(count);
         });
 
-    svgEl
-        .select("#legend")
+    d3.select("#legend")
         .raise()
         .transition()
         .duration(ctx.animationDuration)
@@ -419,7 +439,7 @@ function populateSubRegionSelect(selectedContinent) {
 }
 
 function transformData(data) {
-    const selectedData = document.getElementById("dataSelect").value;
+    const selectedData = d3.select("#dataSelect").node().value;
     const countryData = {};
 
     const geoDataMap = new Map(
@@ -446,12 +466,24 @@ function transformData(data) {
                 lon: centroid?.[0] || null,
                 lat: centroid?.[1] || null,
             };
+            if (selectedData === "hostsData") {
+                countryData[countryKey].summer = 0;
+                countryData[countryKey].winter = 0;
+            }
         }
 
         if (
             ["athletesData", "hostsData", "medalsData"].includes(selectedData)
         ) {
             countryData[countryKey].count += 1;
+            if (selectedData === "hostsData") {
+                const season = row.game_season;
+                if (season === "Summer") {
+                    countryData[countryKey].summer += 1;
+                } else if (season === "Winter") {
+                    countryData[countryKey].winter += 1;
+                }
+            }
         }
     });
 
@@ -459,22 +491,28 @@ function transformData(data) {
 }
 
 async function loadMainData() {
-    const selectedData = document.getElementById("dataSelect").value;
+    const selectedData = d3.select("#dataSelect").node().value;
     let data;
-    const title = document.getElementById("mapTitle");
+
+    const title = d3.select("#mapTitle");
+    const seasonSelectContainer = d3.select("#seasonSelectContainer");
 
     if (selectedData === "athletesData") {
         data = await d3.csv("data/clean/olympic_athletes.csv");
-        title.textContent = "Olympic Debuts Count";
+        title.text("Olympic Debuts Count");
         ctx.counted = "Athletes";
+        seasonSelectContainer.style("visibility", "hidden");
     } else if (selectedData === "hostsData") {
         data = await d3.csv("data/clean/olympic_hosts.csv");
-        title.textContent = "Olympic Hosting Count";
+        title.text("Olympic Hosting Count");
         ctx.counted = "Times Hosted";
+        seasonSelectContainer.style("visibility", "visible");
+        d3.select("#seasonSelect").node().value = "All";
     } else if (selectedData === "medalsData") {
         data = await d3.csv("data/clean/olympic_medals.csv");
-        title.textContent = "Olympic Medals Count";
+        title.text("Olympic Medals Count");
         ctx.counted = "Medals";
+        seasonSelectContainer.style("visibility", "hidden");
     }
     ctx.countryData = transformData(data);
 
@@ -511,7 +549,7 @@ async function loadData() {
 
     enrichGeoDataWithRegion();
 
-    updateMap();
+    drawMap(ctx.originalGeoData);
 }
 
 function createViz() {
