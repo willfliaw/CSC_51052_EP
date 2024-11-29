@@ -20,18 +20,18 @@
 
             header {
                 text-align: center;
-                margin: 0 0 10px 0; /* Removed top margin */
+                margin: 0 0 10px 0;
             }
 
             h1 {
-                margin: 0; /* Removed default margins */
+                margin: 0;
             }
 
             .controls {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 5px 15px; /* 5px vertical gap, 15px horizontal gap */
+                gap: 5px 15px;
                 margin: 5px 0;
             }
 
@@ -47,7 +47,7 @@
 
             .controls select,
             .controls button {
-                margin: 0; /* Ensure no extra margins */
+                margin: 0;
                 padding: 4px;
                 font-size: 14px;
                 border: 1px solid #ccc;
@@ -97,6 +97,19 @@
                 background-color: #fff;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
+
+            #toggleView {
+                color: white;
+                background-color: #007bff;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background-color 0.3s, box-shadow 0.3s;
+            }
+
+            #toggleView:hover {
+                background-color: #0056b3;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
         </style>
     </head>
     <body onload="createViz()">
@@ -140,10 +153,19 @@
         <section class="controls optionalControls">
             <div id="seasonSelectContainer">
                 <label for="seasonSelect">Season:</label>
-                <select id="seasonSelect" onchange="changeSelectedSeason()">
+                <select id="seasonSelect" onchange="filterBySeason()">
                     <option value="All">All Seasons</option>
                     <option value="Summer">Summer</option>
                     <option value="Winter">Winter</option>
+                </select>
+            </div>
+            <div id="medalTypeSelectContainer">
+                <label for="medalTypeSelect">Medal Type:</label>
+                <select id="medalTypeSelect" onchange="filterByMedalType()">
+                    <option value="All">All</option>
+                    <option value="Gold">Gold</option>
+                    <option value="Silver">Silver</option>
+                    <option value="Bronze">Bronze</option>
                 </select>
             </div>
         </section>

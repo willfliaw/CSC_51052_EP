@@ -64,31 +64,50 @@ function changeSelectedData() {
     updateMap();
 }
 
-function changeSelectedSeason() {
-    const selectedData = d3.select("#dataSelect").node().value;
-    if (selectedData == "hostsData") {
-        const selectedSeason = d3.select("#seasonSelect").node().value;
-        if (selectedSeason === "All") {
-            Object.keys(ctx.countryData).forEach((country) => {
-                ctx.countryData[country].count =
-                    ctx.countryData[country].summer +
-                    ctx.countryData[country].winter;
-            });
-        }
-        if (selectedSeason === "Summer") {
-            Object.keys(ctx.countryData).forEach((country) => {
-                ctx.countryData[country].count =
-                    ctx.countryData[country].summer;
-            });
-        }
-        if (selectedSeason === "Winter") {
-            Object.keys(ctx.countryData).forEach((country) => {
-                ctx.countryData[country].count =
-                    ctx.countryData[country].winter;
-            });
-        }
+function filterBySeason() {
+    const selectedSeason = d3.select("#seasonSelect").node().value;
+    if (selectedSeason === "All") {
+        Object.keys(ctx.countryData).forEach((country) => {
+            ctx.countryData[country].count =
+                ctx.countryData[country].summer +
+                ctx.countryData[country].winter;
+        });
+    } else if (selectedSeason === "Summer") {
+        Object.keys(ctx.countryData).forEach((country) => {
+            ctx.countryData[country].count = ctx.countryData[country].summer;
+        });
+    } else if (selectedSeason === "Winter") {
+        Object.keys(ctx.countryData).forEach((country) => {
+            ctx.countryData[country].count = ctx.countryData[country].winter;
+        });
     }
 
+    updateMap();
+}
+
+function filterByMedalType() {
+    const selectedMedalType = d3.select("#medalTypeSelect").node().value;
+    if (selectedMedalType === "All") {
+        Object.keys(ctx.countryData).forEach((country) => {
+            ctx.countryData[country].count =
+                ctx.countryData[country].gold +
+                ctx.countryData[country].silver +
+                ctx.countryData[country].bronze;
+        });
+    } else if (selectedMedalType === "Gold") {
+        Object.keys(ctx.countryData).forEach((country) => {
+            ctx.countryData[country].count = ctx.countryData[country].gold;
+        });
+    } else if (selectedMedalType === "Silver") {
+        Object.keys(ctx.countryData).forEach((country) => {
+            ctx.countryData[country].count = ctx.countryData[country].silver;
+        });
+    } else if (selectedMedalType === "Bronze") {
+        Object.keys(ctx.countryData).forEach((country) => {
+            ctx.countryData[country].count = ctx.countryData[country].bronze;
+        });
+    }
+    console.log(ctx.countryData)
     updateMap();
 }
 
@@ -461,20 +480,30 @@ function transformData(data) {
             if (selectedData === "hostsData") {
                 countryData[countryKey].summer = 0;
                 countryData[countryKey].winter = 0;
+            } else if (selectedData === "medalsData") {
+                countryData[countryKey].gold = 0;
+                countryData[countryKey].silver = 0;
+                countryData[countryKey].bronze = 0;
             }
         }
 
-        if (
-            ["athletesData", "hostsData", "medalsData"].includes(selectedData)
-        ) {
-            countryData[countryKey].count += 1;
-            if (selectedData === "hostsData") {
-                const season = row.game_season;
-                if (season === "Summer") {
-                    countryData[countryKey].summer += 1;
-                } else if (season === "Winter") {
-                    countryData[countryKey].winter += 1;
-                }
+        countryData[countryKey].count += 1;
+
+        if (selectedData === "hostsData") {
+            const season = row.game_season;
+            if (season === "Summer") {
+                countryData[countryKey].summer += 1;
+            } else if (season === "Winter") {
+                countryData[countryKey].winter += 1;
+            }
+        } else if (selectedData === "medalsData") {
+            const medalType = row.medal_type;
+            if (medalType === "GOLD") {
+                countryData[countryKey].gold += 1;
+            } else if (medalType === "SILVER") {
+                countryData[countryKey].silver += 1;
+            } else if (medalType === "BRONZE") {
+                countryData[countryKey].bronze += 1;
             }
         }
     });
@@ -488,23 +517,28 @@ async function loadMainData() {
 
     const title = d3.select("#mapTitle");
     const seasonSelectContainer = d3.select("#seasonSelectContainer");
+    const medalTypeSelectContainer = d3.select("#medalTypeSelectContainer");
 
     if (selectedData === "athletesData") {
         data = await d3.csv("data/clean/olympic_athletes.csv");
         title.text("Olympic Debuts Count");
         ctx.counted = "Athletes";
         seasonSelectContainer.style("visibility", "hidden");
+        medalTypeSelectContainer.style("visibility", "hidden");
     } else if (selectedData === "hostsData") {
         data = await d3.csv("data/clean/olympic_hosts.csv");
         title.text("Olympic Hosting Count");
         ctx.counted = "Times Hosted";
         seasonSelectContainer.style("visibility", "visible");
+        medalTypeSelectContainer.style("visibility", "hidden");
         d3.select("#seasonSelect").node().value = "All";
     } else if (selectedData === "medalsData") {
         data = await d3.csv("data/clean/olympic_medals.csv");
         title.text("Olympic Medals Count");
         ctx.counted = "Medals";
         seasonSelectContainer.style("visibility", "hidden");
+        medalTypeSelectContainer.style("visibility", "visible");
+        d3.select("#medalTypeSelect").node().value = "All";
     }
     ctx.countryData = transformData(data);
 
