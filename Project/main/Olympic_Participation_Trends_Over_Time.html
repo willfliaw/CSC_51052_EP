@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olympic Participation Trends Over Time</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+        #chart {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        .axis-label {
+            font-size: 12px;
+            fill: #555;
+        }
+        .title {
+            text-anchor: middle;
+            font-size: 20px;
+            font-weight: bold;
+            fill: #333;
+        }
+        .tooltip {
+            position: absolute;
+            background: #fff;
+            border: 1px solid #d3d3d3;
+            padding: 8px;
+            font-size: 12px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="chart"></div>
+    <script>
+        // Set up dimensions and margins
+        const margin = { top: 50, right: 30, bottom: 50, left: 70 },
+              width = 800 - margin.left - margin.right,
+              height = 400 - margin.top - margin.bottom;
+
+        // Create SVG container
+        const svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Load data from CSV
+        d3.csv("olympic_participation.csv", d3.autoType).then(data => {
+            // Scales for x and y axis
+            const x = d3.scaleLinear()
+                .domain(d3.extent(data, d => d.year))
+                .range([0, width]);
+            
+            const y = d3.scaleLinear()
+                .domain([0, d3.max(data, d => d.countries)]).nice()
+                .range([height, 0]);
+
+            // Add x-axis
+            svg.append("g")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(x).tickFormat(d3.format("d")))
+                .selectAll("text")
+                .style("text-anchor", "middle");
+
+            // Add y-axis
+            svg.append("g")
+                .call(d3.axisLeft(y));
+
+            // Add axis labels
+            svg.append("text")
+                .attr("class", "axis-label")
+                .attr("x", width / 2)
+                .attr("y", height + margin.bottom - 10)
+                .style("text-anchor", "middle")
+                .text("Olympic Year");
+
+            svg.append("text")
+                .attr("class", "axis-label")
+                .attr("transform", "rotate(-90)")
+                .attr("y", -margin.left + 20)
+                .attr("x", -height / 2)
+                .style("text-anchor", "middle")
+                .text("Number of Participating Countries");
+
+            // Add gridlines for readability
+            svg.append("g")
+                .attr("class", "grid")
+                .call(d3.axisLeft(y).tickSize(-width).tickFormat(""))
+                .style("stroke-dasharray", "3,3")
+                .style("opacity", 0.5);
+
+            // Line path
+            const line = d3.line()
+                .x(d => x(d.year))
+                .y(d => y(d.countries))
+                .curve(d3.curveMonotoneX);
+
+            svg.append("path")
+                .datum(data)
+                .attr("fill", "none")
+                .attr("stroke", "steelblue")
+                .attr("stroke-width", 2)
+                .attr("d", line);
+
+            // Add circles at data points
+            svg.selectAll("dot")
+                .data(data)
+                .enter()
+                .append("circle")
+                .attr("cx", d => x(d.year))
+                .attr("cy", d => y(d.countries))
+                .attr("r", 4)
+                .attr("fill", "steelblue");
+
+            // Tooltip for interactivity
+            const tooltip = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("visibility", "hidden");
+
+            svg.selectAll("circle")
+                .on("mouseover", (event, d) => {
+                    tooltip.html(`Year: ${d.year}<br>Countries: ${d.countries}`)
+                        .style("left", (event.pageX + 5) + "px")
+                        .style("top", (event.pageY - 28) + "px")
+                        .style("visibility", "visible");
+                })
+                .on("mouseout", () => tooltip.style("visibility", "hidden"));
+
+            // Add a chart title
+            svg.append("text")
+                .attr("x", width / 2)
+                .attr("y", -margin.top / 2)
+                .attr("class", "title")
+                .text("Olympic Participation Trends Over Time");
+        });
+    </script>
+</body>
+</html>
