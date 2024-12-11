@@ -66,6 +66,13 @@
 \usepackage{url}
 
 % ------------------------------------------------------------------
+% CAPTIONS
+% ------------------------------------------------------------------
+
+% Enhanced control over figure and table captions:
+\usepackage[justification=centering]{caption}
+
+% ------------------------------------------------------------------
 % TABLES
 % ------------------------------------------------------------------
 
@@ -111,7 +118,7 @@
 \customDate{2024}
 
 \advisor{Emmanuel Pietriga}
-\minipageText{Report submitted for the Data Visualization course (CSC\_51052) as part of the Master Data AI at Institut Polytechnique de Paris.}
+\minipageText{Report submitted for the Data Visualization course (CSC\_51052\_EP) as part of the Master Data AI at Institut Polytechnique de Paris.}
 
 \begin{document}
 
@@ -130,9 +137,6 @@
 \pagenumbering{roman}
 \input{doc/abstract}
 \listoffigures
-\listoftables
-\input{doc/abbreviations}
-\input{doc/symbols}
 \tableofcontents
 
 % Textual elements
@@ -149,10 +153,5 @@
 
 % Post-textual elements
 \bibliography{doc/bibliography}
-\appendix
-\input{doc/apA}
-
-\annex
-\input{doc/anA}
 
 \end{document}
