@@ -1,0 +1,84 @@
+\chapter{Complete dataset description} \label{app:A}
+
+The \textit{Olympic Games Medals 1986-2022} dataset, sourced from Kaggle \cite{olympic_19862022}, contains comprehensive information about the Olympic Games spanning from 1986 to 2022. The data, originally scraped from the official International Olympic Committee website \cite{olympics}, includes details about athletes, medal results, hosting nations, and events. This section provides a complete overview of the dataset structure and its attributes.
+
+The dataset consists of multiple files, each focusing on specific aspects of the Olympic Games. The key files and their contents are described below.
+
+\section{olympic\_athletes.csv}
+
+The file \texttt{olympic\_athletes.csv} includes the following attributes:
+
+\begin{itemize}
+    \item \texttt{athlete\_url}: The URL linking to the athlete's profile on the official Olympics website.
+    \item \texttt{athlete\_full\_name}: The full name of the athlete.
+    \item \texttt{games\_participations}: The total number of Olympic Games in which the athlete participated.
+    \item \texttt{first\_game}: The first Olympic Games in which the athlete competed, specified by city and year.
+    \item \texttt{athlete\_year\_birth}: The birth year of the athlete.
+    \item \texttt{athlete\_medals}: The total medals won by the athlete across all participations.
+    \item \texttt{bio}: A brief biographical summary or description of the athlete, if available, which is often not the case.
+\end{itemize}
+
+\section{olympic\_medals.csv}
+
+The file \texttt{olympic\_medals.csv} includes the following attributes:
+
+\begin{itemize}
+    \item \texttt{discipline\_title}: The title of the sport or discipline (e.g., \texttt{Swimming}, \texttt{Athletics}).
+    \item \texttt{slug\_game}: A unique identifier for the specific Olympic Games (e.g., \texttt{barcelona-1992}).
+    \item \texttt{event\_title}: The title of the specific event within the discipline (e.g., \texttt{5000m men}, \texttt{parallel bars men}).
+    \item \texttt{event\_gender}: The gender category of the event (\texttt{Men}, \texttt{Women}, or \texttt{Mixed} for mixed events).
+    \item \texttt{medal\_type}: The type of medal awarded (\texttt{GOLD}, \texttt{SILVER}, or \texttt{BRONZE}).
+    \item \texttt{participant\_type}: The type of participant (e.g., \texttt{Athlete} if individual, \texttt{GameTeam} otherwise).
+    \item \texttt{participant\_title}: The name or title of the participant (e.g., team name or athlete name).
+    \item \texttt{athlete\_url}: The URL linking to the athlete's profile (if applicable).
+    \item \texttt{athlete\_full\_name}: The full name of the athlete (if applicable).
+    \item \texttt{country\_name}: The name of the country associated with the medal-winning participant.
+    \item \texttt{country\_code}: The two-letter country code (ISO 3166-1 alpha-2).
+    \item \texttt{country\_3\_letter\_code}: The three-letter country code (ISO 3166-1 alpha-3).
+\end{itemize}
+
+\section{olympic\_hosts.csv}
+
+The file \texttt{olympic\_hosts.csv} includes the following attributes:
+
+\begin{itemize}
+    \item \texttt{game\_slug}: A unique identifier for the specific Olympic Games (e.g., \texttt{barcelona-1992}).
+    \item \texttt{game\_end\_date}: The end date of the Olympic Games.
+    \item \texttt{game\_start\_date}: The start date of the Olympic Games.
+    \item \texttt{game\_location}: The location of the Olympic Games (country).
+    \item \texttt{game\_name}: The official name of the Olympic Games (e.g., \texttt{Oslo 1952}).
+    \item \texttt{game\_season}: The season of the Games (\texttt{Summer} or \texttt{Winter}).
+    \item \texttt{game\_year}: The year in which the Olympic Games took place.
+\end{itemize}
+
+\section{olympic\_results.csv}
+
+The file \texttt{olympic\_results.csv} includes the following attributes:
+
+\begin{itemize}
+    \item \texttt{discipline\_title}: The title of the sport or discipline (e.g., \texttt{Swimming}, \texttt{Athletics}).
+    \item \texttt{event\_title}: The title of the specific event within the discipline (e.g., \texttt{5000m men}, \texttt{tempest mixed}).
+    \item \texttt{slug\_game}: A unique identifier for the specific Olympic Games (e.g., \texttt{montreal-1976}).
+    \item \texttt{participant\_type}: The type of participant (e.g., \texttt{Athlete} if individual, \texttt{GameTeam} otherwise).
+    \item \texttt{medal\_type}: The type of medal awarded (\texttt{GOLD}, \texttt{SILVER}, \texttt{BRONZE}, or \texttt{None} for participants who did not win a medal).
+    \item \texttt{athletes}: A list of athletes associated with the participant (useful for team events).
+    \item \texttt{rank\_equal}: Whether the rank is shared among multiple participants (\texttt{True} or \texttt{False}), if applicable.
+    \item \texttt{rank\_position}: The rank of the participant in the event.
+    \item \texttt{country\_name}: The name of the country associated with the participant.
+    \item \texttt{country\_code}: The two-letter country code (ISO 3166-1 alpha-2).
+    \item \texttt{country\_3\_letter\_code}: The three-letter country code (ISO 3166-1 alpha-3).
+    \item \texttt{athlete\_url}: The URL linking to the athlete's profile (if applicable).
+    \item \texttt{athlete\_full\_name}: The full name of the athlete (if applicable).
+    \item \texttt{value\_unit}: The unit of measurement for performance values (e.g., seconds, meters).
+    \item \texttt{value\_type}: The type of performance value recorded (e.g., time, distance).
+\end{itemize}
+
+\section{Dataset Summary}
+
+The dataset provides detailed information about:
+\begin{itemize}
+    \item Over 120 years of Olympic Games history, spanning Summer and Winter Games.
+    \item Thousands of athletes from different countries, disciplines, and events.
+    \item Medal counts and distribution patterns across various sports and seasons.
+    \item Host cities and countries, offering geographical insights into the Games.
+\end{itemize}
