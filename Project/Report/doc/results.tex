@@ -19,7 +19,28 @@ Additionally, the chart captures regular scheduling patterns, with Summer Games 
 
 \section{Chord Diagram for Migration Flow}
 
-PLACEHOLDER ...
+Given the increasing rate of immigration over the past few decades, we decided to analyze immigration in the context of the Olympic Games, specifically focusing on Olympic athletes who represent countries different from the ones in which they were born. A key component for this analysis was the inclusion of athletes' birth countries, which were not initially present in the dataset. To address this, we used web scraping to extract athletes' birth countries from their Wikipedia pages and added this information as a new feature to the dataset. Since there have been significant changes in the names and territories of countries over time, we decided to focus only on the last 10 Olympic Games to ensure consistency.
+
+To visualize this analysis, we used a chord diagram. A chord diagram is a graphical tool designed to show relationships between entities, where the flow of migration is represented by the chords. The source and destination countries of the migration are indicated by the base and arrowhead of each chord, respectively. The width of each arc is proportional to the number of athletes migrating from one country to another.
+
+In our chord diagram, the countries are grouped by sub-continent, with a total of 9 sub-continents, plus the Refugee Olympic Team, which is treated as a separate category. Each sub-continent is assigned a unique color theme to improve the clarity of the visualization. To make the analysis more manageable and focused, we only included countries with more than 10 immigrant athletes in the diagram. This filter ensures that the visualization highlights significant migration flows.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chord_diagram.png}
+    \caption{Chord Diagram: Visualizing Olympic Athletes' Migration Flows Since 2010}
+    \label{fig:choropleth_map}
+\end{figure}
+
+\subsection{Features of the Diagram}
+An interactive feature of this diagram is that when hovering over a country's name, additional information is displayed, including the total number of incoming and outgoing immigrants for that country. Additionally, when hovering over a country, the opacity of arrows that do not originate from or end in that country is reduced. This allows the user to focus on immigration flows specifically related to the selected country, highlighting it as the source or destination
+\subsection{Insights from the Diagram}
+The diagram provides valuable insights into immigration patterns. Most visible immigration flows align closely with political and geographical changes in the world. In particular, highly developed countries like the United States and Britain emerge as major destinations for immigrants, likely due to the better opportunities and higher quality of life they offer.
+
+However, the diagram also reveals patterns specific to the unique nature of the dataset. For instance, Russia was banned from participating in the 2016 Rio and 2020 Tokyo Olympics due to doping violations. In such cases, many Russian athletes opted to compete under other countries' flags just to continue participating in the games.
+
+Another intriguing trend is the movement of athletes between countries in pursuit of better athletic opportunities. For example, some U.S. athletes appear to have moved to Latin American countries, possibly because it was easier to qualify for the Olympic team there. 
+
 
 \section{Dynamic Choropleths and Bubble Maps}
 
