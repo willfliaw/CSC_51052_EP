@@ -1,0 +1,2088 @@
+source,target,weight
+Latvia,ROC,1
+Latvia,Serbia,1
+ROC,Serbia,2
+ROC,United States of America,22
+People's Republic of China,United States of America,133
+People's Republic of China,ROC,16
+Austria,Switzerland,48
+Norway,Switzerland,26
+Austria,Norway,43
+Switzerland,United States of America,62
+Italy,Norway,42
+Italy,United States of America,141
+Norway,United States of America,75
+Sweden,Switzerland,41
+Austria,Sweden,20
+Austria,Czech Republic,4
+Czech Republic,Liechtenstein,1
+Austria,Liechtenstein,3
+Canada,Norway,26
+Austria,Canada,15
+France,Switzerland,46
+Austria,France,41
+Slovenia,Switzerland,6
+France,Slovenia,7
+France,Norway,36
+Austria,United States of America,46
+Austria,Germany,75
+Germany,Norway,58
+Italy,Switzerland,34
+Italy,Sweden,42
+Slovakia,Switzerland,1
+Austria,Slovakia,2
+Croatia,United States of America,6
+Croatia,Switzerland,4
+France,Germany,100
+Croatia,Italy,8
+Austria,Croatia,4
+Slovenia,Sweden,2
+Croatia,Germany,5
+Germany,United States of America,209
+Croatia,Sweden,6
+Germany,Sweden,59
+Sweden,United States of America,137
+Austria,Italy,32
+Canada,United States of America,224
+Federal Republic of Germany,Switzerland,19
+Canada,Federal Republic of Germany,17
+Canada,Switzerland,29
+Austria,Federal Republic of Germany,6
+Federal Republic of Germany,United States of America,73
+Liechtenstein,Switzerland,3
+Germany,Italy,88
+France,Sweden,55
+France,Italy,108
+Czechoslovakia,Switzerland,11
+Italy,Luxembourg,2
+Luxembourg,Norway,2
+Liechtenstein,Sweden,1
+Germany,Switzerland,41
+Switzerland,Yugoslavia,7
+Liechtenstein,Yugoslavia,1
+France,United States of America,161
+Canada,France,42
+Federal Republic of Germany,France,20
+Federal Republic of Germany,Liechtenstein,4
+France,Liechtenstein,2
+Austria,Slovenia,12
+Germany,Slovenia,8
+Finland,United States of America,83
+Finland,Sweden,99
+Federal Republic of Germany,Italy,19
+Italy,Liechtenstein,4
+Austria,Japan,17
+Japan,Sweden,12
+Italy,Slovenia,7
+Italy,Spain,10
+Austria,New Zealand,5
+Austria,Spain,2
+New Zealand,Spain,6
+Federal Republic of Germany,Yugoslavia,5
+Soviet Union,Switzerland,24
+Austria,Soviet Union,13
+Australia,Germany,73
+Australia,Italy,39
+Croatia,France,6
+Canada,Germany,63
+Czech Republic,Germany,21
+Russian Federation,United States of America,103
+Italy,Russian Federation,50
+Slovenia,United States of America,4
+Belgium,France,46
+Republic of Korea,Unified Team,7
+Germany,Republic of Korea,25
+Italy,Japan,26
+Australia,Japan,27
+France,Republic of Korea,27
+Republic of Korea,United States of America,66
+Italy,Turkey,7
+Japan,Turkey,9
+Chinese Taipei,Republic of Korea,8
+Japan,Republic of Korea,58
+Chinese Taipei,Japan,7
+Netherlands,Republic of Korea,25
+Mexico,Republic of Korea,7
+Mexico,Netherlands,1
+Italy,Republic of Korea,30
+ROC,Republic of Korea,10
+Italy,ROC,7
+Germany,ROC,7
+Republic of Korea,Sweden,5
+France,Great Britain,103
+Great Britain,Republic of Korea,13
+Republic of Korea,Ukraine,11
+Russian Federation,Ukraine,41
+Republic of Korea,Russian Federation,33
+People's Republic of China,Republic of Korea,90
+Japan,People's Republic of China,66
+Australia,United States of America,239
+Australia,Netherlands,46
+Netherlands,United States of America,104
+People's Republic of China,Ukraine,22
+Japan,United States of America,145
+Finland,Soviet Union,73
+Finland,Italy,26
+Italy,Soviet Union,72
+Soviet Union,United States of America,199
+Republic of Korea,Soviet Union,21
+Poland,United States of America,49
+Poland,Soviet Union,95
+Belgium,Netherlands,20
+France,Netherlands,43
+Chinese Taipei,Ukraine,3
+Finland,Spain,3
+Great Britain,Spain,24
+Finland,Great Britain,20
+Italy,People's Republic of China,36
+Chinese Taipei,People's Republic of China,9
+Poland,Republic of Korea,10
+Germany,Poland,43
+People's Republic of China,Unified Team,19
+France,People's Republic of China,40
+Germany,Ukraine,17
+Australia,Republic of Korea,6
+Chinese Taipei,Russian Federation,1
+Great Britain,United States of America,260
+Indonesia,Republic of Korea,11
+Indonesia,United States of America,2
+Japan,ROC,12
+Israel,People's Republic of China,2
+Israel,Spain,2
+People's Republic of China,Spain,11
+Croatia,Japan,1
+Croatia,ROC,2
+Germany,Turkey,8
+Germany,People's Republic of China,60
+People's Republic of China,Turkey,14
+Great Britain,Japan,30
+Chinese Taipei,Great Britain,2
+Greece,People's Republic of China,9
+Armenia,ROC,2
+Armenia,Republic of Korea,3
+Brazil,ROC,3
+Brazil,United States of America,54
+Great Britain,ROC,9
+Belgium,ROC,1
+Belgium,United States of America,24
+Brazil,Republic of Korea,10
+ROC,Ukraine,6
+Hungary,United States of America,88
+Germany,Hungary,65
+Finland,France,19
+Eritrea,Ethiopia,1
+Ethiopia,Kenya,26
+Ethiopia,Morocco,7
+Kenya,Morocco,12
+Czechoslovakia,France,16
+Czechoslovakia,Soviet Union,58
+France,Soviet Union,34
+Czechoslovakia,Sweden,13
+Ethiopia,Great Britain,5
+Ethiopia,United States of America,7
+Finland,Poland,12
+Great Britain,Italy,75
+Italy,Kenya,5
+Great Britain,Kenya,8
+Hungary,Soviet Union,144
+Australia,Soviet Union,35
+Australia,Hungary,17
+Kenya,Tunisia,3
+Ethiopia,Tunisia,2
+Finland,Portugal,1
+Great Britain,Portugal,5
+Ethiopia,Finland,3
+Belgium,Finland,5
+Belgium,Ethiopia,2
+Germany,Soviet Union,59
+Italy,Morocco,2
+Tunisia,United States of America,2
+Australia,Tunisia,3
+Soviet Union,Sweden,62
+Italy,South Africa,16
+Great Britain,South Africa,17
+Canada,Great Britain,56
+Canada,Italy,38
+People's Republic of China,Russian Federation,83
+Ethiopia,People's Republic of China,2
+People's Republic of China,Portugal,2
+Ethiopia,Portugal,2
+Ethiopia,South Africa,1
+South Africa,United States of America,39
+Kenya,United States of America,23
+Great Britain,Soviet Union,56
+Ukraine,United States of America,38
+Greece,United States of America,18
+Bulgaria,Greece,7
+Bulgaria,United States of America,29
+Australia,Canada,40
+German Democratic Republic (Germany),Soviet Union,209
+German Democratic Republic (Germany),Poland,29
+German Democratic Republic (Germany),Romania,33
+Bulgaria,German Democratic Republic (Germany),36
+Bulgaria,Federal Republic of Germany,7
+Federal Republic of Germany,German Democratic Republic (Germany),52
+Kazakhstan,Nigeria,2
+Kazakhstan,United States of America,16
+Nigeria,United States of America,11
+Germany,Great Britain,86
+Portugal,United States of America,7
+Canada,Namibia,1
+Canada,Trinidad and Tobago,1
+Namibia,Trinidad and Tobago,2
+Great Britain,Namibia,1
+Namibia,United States of America,4
+Jamaica,Trinidad and Tobago,3
+Jamaica,United States of America,52
+Trinidad and Tobago,United States of America,9
+Great Britain,Jamaica,11
+Canada,South Africa,2
+Panama,United States of America,2
+Soviet Union,Trinidad and Tobago,3
+Jamaica,Soviet Union,4
+Cuba,Great Britain,17
+Bulgaria,Great Britain,2
+Bulgaria,Cuba,11
+Great Britain,New Zealand,33
+New Zealand,United States of America,35
+Canada,Jamaica,4
+Barbados,United States of America,1
+Barbados,Trinidad and Tobago,1
+Cuba,United States of America,53
+Canada,Cuba,5
+Belarus,United States of America,18
+Belarus,Jamaica,1
+Unified Team,United States of America,32
+Jamaica,Unified Team,1
+Australia,South Africa,9
+Great Britain,Netherlands,53
+Australia,Great Britain,67
+Canada,Poland,9
+Australia,German Democratic Republic (Germany),18
+Cuba,German Democratic Republic (Germany),13
+Australia,Cuba,8
+German Democratic Republic (Germany),United States of America,87
+Greece,Jamaica,1
+Cuba,People's Republic of China,31
+Cuba,France,29
+Cuba,Soviet Union,22
+South Africa,Sweden,8
+Jamaica,Spain,1
+France,Jamaica,7
+France,Spain,12
+Australia,France,43
+Morocco,Portugal,2
+Kenya,Portugal,1
+Algeria,Spain,2
+Algeria,Kenya,2
+Kenya,Spain,1
+Morocco,Spain,1
+Qatar,Spain,1
+Morocco,Qatar,1
+Kenya,New Zealand,3
+France,Kenya,7
+France,New Zealand,11
+Italy,New Zealand,6
+Luxembourg,United States of America,1
+Germany,Luxembourg,1
+Netherlands,Sweden,24
+Algeria,United States of America,8
+Algeria,Morocco,2
+Morocco,United States of America,3
+Germany,Ireland,5
+Australia,Ireland,5
+Federal Republic of Germany,Kenya,3
+Belgium,New Zealand,2
+Federal Republic of Germany,New Zealand,6
+Belgium,Federal Republic of Germany,5
+German Democratic Republic (Germany),Great Britain,22
+Finland,Kenya,2
+Finland,New Zealand,2
+Finland,Switzerland,14
+Great Britain,Switzerland,28
+Algeria,New Zealand,2
+France,Hungary,42
+German Democratic Republic (Germany),Kenya,3
+Czechoslovakia,New Zealand,2
+Great Britain,Russian Federation,19
+Great Britain,Romania,15
+Romania,Russian Federation,21
+Austria,Russian Federation,9
+Austria,Romania,5
+Algeria,Unified Team,2
+Algeria,People's Republic of China,2
+Kenya,Ukraine,1
+Italy,Romania,20
+German Democratic Republic (Germany),Italy,18
+Romania,Soviet Union,91
+Algeria,Romania,2
+India,United States of America,8
+Italy,Jamaica,1
+Australia,India,4
+Great Britain,Greece,10
+Greece,Trinidad and Tobago,1
+Great Britain,Trinidad and Tobago,2
+Bahamas,Jamaica,7
+Bahamas,United States of America,11
+France,Nigeria,3
+Jamaica,Nigeria,2
+Netherlands,Soviet Union,17
+Australia,Poland,15
+German Democratic Republic (Germany),Jamaica,3
+Jamaica,Netherlands,1
+Bahamas,Sri Lanka,1
+Jamaica,Sri Lanka,1
+Greece,Russian Federation,12
+Australia,Greece,4
+Australia,Russian Federation,23
+Norway,Russian Federation,22
+Mexico,People's Republic of China,10
+Norway,People's Republic of China,5
+Norway,Spain,4
+Australia,Spain,22
+Ecuador,Russian Federation,2
+Ecuador,Mexico,2
+Mexico,Russian Federation,8
+Canada,Spain,5
+Australia,Ecuador,1
+Guatemala,People's Republic of China,1
+Italy,Mexico,8
+Mexico,Soviet Union,10
+German Democratic Republic (Germany),Mexico,3
+Australia,People's Republic of China,41
+Czechoslovakia,German Democratic Republic (Germany),19
+Czechoslovakia,Italy,13
+Mexico,Poland,6
+Poland,Russian Federation,17
+Finland,Germany,26
+Great Britain,Hungary,31
+Great Britain,Norway,24
+Hungary,Norway,9
+Poland,Sweden,18
+German Democratic Republic (Germany),Sweden,13
+Poland,United Republic of Tanzania,1
+Ethiopia,Poland,1
+Ethiopia,United Republic of Tanzania,2
+Belgium,Great Britain,23
+Belgium,Soviet Union,6
+Kenya,Russian Federation,2
+Bahrain,Kenya,2
+Bahrain,United States of America,1
+Great Britain,Sweden,66
+Canada,Unified Team,7
+Canada,Romania,15
+Australasia,Great Britain,10
+Dominican Republic,Poland,1
+Dominican Republic,United States of America,4
+Dominican Republic,Jamaica,1
+Dominican Republic,France,2
+United States of America,Zambia,2
+Philippines,United States of America,4
+Canada,Philippines,3
+New Zealand,Soviet Union,5
+Sri Lanka,United States of America,1
+Sri Lanka,Sweden,1
+Dominican Republic,Puerto Rico,1
+Puerto Rico,United States of America,4
+Ireland,United States of America,5
+Federal Republic of Germany,Great Britain,20
+Uganda,United States of America,4
+Great Britain,Uganda,2
+Turkey,United States of America,27
+Kenya,Turkey,2
+Senegal,United States of America,1
+Saudi Arabia,United States of America,1
+Saudi Arabia,South Africa,1
+Greece,Romania,2
+Greece,Ukraine,4
+Romania,Ukraine,8
+Czech Republic,Russian Federation,22
+Czech Republic,United States of America,14
+Morocco,Romania,2
+Romania,United States of America,67
+Denmark,United States of America,44
+Jamaica,Russian Federation,4
+Morocco,Russian Federation,2
+Jamaica,Morocco,1
+Dominican Republic,Grenada,1
+Grenada,Trinidad and Tobago,1
+Dominican Republic,Trinidad and Tobago,1
+Ivory Coast,United States of America,1
+Grenada,South Africa,1
+Grenada,United States of America,1
+Germany,South Africa,7
+Poland,Trinidad and Tobago,1
+Bahamas,Mexico,1
+Bahamas,Russian Federation,1
+Australia,Nigeria,2
+France,Unified Team,11
+Colombia,France,3
+Colombia,Unified Team,1
+Australia,Jamaica,1
+MIX,United States of America,4
+Great Britain,Nigeria,2
+Brazil,Canada,4
+Cuba,Nigeria,4
+Japan,Trinidad and Tobago,1
+Brazil,Trinidad and Tobago,1
+Brazil,Japan,14
+France,Trinidad and Tobago,1
+France,Poland,31
+Federal Republic of Germany,Soviet Union,54
+Jamaica,Japan,1
+Canada,Japan,32
+Brazil,Cuba,7
+France,Russian Federation,45
+Nigeria,Unified Team,1
+Belgium,Nigeria,1
+Belgium,Brazil,3
+Brazil,Nigeria,5
+Canada,Netherlands,36
+Jamaica,Ukraine,2
+Cuba,Federal Republic of Germany,3
+Great Britain,Poland,20
+France,South Africa,5
+Bahamas,Great Britain,2
+Germany,Jamaica,2
+Bahamas,Trinidad and Tobago,1
+Federal Republic of Germany,Poland,4
+United States of America,West Indies Federation,1
+Germany,West Indies Federation,1
+Federal Republic of Germany,Jamaica,1
+Bahamas,Nigeria,1
+Germany,Nigeria,3
+Great Britain,Unified Team,2
+Burundi,Kenya,2
+Burundi,Morocco,1
+Germany,Kenya,2
+Ethiopia,Germany,1
+Czechoslovakia,Germany,18
+Belgium,Czechoslovakia,3
+Czechoslovakia,Netherlands,2
+Morocco,Switzerland,1
+Portugal,Switzerland,2
+Federal Republic of Germany,Finland,6
+Finland,United Republic of Tanzania,1
+Finland,Tunisia,1
+Great Britain,Tunisia,2
+Germany,New Zealand,14
+New Zealand,Poland,4
+Algeria,Ethiopia,1
+France,MIX,7
+Kenya,People's Republic of China,2
+Ireland,Romania,3
+Ethiopia,Romania,1
+Ethiopia,Ireland,1
+Poland,Spain,6
+Russian Federation,Spain,21
+Mexico,Unified Team,1
+Germany,Unified Team,31
+Germany,Mexico,3
+Great Britain,Latvia,4
+Latvia,Switzerland,2
+Hungary,Italy,68
+Czechoslovakia,Hungary,13
+Ireland,People's Republic of China,5
+Italy,Latvia,4
+Mexico,Sweden,3
+New Zealand,Sweden,4
+German Democratic Republic (Germany),Hungary,28
+German Democratic Republic (Germany),Spain,5
+Soviet Union,Spain,5
+Australia,Slovakia,4
+Japan,Slovakia,3
+Latvia,Poland,1
+Latvia,Mexico,1
+Greece,Hungary,9
+Russian Federation,South Africa,5
+Denmark,Russian Federation,3
+Denmark,South Africa,4
+Norway,South Africa,1
+Kenya,Norway,2
+Kenya,South Africa,3
+Kenya,Sudan,1
+Botswana,Kenya,1
+Brazil,Great Britain,18
+Australia,Kenya,1
+Belgium,Cuba,5
+Kenya,Soviet Union,2
+New Zealand,West Indies Federation,1
+Belgium,West Indies Federation,1
+Brazil,Kenya,1
+Brazil,Morocco,1
+Denmark,Germany,23
+Algeria,Germany,2
+Algeria,Denmark,1
+Canada,New Zealand,12
+Canada,Kenya,2
+Germany,Japan,43
+Great Britain,Morocco,1
+Great Britain,Slovenia,5
+Morocco,Slovenia,1
+Cuba,Russian Federation,36
+Mozambique,Russian Federation,1
+Cuba,Mozambique,1
+Netherlands,Unified Team,2
+Cuba,Netherlands,7
+Cuba,Unified Team,8
+Netherlands,Romania,10
+Bulgaria,Soviet Union,91
+Burundi,South Africa,1
+Austria,Mozambique,1
+Great Britain,Mozambique,1
+Austria,Great Britain,10
+Australia,Chinese Taipei,2
+Ethiopia,Uganda,1
+Botswana,United States of America,1
+Botswana,Netherlands,1
+Bahamas,Colombia,1
+Bahamas,Grenada,1
+Colombia,Grenada,1
+Brazil,Norway,3
+Canada,Uganda,1
+Kenya,Poland,3
+Norway,Poland,15
+Belarus,Qatar,1
+Belarus,Italy,6
+Italy,Qatar,1
+Czech Republic,India,1
+Cuba,Greece,4
+Kenya,Netherlands,3
+Belgium,Kenya,1
+Brazil,Sweden,6
+Burkina Faso,People's Republic of China,1
+Burkina Faso,Portugal,1
+Ethiopia,Netherlands,2
+Bahrain,Ethiopia,2
+Bahrain,Netherlands,1
+Jamaica,Puerto Rico,1
+Jamaica,Namibia,1
+Colombia,Italy,2
+Colombia,People's Republic of China,7
+Kenya,Uganda,2
+Jamaica,Poland,1
+Bahamas,Dominican Republic,1
+Cuba,Germany,20
+People's Republic of China,Poland,10
+Australia,Ukraine,5
+Australia,ROC,5
+New Zealand,People's Republic of China,7
+Portugal,Venezuela,1
+Spain,Venezuela,1
+Portugal,Spain,1
+Norway,Sweden,84
+Czech Republic,Kazakhstan,1
+Czechoslovakia,Spain,2
+Czechoslovakia,United States of America,27
+Spain,United States of America,34
+Belarus,Cuba,2
+Estonia,United States of America,3
+Chinese Taipei,United States of America,4
+Chinese Taipei,Soviet Union,1
+Canada,German Democratic Republic (Germany),12
+Czech Republic,Estonia,3
+Hungary,Lithuania,2
+Estonia,Lithuania,2
+Estonia,Hungary,3
+Belarus,Germany,18
+Germany,Lithuania,5
+Cuba,Lithuania,3
+Estonia,Poland,1
+Lithuania,Poland,2
+Germany,Islamic Republic of Iran,4
+Estonia,Germany,8
+Estonia,Islamic Republic of Iran,1
+Cuba,Czechoslovakia,3
+Bohemia,Hungary,3
+Bohemia,United States of America,2
+Lithuania,South Africa,1
+Czech Republic,Greece,1
+Germany,Russian Federation,86
+Belarus,Russian Federation,25
+Australia,Bulgaria,1
+Croatia,People's Republic of China,4
+Croatia,Cuba,2
+Federal Republic of Germany,Romania,16
+Hungary,Romania,38
+Federal Republic of Germany,Hungary,8
+Bulgaria,Romania,25
+Belarus,Greece,4
+Germany,Romania,22
+Ireland,Sweden,1
+Hungary,Ukraine,8
+Belarus,Slovenia,3
+Hungary,Yugoslavia,11
+United States of America,Yugoslavia,24
+Hungary,Slovenia,1
+Hungary,Japan,22
+Japan,Slovenia,6
+Finland,Ireland,3
+Belarus,Tajikistan,1
+Poland,Tajikistan,1
+Belarus,Poland,6
+Hungary,Poland,36
+Italy,Poland,34
+Great Britain,People's Republic of China,37
+Lithuania,Sweden,1
+Great Britain,Lithuania,6
+Belarus,Syrian Arab Republic,2
+Great Britain,Syrian Arab Republic,1
+Belarus,Great Britain,6
+Great Britain,Ukraine,9
+Australia,Federal Republic of Germany,17
+Belgium,Canada,9
+Czech Republic,Sweden,3
+Cuba,Sweden,4
+Cuba,Poland,21
+Australia,Sweden,26
+Australia,Norway,7
+Qatar,United States of America,2
+Canada,Qatar,2
+Great Britain,Qatar,1
+Federal Republic of Germany,Sweden,11
+Federal Republic of Germany,People's Republic of China,3
+People's Republic of China,Sweden,6
+Canada,Ukraine,8
+Qatar,Ukraine,1
+Algeria,Russian Federation,1
+Algeria,Cuba,3
+South Africa,Ukraine,2
+Bulgaria,Ukraine,8
+Cuba,Romania,12
+Belgium,Croatia,1
+South Africa,Soviet Union,5
+Bulgaria,Italy,12
+Austria,Bulgaria,2
+Bulgaria,Spain,5
+Croatia,Spain,5
+Bulgaria,Croatia,1
+Poland,Romania,13
+Russian Federation,Sweden,14
+Romania,South Africa,2
+Romania,Sweden,14
+Australia,Romania,9
+Greece,Sweden,4
+Greece,Norway,3
+Hungary,Sweden,36
+Latvia,Norway,2
+Latvia,Russian Federation,7
+Czech Republic,Great Britain,6
+Czech Republic,Finland,4
+Czechoslovakia,Finland,15
+Czechoslovakia,Great Britain,4
+Finland,Norway,83
+Finland,Latvia,1
+Finland,Hungary,27
+Finland,Trinidad and Tobago,1
+Czech Republic,Trinidad and Tobago,1
+Norway,Soviet Union,44
+Finland,Romania,8
+Germany,Trinidad and Tobago,1
+Kenya,Trinidad and Tobago,1
+Germany,Greece,12
+Australia,Finland,5
+Austria,Finland,19
+Austria,Denmark,3
+Denmark,Finland,8
+Chile,Soviet Union,3
+Austria,Hungary,12
+Croatia,South Africa,4
+Croatia,Czech Republic,3
+Czech Republic,South Africa,1
+Cuba,Norway,2
+Haiti,United States of America,2
+Panama,South Africa,1
+Cuba,Panama,1
+Cuba,South Africa,1
+Canada,Sweden,34
+Cuba,Ukraine,5
+Italy,Nigeria,1
+Argentina,Hungary,3
+Argentina,Sweden,8
+Czechoslovakia,Federal Republic of Germany,5
+Bulgaria,Czechoslovakia,7
+Serbia,United States of America,8
+Chile,France,3
+Chile,Finland,1
+Estonia,Finland,7
+Estonia,Italy,5
+Brazil,Italy,12
+Republic of Korea,South Africa,1
+Kenya,Republic of Korea,1
+Argentina,Czechoslovakia,1
+Argentina,Great Britain,13
+Argentina,Belgium,3
+Argentina,Finland,3
+Ireland,Portugal,1
+Great Britain,Ireland,8
+France,Yugoslavia,7
+Finland,Yugoslavia,7
+Ethiopia,Japan,3
+Ethiopia,New Zealand,2
+Japan,New Zealand,4
+Belgium,German Democratic Republic (Germany),3
+German Democratic Republic (Germany),Netherlands,16
+France,Luxembourg,2
+Luxembourg,Sweden,1
+Morocco,New Zealand,1
+Djibouti,Italy,1
+Djibouti,Kenya,1
+Japan,Kenya,2
+Ethiopia,Russian Federation,2
+Japan,Russian Federation,42
+Japan,Unified Team,8
+New Zealand,Unified Team,1
+Kenya,Romania,2
+People's Republic of China,Romania,19
+Norway,Portugal,1
+Australia,Portugal,2
+German Democratic Republic (Germany),Portugal,1
+Japan,Romania,15
+Spain,Unified Team,7
+Brazil,France,18
+Greece,New Zealand,1
+Iceland,United States of America,1
+Australia,Iceland,1
+Denmark,Spain,5
+German Democratic Republic (Germany),Switzerland,12
+Cuba,New Zealand,3
+Hungary,New Zealand,8
+People's Republic of China,Soviet Union,6
+German Democratic Republic (Germany),People's Republic of China,9
+Finland,Japan,9
+France,Greece,10
+Bahamas,Portugal,1
+Brazil,Soviet Union,11
+Brazil,Venezuela,1
+Soviet Union,Venezuela,1
+Sweden,Turkey,14
+Australia,Turkey,2
+Brazil,Iceland,2
+Iceland,Soviet Union,1
+Brazil,German Democratic Republic (Germany),3
+Argentina,Australia,7
+Cameroon,Greece,1
+Cameroon,Russian Federation,1
+Czech Republic,Ukraine,5
+Cameroon,Kazakhstan,1
+Cameroon,Cuba,1
+Cuba,Kazakhstan,12
+Colombia,Kazakhstan,4
+Kazakhstan,Ukraine,5
+Colombia,Ukraine,1
+Colombia,Venezuela,2
+Kazakhstan,Venezuela,1
+Bulgaria,Russian Federation,14
+Denmark,People's Republic of China,8
+Denmark,Great Britain,38
+Indonesia,People's Republic of China,17
+Indonesia,Malaysia,3
+Malaysia,People's Republic of China,10
+Great Britain,Indonesia,1
+Chinese Taipei,Malaysia,1
+Denmark,Indonesia,2
+Denmark,Malaysia,2
+Netherlands,People's Republic of China,17
+India,People's Republic of China,9
+India,Spain,4
+Japan,Spain,14
+India,Japan,6
+Chinese Taipei,India,1
+Malaysia,Republic of Korea,1
+Denmark,Republic of Korea,5
+Great Britain,Malaysia,3
+Denmark,Japan,3
+Cuba,Japan,34
+Chinese Taipei,Cuba,3
+Cuba,Republic of Korea,17
+Dominican Republic,Japan,1
+France,Japan,52
+Argentina,Italy,11
+Argentina,United States of America,18
+Serbia and Montenegro,United States of America,1
+Lithuania,United States of America,5
+Lithuania,Serbia and Montenegro,1
+Croatia,Lithuania,2
+Argentina,Spain,5
+Mexico,United States of America,23
+Canada,Mexico,4
+United States of America,Uruguay,3
+Soviet Union,Uruguay,3
+Spain,Yugoslavia,2
+Soviet Union,Yugoslavia,37
+Italy,Yugoslavia,3
+Serbia,Spain,4
+France,Lithuania,3
+Australia,Brazil,15
+Bulgaria,Yugoslavia,6
+Brazil,Spain,3
+Brazil,Switzerland,4
+Spain,Switzerland,6
+Brazil,Germany,17
+Germany,Latvia,8
+Brazil,Latvia,2
+Brazil,Netherlands,8
+Italy,Netherlands,40
+Norway,ROC,12
+Norway,Qatar,1
+Qatar,ROC,1
+Australia,Switzerland,10
+Federal Republic of Germany,Norway,5
+German Democratic Republic (Germany),Norway,11
+Czech Republic,Norway,9
+Croatia,Norway,4
+Bulgaria,Germany,15
+Belarus,Norway,7
+Norway,Slovenia,7
+Germany,Slovakia,13
+France,Slovakia,12
+Belarus,Czech Republic,3
+Czech Republic,France,10
+Russian Federation,Slovakia,3
+Belarus,Switzerland,1
+Kazakhstan,Norway,6
+Belarus,Kazakhstan,2
+Sweden,Unified Team,9
+Norway,Ukraine,1
+Finland,German Democratic Republic (Germany),11
+Slovakia,Ukraine,1
+Belarus,Canada,3
+Belarus,Ukraine,6
+France,Ukraine,8
+Sweden,Ukraine,2
+France,ROC,12
+Belarus,France,5
+Czech Republic,Italy,9
+ROC,Sweden,3
+Belarus,Slovakia,2
+Norway,Slovakia,1
+Slovakia,Sweden,1
+Belarus,Sweden,4
+Canada,Latvia,2
+Belgium,Switzerland,8
+Latvia,United States of America,4
+Russian Federation,Switzerland,11
+Azerbaijan,Great Britain,3
+Great Britain,Kazakhstan,9
+Azerbaijan,Italy,4
+Italy,Kazakhstan,4
+Azerbaijan,Kazakhstan,5
+France,Kazakhstan,8
+Croatia,Great Britain,5
+Croatia,Kazakhstan,1
+Democratic People's Republic of Korea,Hungary,3
+Hungary,Spain,10
+Democratic People's Republic of Korea,Great Britain,2
+Democratic People's Republic of Korea,Spain,4
+People's Republic of China,Thailand,9
+Ireland,Thailand,3
+Russian Federation,Thailand,5
+Ireland,Russian Federation,3
+Colombia,Uzbekistan,1
+Cuba,Uzbekistan,10
+United States of America,Uzbekistan,8
+Colombia,Cuba,1
+Colombia,United States of America,4
+Azerbaijan,Cuba,8
+Azerbaijan,France,4
+Azerbaijan,Germany,2
+Kazakhstan,Russian Federation,23
+Germany,Kazakhstan,7
+Cuba,Democratic People's Republic of Korea,15
+Democratic People's Republic of Korea,United States of America,7
+Cuba,Hungary,10
+Cuba,Thailand,9
+Italy,Thailand,1
+Cuba,Italy,16
+Kenya,Yugoslavia,1
+Turkey,Yugoslavia,1
+Brazil,Mexico,4
+Mexico,Uganda,1
+Brazil,Poland,2
+Poland,Uganda,3
+Brazil,Uganda,1
+Bulgaria,Ireland,1
+Bulgaria,Hungary,17
+Ireland,Soviet Union,4
+Hungary,Ireland,3
+Bulgaria,Uganda,1
+Bulgaria,Poland,21
+Cuba,Uganda,2
+German Democratic Republic (Germany),Republic of Korea,3
+Kazakhstan,Thailand,3
+France,Thailand,2
+Thailand,Ukraine,1
+Cuba,Turkey,9
+Russian Federation,Turkey,4
+Mongolia,People's Republic of China,5
+Cuba,Mongolia,5
+Ireland,Mongolia,2
+Cuba,Ireland,7
+Bulgaria,Philippines,3
+Philippines,Ukraine,2
+Philippines,Spain,1
+Spain,Ukraine,4
+Cuba,Philippines,1
+Germany,Philippines,4
+United States of America,Venezuela,5
+Italy,Venezuela,1
+Italy,Zambia,1
+Venezuela,Zambia,1
+Republic of Korea,Venezuela,2
+Poland,Venezuela,1
+Cuba,Puerto Rico,3
+Democratic People's Republic of Korea,Thailand,5
+Democratic People's Republic of Korea,Puerto Rico,1
+Puerto Rico,Thailand,2
+Democratic People's Republic of Korea,Soviet Union,8
+Bulgaria,Democratic People's Republic of Korea,3
+Hungary,Philippines,1
+Democratic People's Republic of Korea,France,5
+Cuba,Spain,6
+Hungary,Mexico,3
+Great Britain,India,4
+Colombia,Great Britain,5
+Thailand,Uzbekistan,1
+Azerbaijan,Thailand,2
+Azerbaijan,Uzbekistan,5
+Hungary,Russian Federation,19
+Hungary,Thailand,1
+Cuba,Morocco,1
+Democratic People's Republic of Korea,Ireland,1
+Ireland,Morocco,1
+Democratic People's Republic of Korea,Morocco,1
+Mauritius,Mongolia,1
+Mongolia,Republic of Moldova,1
+Cuba,Mauritius,1
+Cuba,Republic of Moldova,1
+Mauritius,Republic of Moldova,1
+Finland,Republic of Korea,4
+Ireland,Republic of Korea,2
+Hungary,Puerto Rico,1
+Italy,Puerto Rico,1
+Dominican Republic,Italy,2
+Dominican Republic,Mexico,2
+Canada,Dominican Republic,1
+Chile,Germany,3
+Chile,Republic of Korea,1
+Chile,Ireland,1
+Soviet Union,Uganda,1
+Japan,Soviet Union,88
+Japan,Uganda,1
+Republic of Korea,Uganda,1
+Cuba,Venezuela,2
+Cuba,Guyana,1
+Guyana,Venezuela,1
+Romania,Venezuela,2
+Guyana,Romania,1
+Cuba,Mexico,5
+Great Britain,Mexico,6
+Thailand,United States of America,5
+Bulgaria,Colombia,1
+Bulgaria,Thailand,3
+Colombia,Thailand,2
+Japan,Mexico,2
+Japan,Uruguay,1
+Republic of Korea,Uruguay,1
+Mexico,Uruguay,1
+Argentina,Republic of Korea,2
+France,Romania,16
+France,Ireland,2
+Hungary,United Arab Republic,1
+Soviet Union,United Arab Republic,1
+Japan,United Arab Republic,1
+Mongolia,Russian Federation,4
+Uzbekistan,Venezuela,1
+People's Republic of China,Uzbekistan,4
+People's Republic of China,Venezuela,5
+Argentina,Netherlands,10
+Argentina,Germany,11
+Poland,South Africa,2
+Democratic People's Republic of Korea,Russian Federation,4
+Democratic People's Republic of Korea,Germany,4
+Democratic People's Republic of Korea,Republic of Korea,8
+Argentina,Thailand,1
+Argentina,Bulgaria,2
+Germany,Spain,18
+Turkey,Ukraine,2
+Azerbaijan,Ukraine,6
+France,Turkey,9
+Azerbaijan,Turkey,5
+Czechoslovakia,South Africa,3
+Nigeria,Turkey,1
+Nigeria,Venezuela,1
+Turkey,Venezuela,1
+Kenya,Mexico,1
+Bulgaria,Mexico,2
+Bulgaria,Kenya,1
+Colombia,Soviet Union,2
+Colombia,Kenya,2
+Hungary,Kenya,3
+Colombia,Hungary,2
+Finland,South Africa,2
+Republic of Korea,Romania,2
+Morocco,Republic of Korea,1
+Kazakhstan,Morocco,2
+Philippines,Soviet Union,1
+Ireland,Japan,1
+Russian Federation,Uzbekistan,10
+Algeria,Bulgaria,1
+Mongolia,United States of America,4
+Germany,Mongolia,4
+Mongolia,Republic of Korea,4
+Armenia,Russian Federation,4
+Armenia,France,2
+Armenia,Cuba,6
+Lithuania,Ukraine,1
+Lithuania,Republic of Korea,1
+Cameroon,United States of America,1
+Cameroon,Puerto Rico,1
+Puerto Rico,Republic of Korea,2
+Cameroon,Republic of Korea,1
+Poland,Yugoslavia,6
+Romania,Yugoslavia,10
+Colombia,Poland,1
+Brazil,Mongolia,2
+France,Mongolia,3
+Argentina,Poland,1
+German Democratic Republic (Germany),Mongolia,2
+Mongolia,Sweden,1
+Mexico,Ukraine,2
+Ireland,Poland,1
+Canada,Denmark,8
+Argentina,Denmark,4
+Belgium,South Africa,1
+Belgium,Denmark,11
+Romania,Thailand,3
+Dominican Republic,Thailand,2
+Cuba,Dominican Republic,1
+Italy,Ukraine,8
+Mongolia,Ukraine,2
+Italy,Mongolia,3
+Germany,Uzbekistan,3
+Azerbaijan,Russian Federation,12
+Ireland,Tajikistan,1
+Brazil,Ireland,2
+Russian Federation,Tajikistan,2
+Brazil,Russian Federation,14
+Brazil,Tajikistan,2
+Finland,People's Republic of China,3
+Finland,Russian Federation,10
+Cuba,Tunisia,1
+Germany,Tunisia,2
+Kazakhstan,Tunisia,1
+Cuba,Finland,4
+Canada,Finland,18
+Thailand,Yugoslavia,1
+Niger,United States of America,1
+Bulgaria,Niger,1
+Niger,Yugoslavia,1
+Czechoslovakia,Ghana,1
+Czechoslovakia,Poland,5
+Ghana,United States of America,3
+Ghana,Poland,3
+Algeria,Uzbekistan,1
+Poland,Tunisia,1
+Ghana,Soviet Union,2
+Soviet Union,Tunisia,1
+Ghana,Tunisia,1
+Argentina,New Zealand,3
+Argentina,Canada,2
+German Democratic Republic (Germany),Uganda,1
+Puerto Rico,Russian Federation,1
+Puerto Rico,Romania,1
+Ireland,Puerto Rico,1
+Denmark,Poland,5
+Denmark,Soviet Union,9
+Cameroon,German Democratic Republic (Germany),1
+Argentina,German Democratic Republic (Germany),2
+Cameroon,Soviet Union,1
+Argentina,Cameroon,1
+Argentina,Soviet Union,7
+German Democratic Republic (Germany),Venezuela,1
+Federal Republic of Germany,Venezuela,2
+Cuba,Kenya,1
+Republic of Moldova,Russian Federation,2
+Republic of Moldova,Ukraine,1
+Republic of Moldova,Romania,2
+Kazakhstan,Republic of Korea,5
+Kazakhstan,People's Republic of China,14
+Kazakhstan,Uzbekistan,7
+Morocco,Uzbekistan,1
+France,Uzbekistan,2
+France,Morocco,1
+Belgium,Italy,19
+Argentina,South Africa,6
+Denmark,Norway,20
+Argentina,Norway,3
+Hungary,Netherlands,10
+Hungary,South Africa,4
+Cuba,Yugoslavia,3
+Canada,Republic of Korea,27
+Kazakhstan,Romania,2
+Nigeria,Soviet Union,1
+Nigeria,Poland,2
+Cuba,India,3
+India,Ireland,1
+Japan,Uzbekistan,6
+Brazil,Uzbekistan,2
+Great Britain,Uzbekistan,4
+Mexico,Uzbekistan,1
+Azerbaijan,Mexico,1
+Algeria,Turkey,1
+Bulgaria,Sweden,7
+Algeria,Republic of Korea,1
+Algeria,Puerto Rico,1
+Argentina,Chile,1
+Argentina,France,5
+Finland,Ghana,1
+German Democratic Republic (Germany),Pakistan,1
+Canada,Pakistan,1
+Kenya,Pakistan,1
+Azerbaijan,Hungary,6
+Germany,Netherlands,63
+Denmark,Italy,17
+Kazakhstan,Netherlands,2
+Egypt,United States of America,4
+Belarus,Uzbekistan,2
+Belarus,Egypt,2
+Egypt,Uzbekistan,1
+Hungary,Unified Team,10
+Poland,Unified Team,7
+Ireland,Kazakhstan,1
+Brazil,Kazakhstan,1
+Brazil,Ukraine,7
+New Zealand,Yugoslavia,2
+Algeria,Yugoslavia,1
+Chile,United States of America,3
+Chile,Romania,1
+German Democratic Republic (Germany),Yugoslavia,5
+Nigeria,Yugoslavia,1
+Czech Republic,Uzbekistan,1
+Ukraine,Uzbekistan,1
+Denmark,Sweden,30
+Denmark,France,24
+Cuba,Syrian Arab Republic,1
+Cuba,Egypt,2
+Egypt,Syrian Arab Republic,1
+Netherlands,Nigeria,1
+New Zealand,Nigeria,1
+Netherlands,New Zealand,10
+Azerbaijan,Bulgaria,4
+Netherlands,Poland,11
+Cuba,Georgia,5
+Georgia,Russian Federation,10
+Georgia,Germany,3
+Bermuda,Cuba,1
+Bermuda,Romania,1
+Bermuda,United States of America,2
+Egypt,Russian Federation,3
+Egypt,Italy,1
+Tonga,Ukraine,1
+Nigeria,Ukraine,2
+Russian Federation,Tonga,1
+Nigeria,Tonga,1
+Nigeria,Russian Federation,1
+Cuba,Denmark,2
+Denmark,Nigeria,1
+Bulgaria,Nigeria,1
+Bulgaria,Denmark,1
+Great Britain,Yugoslavia,2
+Canada,Soviet Union,17
+Italy,Uzbekistan,3
+Estonia,Sweden,7
+Cuba,Ghana,1
+Cuba,ROC,8
+Ghana,ROC,1
+Great Britain,Philippines,2
+Japan,Philippines,4
+Kazakhstan,Philippines,2
+Japan,Kazakhstan,9
+New Zealand,ROC,3
+Brazil,New Zealand,4
+Armenia,Australia,1
+Armenia,United States of America,2
+Azerbaijan,ROC,2
+Brazil,Philippines,1
+Philippines,ROC,1
+Ireland,ROC,1
+Italy,Philippines,1
+Bulgaria,Japan,19
+Bulgaria,Turkey,11
+Bulgaria,Chinese Taipei,2
+Chinese Taipei,Turkey,3
+Brazil,Thailand,1
+Brazil,Finland,2
+Finland,Thailand,1
+Netherlands,ROC,2
+India,Turkey,2
+Canada,Czechoslovakia,11
+Great Britain,Slovakia,4
+Czech Republic,Slovakia,7
+France,German Democratic Republic (Germany),9
+Poland,Slovakia,1
+Czech Republic,Poland,2
+Czech Republic,Slovenia,3
+Australia,New Zealand,21
+Germany,Togo,1
+France,Togo,1
+Austria,German Democratic Republic (Germany),11
+Slovakia,United States of America,7
+Australia,Austria,9
+Canada,Hungary,10
+Azerbaijan,Brazil,3
+Czech Republic,Latvia,1
+Czech Republic,Hungary,4
+Hungary,Latvia,3
+Bulgaria,Latvia,3
+Denmark,Federal Republic of Germany,4
+Hungary,Slovakia,2
+Bulgaria,Unified Team,6
+Denmark,Romania,3
+Canada,Yugoslavia,1
+Belarus,Hungary,5
+Austria,Czechoslovakia,5
+Czechoslovakia,Denmark,2
+Hungary,Republic of Moldova,1
+Romania,Spain,6
+Czech Republic,Spain,4
+New Zealand,Ukraine,1
+Azerbaijan,New Zealand,1
+Azerbaijan,Poland,1
+Denmark,Hungary,13
+Denmark,New Zealand,10
+Germany,Serbia,2
+Australia,Serbia,2
+Lithuania,Spain,1
+New Zealand,Norway,3
+Austria,Netherlands,14
+Bulgaria,Norway,3
+German Democratic Republic (Germany),New Zealand,8
+Israel,Norway,1
+Bulgaria,Israel,1
+Denmark,Netherlands,18
+Federal Republic of Germany,Netherlands,9
+Hungary,Portugal,2
+Germany,Portugal,2
+Australia,Belarus,4
+Belarus,Spain,2
+Bulgaria,Netherlands,1
+Australia,Czech Republic,3
+Norway,Romania,3
+Brazil,Republic of Moldova,1
+Brazil,People's Republic of China,6
+People's Republic of China,Republic of Moldova,2
+Slovakia,Spain,1
+Canada,People's Republic of China,49
+Great Britain,MIX,5
+Estonia,Norway,6
+Finland,Unified Team,3
+Czech Republic,Switzerland,6
+Italy,Unified Team,8
+Finland,Kazakhstan,1
+Estonia,Russian Federation,4
+Canada,Czech Republic,7
+Czechoslovakia,Norway,4
+Norway,Olympic Athletes from Russia,6
+Olympic Athletes from Russia,Sweden,2
+Finland,ROC,4
+Olympic Athletes from Russia,Switzerland,2
+France,Olympic Athletes from Russia,2
+Finland,Olympic Athletes from Russia,1
+Italy,Olympic Athletes from Russia,1
+Norway,Unified Team,4
+Austria,ROC,4
+Canada,Russian Federation,30
+Poland,Slovenia,3
+Australia,Latvia,1
+Colombia,Latvia,1
+Australia,Colombia,1
+Colombia,Netherlands,5
+Colombia,New Zealand,1
+Great Britain,Venezuela,1
+Australia,Venezuela,2
+Netherlands,Spain,6
+Netherlands,Switzerland,9
+Australia,Slovenia,2
+Netherlands,Slovenia,2
+Ecuador,Slovenia,1
+Belgium,Slovenia,2
+Belgium,Ecuador,1
+Italy,Portugal,4
+Belgium,Portugal,1
+Denmark,Switzerland,9
+Latvia,Netherlands,1
+Belgium,Germany,7
+Colombia,Norway,1
+Belgium,Poland,3
+Netherlands,Russian Federation,15
+Lithuania,Netherlands,2
+Belgium,Sweden,13
+Australia,Denmark,13
+Austria,Greece,2
+Denmark,German Democratic Republic (Germany),7
+Netherlands,South Africa,4
+Australia,Czechoslovakia,2
+Belarus,People's Republic of China,17
+Malaysia,Netherlands,2
+Great Britain,"Hong Kong, China",1
+"Hong Kong, China",People's Republic of China,3
+Argentina,Russian Federation,1
+Australia,Belgium,4
+Belgium,Mexico,1
+Federal Republic of Germany,Mexico,1
+Spain,Uruguay,1
+Russian Federation,Uruguay,1
+Denmark,ROC,1
+Japan,Netherlands,22
+"Hong Kong, China",Ukraine,1
+Canada,"Hong Kong, China",2
+Colombia,Russian Federation,3
+Colombia,Mexico,1
+Estonia,Netherlands,2
+Australia,Malaysia,1
+Australia,Mexico,1
+Canada,Malaysia,1
+France,Portugal,2
+Netherlands,Norway,31
+Ireland,Switzerland,1
+Ireland,Netherlands,4
+Great Britain,Saudi Arabia,1
+Netherlands,Saudi Arabia,2
+France,Mexico,2
+Poland,Switzerland,7
+Spain,Sweden,7
+Netherlands,Portugal,1
+Chile,Great Britain,1
+Mexico,Spain,3
+Portugal,Sweden,1
+Czech Republic,"Hong Kong, China",1
+"Hong Kong, China",Italy,3
+Hungary,Republic of Korea,12
+Estonia,People's Republic of China,2
+Estonia,Romania,1
+Estonia,Republic of Korea,2
+Egypt,People's Republic of China,5
+Egypt,Republic of Korea,2
+Russian Federation,Tunisia,2
+Italy,Tunisia,2
+Belgium,Hungary,4
+Denmark,Greece,8
+Bohemia,Italy,1
+People's Republic of China,Switzerland,8
+Norway,Venezuela,1
+Norway,Republic of Korea,11
+Hungary,People's Republic of China,11
+Hungary,Switzerland,5
+Czechoslovakia,Unified Team,3
+Canada,Kazakhstan,3
+Austria,Belgium,2
+Canada,Olympic Athletes from Russia,4
+Olympic Athletes from Russia,United States of America,1
+Argentina,Uruguay,2
+Italy,Uruguay,2
+Belgium,Spain,3
+Argentina,Paraguay,1
+Italy,Paraguay,1
+Argentina,Nigeria,2
+Argentina,Brazil,2
+Ghana,Spain,1
+Sweden,Yugoslavia,3
+Denmark,Yugoslavia,2
+Brazil,Yugoslavia,1
+Switzerland,Uruguay,1
+Sweden,Uruguay,1
+Brazil,Federal Republic of Germany,6
+Cameroon,Spain,2
+Cameroon,Chile,1
+Chile,Spain,3
+Sweden,Uzbekistan,1
+Norway,Uzbekistan,2
+ROC,Switzerland,3
+Olympic Athletes from Russia,Ukraine,1
+Olympic Athletes from Russia,People's Republic of China,1
+Japan,Norway,14
+Estonia,Switzerland,2
+New Zealand,Republic of Korea,1
+Chinese Taipei,Slovakia,1
+German Democratic Republic (Germany),Japan,12
+Bulgaria,Canada,3
+Japan,Poland,15
+Romania,Unified Team,7
+Belarus,Bulgaria,9
+Bulgaria,People's Republic of China,19
+Federal Republic of Germany,Japan,6
+Czechoslovakia,Yugoslavia,10
+Japan,Ukraine,8
+Republic of Korea,Uzbekistan,4
+Romania,Switzerland,2
+Democratic People's Republic of Korea,Unified Team,4
+Japan,Yugoslavia,6
+Greece,Italy,3
+Germany,Yugoslavia,2
+Brazil,Greece,2
+Czechoslovakia,Romania,4
+Czechoslovakia,Japan,5
+Latvia,Spain,1
+Latvia,Romania,1
+Belarus,Republic of Korea,3
+Democratic People's Republic of Korea,Japan,11
+Democratic People's Republic of Korea,People's Republic of China,16
+Croatia,Russian Federation,2
+France,Iceland,1
+Iceland,Spain,1
+Republic of Korea,Yugoslavia,6
+Denmark,Ukraine,2
+Montenegro,Norway,1
+Montenegro,Spain,1
+People's Republic of China,Yugoslavia,3
+Belgium,India,1
+India,Netherlands,4
+Germany,India,3
+Germany,Pakistan,2
+Australia,Pakistan,4
+Federal Republic of Germany,Pakistan,2
+Great Britain,Pakistan,1
+India,Pakistan,5
+New Zealand,Pakistan,1
+India,Soviet Union,2
+Federal Republic of Germany,India,1
+Pakistan,Spain,1
+Czechoslovakia,Zimbabwe,1
+Soviet Union,Zimbabwe,1
+Argentina,People's Republic of China,2
+Finland,Slovakia,2
+ROC,Slovakia,1
+Germany,Olympic Athletes from Russia,1
+France,Israel,5
+Israel,Japan,3
+Brazil,Israel,1
+Argentina,Romania,1
+Argentina,Cuba,1
+Argentina,Japan,3
+Argentina,Kazakhstan,1
+Austria,Republic of Korea,2
+Austria,Uzbekistan,1
+Netherlands,Uzbekistan,2
+Estonia,Japan,3
+Estonia,France,2
+Belgium,People's Republic of China,3
+Belgium,Japan,7
+Algeria,Democratic People's Republic of Korea,1
+Algeria,Japan,1
+Democratic People's Republic of Korea,Italy,2
+Italy,Kosovo,1
+Japan,Kosovo,3
+Kosovo,Russian Federation,1
+Brazil,Romania,1
+Brazil,Hungary,2
+Belgium,Romania,3
+Belgium,Russian Federation,2
+Republic of Korea,Spain,4
+Belgium,Republic of Korea,6
+Democratic People's Republic of Korea,Netherlands,2
+Brazil,Portugal,1
+Mongolia,Portugal,1
+Japan,Mongolia,10
+Japan,Portugal,3
+Israel,Unified Team,1
+Austria,Cuba,1
+Cuba,Slovenia,2
+People's Republic of China,Slovenia,4
+Israel,Slovenia,1
+Israel,Netherlands,1
+Mongolia,Soviet Union,4
+Bulgaria,Mongolia,4
+Mongolia,Poland,1
+Bulgaria,Slovakia,1
+Cuba,Slovakia,2
+Georgia,Hungary,4
+Georgia,Japan,11
+Georgia,Republic of Korea,7
+Georgia,Turkey,7
+France,Georgia,5
+Georgia,Italy,1
+Colombia,Germany,2
+Colombia,Japan,3
+Hungary,Israel,1
+Israel,Republic of Korea,2
+Great Britain,Mongolia,1
+Azerbaijan,Republic of Korea,4
+Azerbaijan,Tajikistan,1
+Republic of Korea,Tajikistan,1
+Azerbaijan,Japan,12
+Azerbaijan,Georgia,6
+Azerbaijan,Belgium,1
+Belgium,Georgia,1
+Belarus,Brazil,1
+Belarus,Latvia,1
+Japan,Switzerland,6
+Brazil,Slovenia,2
+Portugal,Republic of Korea,2
+Estonia,Portugal,1
+Russian Federation,United Arab Emirates,1
+United Arab Emirates,United States of America,1
+Japan,United Arab Emirates,1
+Austria,Brazil,2
+Cuba,Switzerland,1
+Georgia,Netherlands,1
+Algeria,Georgia,1
+Georgia,Switzerland,1
+Egypt,Georgia,2
+Algeria,Switzerland,1
+Algeria,Egypt,1
+Egypt,Switzerland,1
+Greece,Republic of Korea,4
+Greece,Japan,3
+Georgia,People's Republic of China,3
+Netherlands,Ukraine,1
+Iceland,Republic of Korea,1
+Federal Republic of Germany,Republic of Korea,1
+Federal Republic of Germany,Iceland,1
+Belarus,Israel,2
+Germany,Israel,2
+Kazakhstan,Mongolia,1
+Mongolia,Netherlands,2
+Azerbaijan,Mongolia,1
+Azerbaijan,Netherlands,1
+Azerbaijan,Czech Republic,2
+Czech Republic,Japan,2
+Bulgaria,France,2
+Georgia,Mongolia,2
+Czech Republic,ROC,1
+Georgia,ROC,2
+Czech Republic,Georgia,1
+Portugal,ROC,1
+Chinese Taipei,France,2
+Chinese Taipei,Kazakhstan,1
+Brazil,Georgia,1
+Belgium,Mongolia,1
+Austria,Mongolia,1
+Hungary,Uzbekistan,1
+Georgia,Uzbekistan,1
+Japan,Kyrgyzstan,4
+Kyrgyzstan,Republic of Korea,1
+Cuba,Kyrgyzstan,1
+Kosovo,Ukraine,1
+Kosovo,Mongolia,1
+France,Kosovo,1
+Canada,Kosovo,1
+Canada,Slovenia,2
+Egypt,Japan,1
+Egypt,Romania,1
+Egypt,Federal Republic of Germany,1
+Spain,Turkey,1
+Islamic Republic of Iran,Turkey,15
+Saudi Arabia,Turkey,1
+Islamic Republic of Iran,Japan,13
+Islamic Republic of Iran,Saudi Arabia,1
+Japan,Saudi Arabia,1
+Jordan,Turkey,1
+Jordan,Kazakhstan,1
+France,Jordan,1
+Kazakhstan,Turkey,3
+"Hong Kong, China",Japan,2
+"Hong Kong, China",Spain,1
+Azerbaijan,People's Republic of China,5
+Azerbaijan,Egypt,1
+Egypt,Kazakhstan,4
+Austria,Chinese Taipei,1
+Austria,Ukraine,1
+Egypt,Serbia,1
+Egypt,Turkey,3
+People's Republic of China,Serbia,4
+Serbia,Turkey,1
+Austria,Latvia,3
+Canada,Tunisia,3
+Greece,Netherlands,2
+Brazil,Lithuania,1
+Lithuania,Russian Federation,3
+Czech Republic,Lithuania,1
+Hungary,Kazakhstan,1
+Czech Republic,People's Republic of China,4
+Egypt,Great Britain,4
+Argentina,Mexico,1
+Bulgaria,ROC,2
+Belarus,ROC,2
+Israel,ROC,1
+Ireland,Italy,1
+Croatia,Romania,1
+Croatia,Denmark,1
+Croatia,Greece,3
+New Zealand,Romania,3
+Canada,ROC,4
+Australia,Estonia,2
+Estonia,Great Britain,1
+Great Britain,Uruguay,1
+Denmark,Uruguay,1
+New Zealand,Slovenia,1
+Belgium,Yugoslavia,1
+Lithuania,Norway,1
+Australia,Croatia,6
+Belarus,Romania,4
+New Zealand,Switzerland,3
+Greece,Poland,4
+Ireland,Norway,1
+Finland,Netherlands,4
+New Zealand,South Africa,2
+Bulgaria,New Zealand,1
+Bulgaria,Estonia,1
+Czech Republic,New Zealand,3
+Australia,Uruguay,2
+Argentina,Federal Republic of Germany,2
+Croatia,New Zealand,3
+Belarus,Denmark,3
+Czech Republic,Denmark,2
+Germany,MIX,1
+Fiji,Great Britain,1
+Fiji,South Africa,1
+Fiji,New Zealand,2
+Argentina,Fiji,1
+Fiji,France,1
+Portugal,Ukraine,1
+Estonia,Spain,1
+Federal Republic of Germany,Spain,1
+Greece,Spain,2
+Brazil,Denmark,2
+Denmark,Estonia,1
+Belgium,Norway,6
+Netherlands Antilles,New Zealand,1
+Netherlands Antilles,United States of America,1
+Greece,Soviet Union,4
+Spain,US Virgin Islands,1
+New Zealand,US Virgin Islands,1
+Australia,Cyprus,1
+Cyprus,Sweden,1
+Lithuania,People's Republic of China,2
+Denmark,Ireland,1
+Greece,Israel,2
+Great Britain,Israel,1
+Argentina,Greece,2
+Argentina,Israel,1
+Argentina,Austria,3
+Israel,New Zealand,1
+"Hong Kong, China",New Zealand,1
+Ireland,Spain,1
+Bahamas,Italy,1
+Portugal,Soviet Union,1
+Bahamas,Sweden,1
+Islamic Republic of Iran,Serbia,1
+Islamic Republic of Iran,People's Republic of China,3
+Serbia and Montenegro,Ukraine,1
+Bulgaria,Serbia and Montenegro,1
+Independent Olympic Athletes,Unified Team,1
+Bulgaria,Independent Olympic Athletes,2
+People's Republic of China,Serbia and Montenegro,1
+Australia,Serbia and Montenegro,1
+Republic of Korea,Serbia,3
+Italy,Serbia,3
+Brazil,Vietnam,1
+People's Republic of China,Vietnam,2
+Poland,Serbia and Montenegro,2
+Germany,Serbia and Montenegro,1
+Bulgaria,Republic of Korea,7
+Independent Olympic Athletes,Republic of Korea,2
+People's Republic of China,Slovakia,2
+Finland,India,1
+India,Romania,1
+India,Italy,1
+Greece,Switzerland,2
+Bulgaria,Czech Republic,2
+Mongolia,Unified Team,1
+Bulgaria,Kazakhstan,3
+Latvia,Unified Team,1
+France,Haiti,1
+Czech Republic,Serbia,1
+Peru,Switzerland,1
+Peru,Sweden,1
+Republic of Korea,Vietnam,2
+Democratic People's Republic of Korea,Vietnam,1
+Russian Federation,Serbia and Montenegro,4
+Cuba,Czech Republic,1
+Austria,People's Republic of China,1
+Austria,Kazakhstan,1
+Slovenia,Ukraine,1
+Finland,Slovenia,2
+Kazakhstan,Slovakia,2
+Independent Olympic Athletes,Norway,1
+Belarus,Belgium,1
+Germany,Venezuela,1
+Czechoslovakia,Republic of Korea,2
+Democratic People's Republic of Korea,Romania,2
+Kuwait,United States of America,1
+Denmark,Kuwait,1
+San Marino,Spain,1
+San Marino,United States of America,3
+Italy,Slovakia,1
+San Marino,Slovakia,1
+India,United Arab Emirates,1
+People's Republic of China,United Arab Emirates,1
+Independent Olympic Athletes,Italy,2
+Great Britain,Independent Olympic Athletes,1
+Great Britain,Kuwait,1
+Australia,Kuwait,1
+Denmark,Qatar,1
+Independent Olympic Athletes,Sweden,1
+Chile,German Democratic Republic (Germany),1
+People's Republic of China,Peru,2
+Italy,Peru,2
+Peru,United States of America,1
+Canada,Greece,1
+Croatia,Kuwait,1
+Italy,Kuwait,1
+Olympic Athletes from Russia,Republic of Korea,2
+Netherlands,Olympic Athletes from Russia,2
+Hungary,ROC,1
+Great Britain,Olympic Athletes from Russia,1
+Norway,Yugoslavia,2
+Austria,Poland,3
+ROC,Slovenia,2
+Russian Federation,Slovenia,2
+Republic of Korea,Switzerland,2
+Republic of Korea,Slovenia,1
+Czech Republic,Netherlands,5
+Czech Republic,Olympic Athletes from Russia,1
+Czech Republic,Republic of Korea,1
+Japan,South Africa,3
+United States of America,Zimbabwe,6
+France,Zimbabwe,1
+Australia,Unified Team,3
+Japan,Lithuania,1
+Suriname,United States of America,2
+Poland,Suriname,1
+Singapore,United States of America,1
+Singapore,South Africa,1
+Hungary,Singapore,1
+Great Britain,Suriname,1
+Netherlands,Slovakia,1
+Brazil,Unified Team,1
+Australasia,United States of America,2
+Belarus,Netherlands,2
+People's Republic of China,Tunisia,1
+Australasia,Canada,2
+Russian Federation,Zimbabwe,1
+Japan,Zimbabwe,2
+Germany,Zimbabwe,1
+People's Republic of China,South Africa,1
+Costa Rica,Germany,1
+Costa Rica,German Democratic Republic (Germany),1
+Australia,Costa Rica,1
+Costa Rica,Slovakia,1
+Ukraine,Zimbabwe,1
+Canada,Ireland,1
+Australia,Zimbabwe,2
+Australasia,Austria,1
+Costa Rica,United States of America,1
+Argentina,Ukraine,1
+Australia,"Hong Kong, China",2
+People's Republic of China,Singapore,3
+Denmark,"Hong Kong, China",1
+Republic of Korea,Singapore,1
+Japan,Singapore,1
+Azerbaijan,Niger,1
+Brazil,Niger,1
+Niger,Republic of Korea,1
+Republic of Korea,Thailand,4
+Azerbaijan,Serbia,2
+Serbia,Thailand,2
+Dominican Republic,People's Republic of China,3
+Dominican Republic,Republic of Korea,1
+Republic of Korea,Turkey,7
+Croatia,Republic of Korea,3
+Croatia,Turkey,1
+Great Britain,Islamic Republic of Iran,1
+Egypt,Spain,2
+Islamic Republic of Iran,Spain,1
+Egypt,Islamic Republic of Iran,4
+Turkey,Vietnam,1
+Spain,Thailand,2
+Croatia,Thailand,1
+Canada,Croatia,1
+Ivory Coast,Republic of Korea,1
+France,Ivory Coast,1
+Ivory Coast,Turkey,1
+Chinese Taipei,Islamic Republic of Iran,1
+Islamic Republic of Iran,Republic of Korea,8
+Afghanistan,Turkey,1
+Afghanistan,Islamic Republic of Iran,1
+Islamic Republic of Iran,United States of America,21
+Afghanistan,United States of America,1
+Jordan,Russian Federation,1
+Jordan,Spain,1
+Jordan,Republic of Korea,1
+Colombia,Spain,1
+Colombia,Republic of Korea,1
+Chinese Taipei,Greece,1
+Chinese Taipei,Spain,1
+France,Venezuela,1
+Mexico,Norway,1
+France,Serbia,2
+Russian Federation,Serbia,1
+Mexico,Serbia,1
+Islamic Republic of Iran,Italy,1
+Great Britain,Ivory Coast,1
+Ivory Coast,Tunisia,1
+Azerbaijan,Ivory Coast,1
+Azerbaijan,Tunisia,1
+Nigeria,Republic of Korea,2
+Greece,Kazakhstan,2
+Greece,Nigeria,1
+Gabon,Italy,1
+Gabon,People's Republic of China,1
+Cuba,Gabon,1
+Chinese Taipei,Thailand,3
+Chinese Taipei,Mexico,2
+Chinese Taipei,Egypt,1
+Egypt,Mexico,1
+Thailand,Venezuela,1
+Afghanistan,Mexico,1
+Chinese Taipei,Dominican Republic,1
+Afghanistan,Dominican Republic,1
+Afghanistan,Chinese Taipei,1
+North Macedonia,ROC,1
+Cuba,North Macedonia,1
+North Macedonia,Republic of Korea,1
+ROC,Tunisia,1
+Republic of Korea,Tunisia,1
+Turkey,Uzbekistan,2
+Great Britain,Turkey,1
+Egypt,Jordan,1
+Jordan,ROC,1
+Croatia,Jordan,1
+Egypt,ROC,1
+Croatia,Egypt,2
+Great Britain,Serbia,1
+Israel,Thailand,1
+Israel,Serbia,1
+ROC,Turkey,2
+Chinese Taipei,ROC,1
+Croatia,Côte d'Ivoire,1
+Côte d'Ivoire,Great Britain,1
+Côte d'Ivoire,Egypt,1
+ROC,Spain,1
+Switzerland,Unified Team,1
+Croatia,Unified Team,1
+Chile,Serbia,1
+Argentina,Switzerland,1
+Bohemia,Great Britain,1
+Bohemia,France,1
+Germany,Puerto Rico,1
+Czech Republic,Puerto Rico,1
+Brazil,Czech Republic,1
+Switzerland,Ukraine,1
+Greece,MIX,1
+Chile,Croatia,1
+Argentina,Croatia,1
+Austria,South Africa,1
+Australasia,France,1
+Canada,Uzbekistan,1
+Belarus,New Zealand,1
+Bermuda,Great Britain,1
+Argentina,ROC,1
+Brazil,Serbia,1
+Netherlands,Serbia and Montenegro,1
+Italy,Serbia and Montenegro,2
+Peru,Soviet Union,1
+Greece,Serbia,1
+Hungary,Serbia,3
+Hungary,Serbia and Montenegro,2
+Croatia,Serbia,2
+Belgium,MIX,1
+Armenia,Georgia,2
+Republic of Korea,Samoa,1
+Nigeria,Samoa,1
+Islamic Republic of Iran,Soviet Union,13
+Hungary,Islamic Republic of Iran,6
+Islamic Republic of Iran,Poland,6
+Armenia,Uzbekistan,2
+Armenia,Kazakhstan,1
+Bulgaria,Islamic Republic of Iran,6
+Islamic Republic of Iran,Qatar,1
+Bulgaria,Qatar,1
+Islamic Republic of Iran,Latvia,1
+Islamic Republic of Iran,Russian Federation,13
+Thailand,Turkey,1
+Indonesia,Thailand,3
+Japan,Thailand,1
+Indonesia,Japan,1
+Colombia,Indonesia,4
+Chinese Taipei,Indonesia,2
+Indonesia,Ukraine,1
+Chinese Taipei,Philippines,1
+Philippines,Republic of Korea,1
+Egypt,Trinidad and Tobago,1
+Islamic Republic of Iran,Trinidad and Tobago,1
+Chinese Taipei,Romania,1
+Indonesia,Vietnam,1
+Azerbaijan,Democratic People's Republic of Korea,1
+Democratic People's Republic of Korea,Mexico,1
+Mexico,Thailand,1
+Greece,Turkey,1
+Belgium,Estonia,2
+Singapore,Soviet Union,1
+Iraq,Soviet Union,1
+Iraq,Singapore,1
+Austria,Egypt,1
+Egypt,Germany,5
+Colombia,Democratic People's Republic of Korea,1
+Democratic People's Republic of Korea,Indonesia,1
+Indonesia,Kazakhstan,2
+Belarus,Croatia,1
+Chinese Taipei,Democratic People's Republic of Korea,1
+Canada,Democratic People's Republic of Korea,2
+Canada,Chinese Taipei,2
+Democratic People's Republic of Korea,Kazakhstan,2
+Bulgaria,Lebanon,2
+Italy,Lebanon,1
+Indonesia,Romania,1
+Colombia,Turkey,1
+Colombia,Egypt,1
+Hungary,India,1
+Egypt,France,2
+Egypt,Netherlands,1
+Kazakhstan,Spain,2
+Kazakhstan,Mexico,1
+Cameroon,Egypt,1
+Belarus,Democratic People's Republic of Korea,1
+Colombia,Nigeria,1
+Chinese Taipei,Colombia,1
+Chinese Taipei,Nigeria,1
+Armenia,People's Republic of China,3
+Armenia,Greece,1
+Czechoslovakia,Estonia,4
+Austria,Estonia,1
+Belarus,Georgia,2
+Georgia,Greece,2
+Egypt,Poland,2
+Islamic Republic of Iran,Kazakhstan,2
+Georgia,Poland,1
+Belarus,Islamic Republic of Iran,2
+Islamic Republic of Iran,Lithuania,1
+Belarus,Lithuania,1
+Georgia,Syrian Arab Republic,1
+Georgia,Islamic Republic of Iran,7
+Islamic Republic of Iran,Syrian Arab Republic,1
+Armenia,Latvia,1
+Latvia,Uzbekistan,1
+Indonesia,Venezuela,1
+Georgia,Qatar,1
+Georgia,Venezuela,1
+Qatar,Venezuela,1
+India,Indonesia,1
+People's Republic of China,Philippines,1
+Japan,Turkmenistan,1
+Chinese Taipei,Turkmenistan,1
+Chinese Taipei,Italy,1
+Ecuador,United States of America,1
+Dominican Republic,Ecuador,1
+Ecuador,People's Republic of China,1
+Azerbaijan,United States of America,8
+Azerbaijan,Greece,1
+Soviet Union,Turkey,18
+Democratic People's Republic of Korea,Mongolia,1
+Hungary,Lebanon,2
+Lebanon,Soviet Union,2
+Egypt,Sweden,2
+Federal Republic of Germany,Greece,1
+Islamic Republic of Iran,Ukraine,2
+Cuba,Islamic Republic of Iran,3
+Switzerland,Turkey,2
+Armenia,Azerbaijan,3
+Finland,Turkey,5
+Poland,Turkey,1
+Turkey,Unified Team,4
+Egypt,Soviet Union,1
+Egypt,Hungary,1
+Hungary,Turkey,6
+Azerbaijan,Canada,3
+Armenia,Ukraine,1
+Romania,United Arab Republic,1
+Islamic Republic of Iran,Romania,2
+Islamic Republic of Iran,United Arab Republic,1
+Belarus,Turkey,3
+Azerbaijan,Sweden,1
+Democratic People's Republic of Korea,Georgia,1
+Canada,Colombia,2
+Azerbaijan,Colombia,1
+Azerbaijan,Islamic Republic of Iran,4
+Japan,Tunisia,1
+India,Russian Federation,2
+India,Tunisia,1
+Azerbaijan,India,2
+Belarus,Japan,3
+Kazakhstan,Poland,2
+India,Kazakhstan,2
+Kazakhstan,Sweden,1
+Azerbaijan,Puerto Rico,1
+Georgia,Puerto Rico,1
+Islamic Republic of Iran,Puerto Rico,1
+Georgia,United States of America,2
+Georgia,Ukraine,3
+Azerbaijan,Romania,1
+Romania,Uzbekistan,1
+Cuba,Estonia,1
+Estonia,Turkey,1
+Armenia,Serbia,1
+Georgia,Serbia,1
+Armenia,Lithuania,2
+Azerbaijan,Lithuania,1
+Denmark,Islamic Republic of Iran,1
+Armenia,Islamic Republic of Iran,3
+Islamic Republic of Iran,Sweden,3
+Armenia,Sweden,1
+Armenia,Turkey,1
+Bulgaria,Finland,2
+Georgia,Kazakhstan,1
+Syrian Arab Republic,United States of America,1
+Romania,Syrian Arab Republic,1
+Hungary,Mongolia,1
+Islamic Republic of Iran,Uzbekistan,2
+Armenia,Democratic People's Republic of Korea,1
+Georgia,Tajikistan,1
+Tajikistan,Ukraine,1
+Russian Federation,The Former Yugoslav Republic of Macedonia,1
+Cuba,The Former Yugoslav Republic of Macedonia,1
+Egypt,Finland,2
+Latvia,Sweden,1
+Estonia,Latvia,1
+Poland,Ukraine,1
+Kyrgyzstan,Russian Federation,2
+Islamic Republic of Iran,Kyrgyzstan,1
+Islamic Republic of Iran,Mongolia,1
+Kazakhstan,Kyrgyzstan,1
+Kyrgyzstan,People's Republic of China,1
+Greece,Yugoslavia,1
+Romania,Turkey,1
+India,ROC,2
+Kazakhstan,ROC,1
+ROC,Uzbekistan,1
+ROC,San Marino,1
+Islamic Republic of Iran,ROC,2
+Islamic Republic of Iran,San Marino,1
+Egypt,Ukraine,1
+Azerbaijan,Kyrgyzstan,1
+Hungary,Kyrgyzstan,1
+Serbia,Ukraine,1
+Poland,ROC,1
+Armenia,Poland,1
+Islamic Republic of Iran,Unified Team,1
+Czechoslovakia,Turkey,1
+Finland,Uzbekistan,1
+Bulgaria,Georgia,1
+Canada,Turkey,1
+Republic of Moldova,United States of America,1
+India,Ukraine,1
+Georgia,India,1
+Pakistan,United States of America,1
+Pakistan,Turkey,1
+Czechoslovakia,Mongolia,1
+Mongolia,Turkey,1
+France,Kyrgyzstan,1
+Kyrgyzstan,Ukraine,3
+Belarus,Kyrgyzstan,1
+Lebanon,Sweden,1
+Czechoslovakia,Greece,1
+Belarus,Mongolia,1
+Bulgaria,Kyrgyzstan,1
+Kyrgyzstan,United States of America,1
+Kyrgyzstan,Nigeria,1
