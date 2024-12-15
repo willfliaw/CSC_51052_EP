@@ -11,12 +11,38 @@
             margin: 0;
             overflow: hidden;
         }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0 10px 0;
+            color: #333;
+        }
+        .legend {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            z-index: 10;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
         .link {
             stroke: #999;
             stroke-opacity: 0.2;
         }
         .node {
-            fill: #69b3a2;
             stroke: #333;
             stroke-width: 1.5px;
         }
@@ -29,7 +55,7 @@
         .link.highlight {
             stroke: orange;
             stroke-width: 3px;
-            stroke-opacity: 0.8
+            stroke-opacity: 0.8;
         }
         .tooltip {
             position: absolute;
@@ -42,7 +68,7 @@
         }
         #slider-container {
             position: fixed;
-            top: 10px;
+            top: 60px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
@@ -58,15 +84,34 @@
     </style>
 </head>
 <body>
+    <h1>Olympic Rivalries Network: A Visualization of Competition Over the Years</h1>
     <div id="slider-container">
         <label id="slider-label" for="linkDistance">Adjust Link Distance:</label>
         <input type="range" id="linkDistance" min="50" max="300" value="100">
     </div>
     <div id="network"></div>
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-color" style="background: #69b3a2;"></div>
+            <span>Country (size represents total medals)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: orange;"></div>
+            <span>Selected Country</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #f28b82;"></div>
+            <span>Top Rival Countries</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #999; height: 2px;"></div>
+            <span>Rivalry Link (thickness represents rivalry strength)</span>
+        </div>
+    </div>
 
     <script>
         const width = window.innerWidth;
-        const height = window.innerHeight;
+        const height = window.innerHeight - 100; // Adjusted for title and controls height
         const initialLinkDistance = 100;
 
         // Tooltip for interactivity
@@ -76,7 +121,7 @@
 
         // Load data
         Promise.all([
-            d3.csv("medal_tally_nodes.csv"),
+            d3.csv("medal_tally_nodes_with_medals.csv"),
             d3.csv("medal_tally_edges.csv")
         ]).then(([nodes, links]) => {
             const nodesMap = new Map(nodes.map(d => [d.id, d]));
@@ -87,6 +132,11 @@
                 link.target = nodesMap.get(link.target);
                 link.weight = +link.weight;
             });
+
+            // Set up a scale for node sizes based on total_medals
+            const medalScale = d3.scaleSqrt()
+                .domain([0, d3.max(nodes, d => +d.total_medals)])
+                .range([5, 30]); // Adjusted for better visibility
 
             const simulation = d3.forceSimulation(nodes)
                 .force("link", d3.forceLink(links).id(d => d.id).distance(initialLinkDistance))
@@ -117,14 +167,18 @@
                 .selectAll("circle")
                 .data(nodes)
                 .enter().append("circle")
-                .attr("r", 5)
+                .attr("r", d => medalScale(+d.total_medals)) // Scale node sizes
                 .attr("fill", "#69b3a2")
                 .attr("class", "node")
                 .on("mouseover", (event, d) => {
-                    tooltip.html(`Country: ${d.id}`)
-                        .style("left", (event.pageX + 5) + "px")
-                        .style("top", (event.pageY - 28) + "px")
-                        .style("visibility", "visible");
+                    tooltip.html(`
+                        <strong>Country:</strong> ${d.id}<br>
+                        <strong>Total Medals:</strong> ${d.total_medals || 0}<br>
+                        <strong>Gold:</strong> ${d.gold || 0}, Silver: ${d.silver || 0}, Bronze: ${d.bronze || 0}`
+                    )
+                    .style("left", (event.pageX + 5) + "px")
+                    .style("top", (event.pageY - 28) + "px")
+                    .style("visibility", "visible");
                 })
                 .on("mousemove", (event) => {
                     tooltip
