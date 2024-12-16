@@ -13,25 +13,23 @@
                 align-items: center;
                 overflow: hidden;
             }
-            #scaled-frame {
+            .scaled-frame {
                 width: 1000px;
                 height: 2000px;
                 border: 0px;
+                transform-origin: 0 0;
             }
-            #scaled-frame {
-                zoom: 0.75;
-                -moz-transform: scale(0.3);
-                -moz-transform-origin: 0 0;
-                -o-transform: scale(0.3);
-                -o-transform-origin: 0 0;
-                -webkit-transform: scale(0.3);
-                -webkit-transform-origin: 0 0;
+
+            .frame-one {
+                transform: scale(0.3, 0.3); 
             }
-            @media screen and (-webkit-min-device-pixel-ratio: 0) {
-                #scaled-frame {
-                    zoom: 1;
-                }
+
+            .frame-two {
+                transform: scale(0.3, 0.15); 
             }
+
+        
+
 
             body {
                 font-family: Arial, sans-serif;
@@ -99,7 +97,7 @@
                 onclick="window.location.href='ChordDiagram.html'"
             >
                 <div id="wrap">
-                    <iframe id="scaled-frame" src="chord-diagram.html"></iframe>
+                    <iframe class="scaled-frame frame-one" src="chord-diagram.html"></iframe>
                 </div>
 
                 <div class="description">
@@ -114,7 +112,7 @@
                 onclick="window.location.href='choropleth.html'"
             >
                 <div id="wrap">
-                    <iframe id="scaled-frame" src="choropleth.html"></iframe>
+                    <iframe class="scaled-frame frame-one" src="choropleth.html"></iframe>
                 </div>
                 <div class="description">
                     This dynamic choropleth map visualizes various
@@ -125,43 +123,64 @@
 
             <div
                 class="thumbnail"
-                onclick="window.location.href='PLACEHOLDER.html'"
+                onclick="window.location.href='Interactive_Olympic_Medal_Tally_Network.html'"
             >
                 <div id="wrap">
-                    <iframe id="scaled-frame" src="PLACEHOLDER.html"></iframe>
+                    <iframe class="scaled-frame frame-one" src="Interactive_Olympic_Medal_Tally_Network.html"></iframe>
                 </div>
                 <div class="description">Description of Plot 3</div>
             </div>
 
             <div
-                class="thumbnail"
-                onclick="window.location.href='PLACEHOLDER.html'"
+                class="thumbnail "
+                onclick="window.location.href='Olympic Cumulative Medals.html'"
             >
                 <div id="wrap">
-                    <iframe id="scaled-frame" src="PLACEHOLDER.html"></iframe>
+                    <iframe class="scaled-frame frame-two" src="Olympic Cumulative Medals.html"></iframe>
                 </div>
                 <div class="description">Description of Plot 4</div>
             </div>
 
             <div
                 class="thumbnail"
-                onclick="window.location.href='PLACEHOLDER.html'"
+                onclick="window.location.href='Olympic_Cumulative_Medals.html'"
             >
                 <div id="wrap">
-                    <iframe id="scaled-frame" src="PLACEHOLDER.html"></iframe>
+                    <iframe class="scaled-frame frame-two" src="Olympic_Cumulative_Medals.html"></iframe>
                 </div>
                 <div class="description">Description of Plot 5</div>
             </div>
 
             <div
                 class="thumbnail"
-                onclick="window.location.href='PLACEHOLDER.html'"
-            >
+                onclick="window.location.href='Olympic_Medal_Density_Map_Over_Time.html'">
                 <div id="wrap">
-                    <iframe id="scaled-frame" src="PLACEHOLDER.html"></iframe>
+                    <iframe class="scaled-frame frame-two" src="Olympic_Medal_Density_Map_Over_Time.html"></iframe>
                 </div>
                 <div class="description">Description of Plot 6</div>
             </div>
+
+            <div
+                class="thumbnail"
+                onclick="window.location.href='Olympic_Medal_Evolution_of_Top_Countries.html'"
+        >
+                <div id="wrap">
+                    <iframe class="scaled-frame frame-two" src="Olympic_Medal_Evolution_of_Top_Countries.html"></iframe>
+                </div>
+                <div class="description">Description of Plot 5</div>
+            </div>
+            
+            <div
+                class="thumbnail"
+                onclick="window.location.href='Olympic_Participation_Trends_Over_Time.html'"
+    >
+                <div id="wrap">
+                    <iframe class="scaled-frame frame-one" src="Olympic_Participation_Trends_Over_Time.html"></iframe>
+                </div>
+                <div class="description">Description of Plot 5</div>
+           </div>
+
+
         </div>
     </body>
 </html>
