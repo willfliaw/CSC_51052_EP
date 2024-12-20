@@ -26,7 +26,6 @@ d3.csv("data/cumulative_olympic_medals.csv", d3.autoType).then((data) => {
 
     data.sort((a, b) => d3.ascending(a.year, b.year));
 
-    // Filter top 20 countries by total medals
     const medalSums = d3.rollups(
         data,
         (v) => d3.sum(v, (d) => d.cumulative_total_medals),
@@ -37,7 +36,6 @@ d3.csv("data/cumulative_olympic_medals.csv", d3.autoType).then((data) => {
         .slice(0, 20)
         .map((d) => d[0]);
 
-    // Filter data to only include top countries
     data = data.filter((d) => topCountries.includes(d.country_name));
 
     const countries = [...new Set(data.map((d) => d.country_name))];
@@ -56,7 +54,6 @@ d3.csv("data/cumulative_olympic_medals.csv", d3.autoType).then((data) => {
         .domain(countries)
         .range(d3.schemeCategory10);
 
-    // Add gridlines
     const xGrid = svg
         .append("g")
         .attr("class", "grid")
@@ -98,7 +95,7 @@ d3.csv("data/cumulative_olympic_medals.csv", d3.autoType).then((data) => {
     });
 
     let selectedCountries = [];
-    let speed = 1000; // Default speed
+    let speed = 1000;
 
     const speedSlider = d3.select("#speedSlider");
     speedSlider.on("input", () => {
@@ -115,10 +112,12 @@ d3.csv("data/cumulative_olympic_medals.csv", d3.autoType).then((data) => {
     countryPanel.selectAll("input").on("change", updateSelectedCountries);
 
     svg.append("g")
+        .attr("class", "x-axis")
         .attr("transform", `translate(0, ${height - margin.bottom})`)
         .call(d3.axisBottom(xScale).tickFormat(d3.format("d")));
 
     svg.append("g")
+        .attr("class", "y-axis")
         .attr("transform", `translate(${margin.left}, 0)`)
         .call(d3.axisLeft(yScale));
 
@@ -130,7 +129,7 @@ d3.csv("data/cumulative_olympic_medals.csv", d3.autoType).then((data) => {
             for (let i = 1; i < countryData.length; i++) {
                 const start = countryData[i - 1];
                 const end = countryData[i];
-                const stepCount = 50; // Smooth interpolation per interval
+                const stepCount = 50;
                 for (let j = 0; j <= stepCount; j++) {
                     const t = j / stepCount;
                     interpolated.push({
@@ -151,7 +150,33 @@ d3.csv("data/cumulative_olympic_medals.csv", d3.autoType).then((data) => {
 
     function startAnimation() {
         const interpolatedData = precomputeData();
-
+    
+        const totalFrames = 1500; // Maintain high frame count for smoothness
+        const frameDuration = 3000 / speed; // Inverse the relationship for correct behavior
+    
+        const frames = [];
+        for (let i = 0; i <= totalFrames; i++) {
+            const t = i / totalFrames;
+            const currentYear = d3.interpolate(d3.min(years), d3.max(years))(t);
+    
+            const currentData = interpolatedData.map((countryData) =>
+                countryData.filter((d) => d.year <= currentYear)
+            );
+    
+            const maxYear = d3.max(currentData, (data) => d3.max(data, (d) => d.year));
+            const maxMedals = d3.max(
+                currentData,
+                (data) => d3.max(data, (d) => d.cumulative_total_medals)
+            );
+    
+            frames.push({
+                year: currentYear,
+                data: currentData,
+                xDomain: [d3.min(years), maxYear],
+                yDomain: [0, maxMedals],
+            });
+        }
+    
         const paths = svg
             .selectAll(".line")
             .data(interpolatedData)
@@ -160,30 +185,53 @@ d3.csv("data/cumulative_olympic_medals.csv", d3.autoType).then((data) => {
             .attr("fill", "none")
             .attr("stroke", (d) => colorScale(d[0].country))
             .attr("stroke-width", 2);
-
-        let progress = 0;
-        const totalSteps = interpolatedData[0].length;
-
-        function step() {
-            if (progress < totalSteps) {
-                paths.attr("d", (d) =>
-                    d3
-                        .line()
-                        .x((d) => xScale(d.year))
-                        .y((d) => yScale(d.cumulative_total_medals))
-                        .curve(d3.curveLinear)(d.slice(0, progress + 1))
-                );
-
-                d3.select("#yearLabel").text(
-                    `Year: ${Math.round(interpolatedData[0][progress].year)}`
-                );
-                progress++;
-                setTimeout(step, speed / totalSteps);
+    
+        function renderFrame(frame) {
+            const { year, data, xDomain, yDomain } = frame;
+    
+            xScale.domain(xDomain);
+            yScale.domain(yDomain);
+    
+            xGrid.call(
+                d3
+                    .axisBottom(xScale)
+                    .tickSize(-height + margin.top + margin.bottom)
+                    .tickFormat("")
+            );
+            yGrid.call(
+                d3
+                    .axisLeft(yScale)
+                    .tickSize(-width + margin.left + margin.right)
+                    .tickFormat("")
+            );
+    
+            svg.select(".x-axis").call(d3.axisBottom(xScale).tickFormat(d3.format("d")));
+            svg.select(".y-axis").call(d3.axisLeft(yScale));
+    
+            paths.attr("d", (d, i) =>
+                d3
+                    .line()
+                    .x((d) => xScale(d.year))
+                    .y((d) => yScale(d.cumulative_total_medals))
+                    .curve(d3.curveLinear)(data[i])
+            );
+    
+            d3.select("#yearLabel").text(`Year: ${Math.round(year)}`);
+        }
+    
+        let frameIndex = 0;
+        function animate() {
+            if (frameIndex < frames.length) {
+                renderFrame(frames[frameIndex]);
+                frameIndex++;
+                setTimeout(animate, frameDuration);
             }
         }
-
-        step();
+    
+        animate();
     }
+    
+    
 
     d3.select("#playPauseBtn").on("click", () => {
         if (selectedCountries.length === 0) {

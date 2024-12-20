@@ -1,76 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Olympic Participation Trends Over Time</title>
-        <script src="js/d3.v7.min.js" defer></script>
-        <script
-            src="js/Olympic_Participation_Trends_Over_Time.js"
-            defer
-        ></script>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f9f9fb;
-                margin: 0;
-            }
-            #chart {
-                display: flex;
-                justify-content: center;
-                margin: 40px auto;
-            }
-            .axis-label {
-                font-size: 16px;
-                fill: #555;
-                font-weight: bold;
-                text-anchor: middle;
-            }
-            .tooltip {
-                position: absolute;
-                background: #fff;
-                border: 1px solid #ccc;
-                padding: 8px;
-                font-size: 14px;
-                border-radius: 6px;
-                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-                pointer-events: none;
-            }
-            .grid line {
-                stroke: #e0e0e0;
-                stroke-dasharray: 4;
-            }
-            .grid path {
-                stroke-width: 0;
-            }
-            .line {
-                fill: none;
-                stroke: steelblue;
-                stroke-width: 3;
-            }
-            .event-marker {
-                fill: tomato;
-                stroke: darkred;
-                stroke-width: 1.5px;
-                cursor: pointer;
-            }
-            .title {
-                font-size: 22px;
-                font-weight: bold;
-                text-anchor: middle;
-                fill: #333;
-            }
-            .legend {
-                font-size: 12px;
-                fill: #333;
-            }
-            .legend-rect {
-                fill: tomato;
-                stroke: darkred;
-                stroke-width: 1px;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="chart"></div>
-    </body>
-</html>
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <title>Olympic Participation Trends</title>
+            <script src="https://d3js.org/d3.v7.min.js" defer></script>
+            <script src="js/Olympic_Participation_Trends_Over_Time.js" defer></script>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f9f9fb;
+                    margin: 0;
+                }
+                #chart-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: 40px auto;
+                }
+                #chart {
+                    position: relative;
+                    margin: 20px auto;
+                }
+                .tooltip {
+                    position: absolute;
+                    background: #fff;
+                    border: 1px solid #ccc;
+                    padding: 8px;
+                    font-size: 14px;
+                    border-radius: 6px;
+                    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+                    pointer-events: none;
+                }
+                .grid line {
+                    stroke: #e0e0e0;
+                    stroke-dasharray: 4;
+                }
+                .grid path {
+                    stroke-width: 0;
+                }
+                .line {
+                    fill: none;
+                    stroke: steelblue;
+                    stroke-width: 3;
+                }
+                .olympic-marker {
+                    fill: green;
+                    stroke: darkgreen;
+                    stroke-width: 1.5px;
+                    cursor: pointer;
+                }
+                .event-marker {
+                    fill: orange;
+                    stroke: darkorange;
+                    stroke-width: 1.5px;
+                    cursor: pointer;
+                }
+                .shaded-region {
+                    fill: lightgray;
+                    opacity: 0.3;
+                    mix-blend-mode: multiply;
+                }
+                .legend {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 10px;
+                    font-size: 14px;
+                    color: #333;
+                }
+                .legend-item {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 15px;
+                }
+                .legend-color {
+                    width: 14px;
+                    height: 14px;
+                    margin-right: 8px;
+                    border: 1px solid black;
+                }
+                .title {
+                    font-size: 24px;
+                    font-weight: bold;
+                    text-align: center;
+                    margin-bottom: 10px;
+                }
+            </style>
+        </head>
+        <body>
+            <div id="chart-container">
+                <div class="title">Global Participation in the Olympic Games (1896 - 2021)</div>
+                <div id="chart"></div>
+            </div>
+        </body>
+    </html>

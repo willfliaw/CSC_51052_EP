@@ -29,7 +29,7 @@ In our chord diagram, the countries are grouped by sub-continent, with a total o
     \centering
     \includegraphics[width=0.8\textwidth]{chord_diagram.png}
     \caption{Chord Diagram: Visualizing Olympic Athletes' Migration Flows Since 2010}
-    \label{fig:choropleth_map}
+    \label{fig:chord_diagram}
 \end{figure}
 
 \subsection{Features of the Diagram}
@@ -39,7 +39,7 @@ The diagram provides valuable insights into immigration patterns. Most visible i
 
 However, the diagram also reveals patterns specific to the unique nature of the dataset. For instance, Russia was banned from participating in the 2016 Rio and 2020 Tokyo Olympics due to doping violations. In such cases, many Russian athletes opted to compete under other countries' flags just to continue participating in the games.
 
-Another intriguing trend is the movement of athletes between countries in pursuit of better athletic opportunities. For example, some U.S. athletes appear to have moved to Latin American countries, possibly because it was easier to qualify for the Olympic team there. 
+Another intriguing trend is the movement of athletes between countries in pursuit of better athletic opportunities. For example, some U.S. athletes appear to have moved to Latin American countries, possibly because it was easier to qualify for the Olympic team there.
 
 
 \section{Dynamic Choropleths and Bubble Maps}
@@ -82,140 +82,154 @@ These maps reveal several insights into Olympic hosting trends:
 
 The combination of choropleth and bubble maps exemplifies the power of interactive visualizations, enabling a flexible exploration of the data while revealing key trends and disparities in Olympic hosting.
 
-\section{Olympic Rivalries Network Visualization}
+\section{Interactive Cumulative Medals Visualization}
 
-In addition to the previously discussed analyses, we developed an interactive visualization that highlights the rivalry patterns in the Olympic Games. This \textbf{Olympic Rivalries Network} provides an engaging way to explore competitive relationships among countries based on their historical medal tallies and rivalry strength.
+This section introduces an interactive visualization that dynamically displays the evolution of cumulative Olympic medals for the top 20 countries, based on total medal counts from 1896 to 2022. The visualization allows users to select specific countries, adjust the animation speed, and explore trends over time.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{olympic_rivalries_network.png}
-    \caption{Olympic Rivalries Network Visualization}
+    \includegraphics[width=0.8\textwidth]{cumulative_medal_count.png}
+    \caption{Interactive Line Chart of Cumulative Olympic Medals}
+    \label{fig:line_chart_cumulative_medals}
+\end{figure}
+
+\subsection{Features of the Visualization}
+
+The interactive line chart provides the following functionalities:
+\begin{itemize}
+    \item \textbf{Dynamic Country Selection:} A control panel allows users to select countries of interest, focusing the visualization on specific datasets.
+    \item \textbf{Adjustable Speed:} Users can modify the animation speed through a slider, enabling both detailed and high-level explorations.
+    \item \textbf{Dynamic Axes and Gridlines:} Axes and gridlines adjust dynamically during the animation, ensuring a clear representation of trends.
+    \item \textbf{Year Tracking:} A label dynamically updates to display the current year during the animation, providing a temporal reference.
+\end{itemize}
+
+\subsection{Insights from the Visualization}
+
+This visualization offers several insights into Olympic medal trends:
+\begin{itemize}
+    \item Countries such as the United States, Soviet Union, and Great Britain demonstrate consistently high cumulative medal counts, reflecting their historical dominance in the Olympics.
+    \item Newer Olympic nations exhibit rapid growth in cumulative medals, showcasing their emerging success over time.
+    \item The interactive nature allows users to identify key turning points, such as the effects of global events (e.g., World Wars) on medal accumulation.
+\end{itemize}
+
+This visualization exemplifies the potential of dynamic and interactive tools in enhancing the exploration and understanding of historical data trends.
+
+
+\section{Olympic Medal Density Visualization}
+
+This section introduces an interactive map visualization of Olympic medal distributions over time. The map, shown in Figure \ref{fig:olympic_medal_density_map}, dynamically displays the density of medals won by countries in each Olympic Games from 1980 to 2022, allowing users to explore geographical trends in medal achievements.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Olympic_Medal_Density_Map.png}
+    \caption{Olympic Medal Density Map: Medal Distributions by Country (1980-2022)}
+    \label{fig:olympic_medal_density_map}
+\end{figure}
+
+\subsection{Features of the Visualization}
+
+This interactive map includes the following functionalities:
+\begin{itemize}
+    \item \textbf{Dynamic Medal Visualization:} Countries are shaded based on the total number of medals won, with darker colors indicating higher medal counts.
+    \item \textbf{Year Slider:} A slider allows users to select specific years, updating the map to reflect medal distributions for that year.
+    \item \textbf{Tooltip Interactivity:} Hovering over a country displays detailed information about its medal achievements, including counts for Gold, Silver, Bronze, and Total medals.
+    \item \textbf{Color Legend:} A color bar legend provides a reference for interpreting the shading intensity, corresponding to medal density.
+\end{itemize}
+
+\subsection{Insights from the Visualization}
+
+This visualization reveals significant patterns in Olympic medal distributions:
+\begin{itemize}
+    \item Traditional powerhouses like the United States, Russia, and China consistently dominate the medal tallies, highlighted by darker shades on the map.
+    \item Regional trends, such as strong performances by European nations and emerging contributions from African and Asian countries, become apparent over time.
+    \item Disruptions in medal patterns during specific years, such as the Cold War-era boycotts of 1980 and 1984, are easily observable.
+    \item The interactive slider enables a temporal analysis, allowing users to trace the evolution of Olympic success across decades.
+\end{itemize}
+
+This map provides an engaging and intuitive way to explore the geographical distribution of Olympic success, offering insights into historical trends and emerging nations in the Olympic arena.
+
+
+\section{Olympic Rivalries Network Visualization}
+
+This section presents an interactive network visualization that explores the complex relationships and rivalries between countries in the Olympic Games. The visualization, shown in Figure \ref{fig:olympic_rivalries_network}, highlights countries' total medal counts and their competitive interactions over time, with connections emphasizing shared participation in events.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{graph_viz.png}
+    \caption{Interactive Olympic Rivalries Network: Countries and Medal Links}
     \label{fig:olympic_rivalries_network}
 \end{figure}
 
 \subsection{Features of the Visualization}
-The Olympic Rivalries Network is an interactive graph-based visualization where:
+
+The interactive network provides the following functionalities:
 \begin{itemize}
-    \item \textbf{Nodes represent countries}, and their size is proportional to the total number of medals won by each country.
-    \item \textbf{Edges (links) represent rivalry strength}, with thickness proportional to the intensity of the rivalry (determined by shared events, medal contention, and other metrics).
-    \item Users can hover over nodes to view detailed information, including:
-    \begin{itemize}
-        \item Total medals, broken down by Gold, Silver, and Bronze.
-        \item The top rival countries for the selected country.
-    \end{itemize}
-    \item Clicking on a node highlights the top three rival countries for the selected country, while emphasizing the edges connecting them.
-    \item A legend, positioned at the bottom-left corner, explains the color-coding and node/edge properties.
-    \item A slider allows users to dynamically adjust the "link distance" (spacing between nodes), facilitating better exploration of densely connected regions of the graph.
+    \item \textbf{Node Representation:} Each node represents a country, with its size proportional to the total number of medals won.
+    \item \textbf{Link Representation:} Links between nodes represent competitive interactions, with thicker links indicating stronger rivalries based on shared participation, especially in later rounds.
+    \item \textbf{Interactivity:}
+          \begin{itemize}
+              \item Hovering over nodes displays a tooltip with the country name, total medals, and medal breakdown by type (Gold, Silver, Bronze).
+              \item Clicking a node highlights the top three rival countries and their competitive links.
+          \end{itemize}
+    \item \textbf{Dynamic Adjustments:} A slider allows users to adjust the link distance, dynamically reorganizing the network for clarity.
+    \item \textbf{Legend:} A detailed legend explains the meaning of node sizes, colors, and link thickness, ensuring user accessibility and understanding.
 \end{itemize}
 
 \subsection{Insights from the Visualization}
+
+The Olympic Rivalries Network provides unique insights into the relationships and rivalries between countries:
 \begin{itemize}
-    \item \textbf{Historical Rivalries:} The network effectively captures iconic rivalries, such as the competitive dominance between the United States and the Soviet Union during the Cold War era.
-    \item \textbf{Emerging Rivalries:} The visualization also highlights emerging rivalries, such as those between countries in rapidly growing sporting regions like Asia and South America.
-    \item \textbf{Team Size and Medal Dominance:} The size of the nodes reflects the sporting dominance of traditional powerhouses like the United States and China, which have large medal counts and broader participation.
+    \item Countries with higher medal counts, such as the United States, Russia, and China, emerge as central nodes with numerous connections, highlighting their dominance in the Olympics.
+    \item Strong rivalries are evident between geographically or politically significant nations, such as the USA and USSR during the Cold War era.
+    \item Smaller nations with significant connections, such as Jamaica in athletics or Kenya in long-distance running, showcase specialized rivalries in specific sports.
+    \item The interactive design allows users to explore the evolving competitive dynamics over time, emphasizing the global nature of the Olympics.
 \end{itemize}
 
-This network visualization complements other data representations by focusing on relationships and rivalries, offering a unique lens through which to understand the Olympic Games' competitive dynamics. The combination of interactivity, visual clarity, and comprehensive information enhances both engagement and analytical depth for users.
+This visualization exemplifies the power of network analysis in uncovering patterns and relationships in complex datasets, offering a dynamic and engaging perspective on Olympic history.
 
-\section{Cumulative Olympic Medals Visualization}
+\section{Analysis of Olympic Participation Trends Over Time}
 
-To explore the progression of Olympic success over time, we developed an interactive visualization focusing on the cumulative medal counts for the top-performing countries in Olympic history. This visualization allows users to analyze trends, compare countries, and observe how nations have evolved in their athletic achievements since the inception of the modern Olympics in 1896.
+This section provides an analysis of the trends in global participation in the Olympic Games from their inception in 1896 to the most recent Games in 2021. The visualization in Figure \ref{fig:olympic_participation_trends} captures the number of countries participating in each Olympic Games, highlighting key historical events and their impact on participation.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{cumulative_olympic_medals.png}
-    \caption{Cumulative Olympic Medals Visualization (1896-2022)}
-    \label{fig:cumulative_medals}
+    \includegraphics[width=0.8\textwidth]{participation_in_olympics.png}
+    \caption{Olympic Participation Trends: Number of Participating Countries (1896-2021)}
+    \label{fig:olympic_participation_trends}
 \end{figure}
 
 \subsection{Features of the Visualization}
-The Cumulative Olympic Medals Visualization includes the following features:
+
+This interactive line chart and marker-based visualization include the following elements:
 \begin{itemize}
-    \item \textbf{Top 20 Medal-Winning Countries:} The visualization focuses on the top 20 countries with the highest total medal counts to provide a clear and meaningful analysis of Olympic trends.
-    \item \textbf{Dynamic Country Selection:} Users can select or deselect countries of interest using a side panel. Each country is represented by a unique color, and a color legend is displayed for quick reference.
-    \item \textbf{Animated Evolution:} Once countries are selected, the evolution of their cumulative medal counts is shown as an animated line chart. The animation ensures a smooth, continuous progression, emphasizing yearly trends and major leaps in medal counts.
-    \item \textbf{Adjustable Speed:} A speed slider enables users to control the animation speed, accommodating different viewing preferences and levels of detail.
-    \item \textbf{Interactive Year Display:} The current year is dynamically displayed during the animation, helping users correlate medal counts with specific Olympic Games.
-    \item \textbf{Gridlines and Axes:} Gridlines provide context for the data points, and clearly labeled axes highlight the timeline and medal counts for better interpretability.
+    \item \textbf{Participation Trends:} A blue line representing the number of countries participating in each Olympic Games, excluding canceled years.
+    \item \textbf{Event Markers:} Circles highlighting key historical events, such as World War-related cancellations and notable boycotts.
+    \item \textbf{Shaded Regions:} Gray regions marking periods when the Olympics were canceled (e.g., during World War I and World War II).
+    \item \textbf{Interactive Tooltips:} Hovering over points provides detailed information about the year, number of participating countries, and significant events.
+    \item \textbf{Legend:} A color-coded legend explains the meaning of the different visual elements, ensuring clarity and accessibility.
 \end{itemize}
 
 \subsection{Insights from the Visualization}
-This visualization provides several insights into Olympic medal trends:
+
+This visualization reveals several key insights into Olympic participation trends:
 \begin{itemize}
-    \item \textbf{Historical Dominance:} Countries like the United States and the Soviet Union demonstrate significant cumulative medal counts, reflecting their longstanding dominance in the Olympics.
-    \item \textbf{Emerging Powerhouses:} Nations such as China show sharp increases in medal counts, particularly after their economic and athletic investments in the late 20th century.
-    \item \textbf{Impact of Historical Events:} Global conflicts, such as the World Wars, and boycotts are evident in the periods of slower growth for certain countries.
-    \item \textbf{Comparative Analysis:} By visualizing multiple countries simultaneously, users can identify gaps and overlaps in medal-winning trajectories.
+    \item Participation steadily increased from 14 countries in the inaugural Games to 206 countries in recent editions, reflecting the Olympics' growing global appeal.
+    \item Significant dips in participation occurred during the 1980 and 1984 Games due to Cold War-era boycotts.
+    \item Periods of cancellations during World War I and World War II (1916, 1940, and 1944) are clearly marked, emphasizing the impact of global conflicts on the Olympics.
+    \item The introduction of new nations in the post-World War II era led to a sharp rise in participation, with notable milestones in the 1992 Games (169 countries) and the post-Cold War 1996 Games (197 countries).
 \end{itemize}
 
-\section{Olympic Participation Trends Over Time Visualization}
-
-To analyze the growth and changes in participation over the history of the Olympic Games, we developed a visualization that tracks the number of participating countries over time. This visualization provides a clear depiction of historical patterns, interruptions, and milestones in Olympic history.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{olympic_participation_trends.png}
-    \caption{Olympic Participation Trends Over Time (1896-2022)}
-    \label{fig:participation_trends}
-\end{figure}
-
-\subsection{Features of the Visualization}
-The Olympic Participation Trends visualization includes the following features:
-\begin{itemize}
-    \item \textbf{Line Chart with Gridlines:} A line chart is used to represent the number of participating countries over time, with gridlines providing context for interpreting the data.
-    \item \textbf{Significant Events Marked:} Key events, such as interruptions due to global conflicts and political boycotts, are marked with red circles on the line chart. These markers align with the participation trend, ensuring clarity and relevance.
-    \item \textbf{Interactive Tooltips:} Hovering over the event markers displays additional information about the event, including its year and description, providing context for notable changes in participation.
-    \item \textbf{Axes with Descriptive Labels:} The x-axis represents the Olympic years, and the y-axis indicates the number of participating countries, with clear labels for improved readability.
-    \item \textbf{Legend for Event Markers:} A legend is included to clarify the meaning of the red event markers, ensuring that users understand their significance.
-\end{itemize}
-
-\subsection{Insights from the Visualization}
-This visualization highlights several important insights:
-\begin{itemize}
-    \item \textbf{Growth in Participation:} The number of participating countries has grown steadily over time, reflecting the globalization of the Olympics.
-    \item \textbf{Impact of Global Events:} Major disruptions, such as World Wars and political boycotts, are clearly visible in the trends, illustrating how external factors have influenced Olympic participation.
-    \item \textbf{Milestones in Olympic History:} Key moments, such as the inclusion of more countries in the mid-20th century, underscore the expansion and inclusivity of the Olympic Games.
-\end{itemize}
-
-This visualization effectively combines historical data with interactive elements to provide a comprehensive view of Olympic participation trends. By emphasizing significant events and enabling user interaction, it enhances the exploration and understanding of Olympic history.
-
-\section{Olympic Medal Density Map Over Time}
-
-To visualize the geographical distribution of Olympic medals over time, we created an interactive density map. This visualization showcases the number of medals won by each country in a given year, enabling a clear understanding of regional dominance and trends throughout Olympic history.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{olympic_medal_density_map.png}
-    \caption{Olympic Medal Density Map by Country Over Time}
-    \label{fig:medal_density_map}
-\end{figure}
-
-\subsection{Features of the Visualization}
-The Olympic Medal Density Map includes the following features:
-\begin{itemize}
-    \item \textbf{Interactive World Map:} Countries are shaded based on the total number of medals won in a given year. A sequential color scale, ranging from light yellow to deep red, represents medal counts, with darker colors indicating higher totals.
-    \item \textbf{Dynamic Year Slider:} Users can explore medal densities across years by adjusting a slider. The map updates dynamically to reflect the chosen year.
-    \item \textbf{Tooltip Information:} Hovering over a country displays detailed medal information, including counts of gold, silver, and bronze medals, along with the total medals won for the selected year.
-    \item \textbf{Color Legend:} A gradient color bar at the bottom provides context for interpreting the medal density, with clear labels indicating the range of medal counts.
-\end{itemize}
-
-\subsection{Insights from the Visualization}
-This map reveals several key insights into the geographical distribution of Olympic success:
-\begin{itemize}
-    \item \textbf{Regional Dominance:} Developed countries, including the United States, Russia, and China, consistently dominate the medal counts, reflecting their strong sports programs and infrastructure.
-    \item \textbf{Emerging Nations:} Over time, the visualization highlights the increasing presence of emerging nations on the Olympic stage, particularly from Africa, Asia, and South America.
-    \item \textbf{Historical Context:} The map effectively visualizes disruptions caused by historical events. For example, during years of political boycotts or global conflicts, certain countries are notably absent from the medal tally.
-    \item \textbf{Performance Evolution:} Users can observe trends in a country's medal performance over time, offering insights into periods of peak success or decline.
-\end{itemize}
+By combining historical context with interactive elements, this visualization provides a comprehensive overview of how global events and geopolitical shifts have shaped the Olympic Games over time.
 
 \section{Data Dashboard}
+
 This HTML page serves as a centralized hub for all visualizations, consolidating plots and charts to offer a clear and organized view of the data. Each plot acts as a clickable link, redirecting users to the corresponding full visualization page. A description overlay appears on hover, providing additional context for each plot.
 
 The page leverages various HTML and CSS features, including iframe for embedding visualizations, zoom and transform for dynamic scaling, and hover effects for interactivity. Additionally, the responsive grid layout ensures the visualizations adapt seamlessly to different screen sizes, maintaining proper spacing and alignment for an optimized user experience.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{DataDashbord.png}
+    \includegraphics[width=0.8\textwidth]{DataDashboard.png}
     \caption{Data Dashboard: A centralized hub for displaying and accessing all visualizations}
-    \label{fig:choropleth_map}
+    \label{fig:dashboard}
 \end{figure}
